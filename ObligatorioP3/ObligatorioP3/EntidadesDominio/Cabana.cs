@@ -17,7 +17,7 @@ namespace Dominio.EntidadesDominio
         public int maxPersonas { get; set; }
         public string fotoCabana { get; set; }
         public Tipo tipoCabana { get; set; }
-        public int MyProperty { get; set; }
+     
 
         public Cabana()
         {
