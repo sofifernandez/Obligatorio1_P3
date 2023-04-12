@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace Dominio.EntidadesDominio
 {
     public class Cabana
     {
         private static int ultHab = 1;
+        [MaxLength(100)]
         public string nombreCabana { get; set; }
         public string descripCabana { get; set;}
         public bool Jacuzzi { get; set; }
