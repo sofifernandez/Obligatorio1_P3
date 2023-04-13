@@ -19,7 +19,9 @@ namespace Dominio.EntidadesDominio
         public int maxPersonas { get; set; }
         public string fotoCabana { get; set; }
         public Tipo tipoCabana { get; set; }
-     
+
+        //public string tipoCabananombre { get; set; } --> para la foreignkey (así po convención quedaría automático)
+        // si quiero ponerlo con Data Annotations se pone arriba: [ForeignKey("Tipo")]
 
         public Cabana()
         {

@@ -8,7 +8,7 @@ namespace Dominio.EntidadesDominio
 {
     public class Tipo
     {
-        public string nombreTipo { get; set; }
+        public string nombre { get; set; } //[Key?]
         public string descTipo { get; set; }
         public int costoTipo { get; set; }
     }
