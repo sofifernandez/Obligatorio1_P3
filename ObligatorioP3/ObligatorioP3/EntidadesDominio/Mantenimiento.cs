@@ -10,7 +10,9 @@ namespace Dominio.EntidadesDominio
     {
         public Cabana cabana { get; set; }
         public DateTime fechaMant { get; set; }
-        public string descMant { get; set; }
+
+        [MinLength(10), MaxLength(200)]
+        public string descMant { get; set; } 
         public int costoMant { get; set; }
         public string personal { get; set; }
     }

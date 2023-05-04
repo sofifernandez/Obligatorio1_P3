@@ -12,9 +12,9 @@ namespace Datos.Repositorios
     public class RepositorioTipo : IRepositorioTipo
 
     {
-        public LibreriaContext Contexto { get; set; }
+        public HotelContext Contexto { get; set; }
 
-        public RepositorioTipo(LibreriaContext ctx) 
+        public RepositorioTipo(HotelContext ctx) 
         {
             Contexto = ctx;
         }

@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 using Datos.ContextoEF;
 using Dominio.InterfacesRepositorios;
 using Dominio.EntidadesDominio;
-//using  Microsoft.EntityFrameworkCore;
+using  Microsoft.EntityFrameworkCore;
 
 namespace Datos.Repositorios
 {
     public class RepositorioCabana: IRepositorioCabana
     {
-        public LibreriaContext Contexto { get; set; }
+        public HotelContext Contexto { get; set; }
 
-        public RepositorioCabana(LibreriaContext ctx)
+        public RepositorioCabana(HotelContext ctx)
         {
             Contexto = ctx;
         }
@@ -23,48 +23,54 @@ namespace Datos.Repositorios
         public IEnumerable<Cabana> FindCabanaNombre(string nombre)
         {
             throw new NotImplementedException();
-            // var resultado=Contexto.Cabanas
-            // .Include(cabana ==>cabana.Tipo) --> si queremos que nos traiga la información de tipo también, sino no lo trae 
-            // .Where(cabana => cabana.Nombre==nombre)
-            // .ToList();
+            var resultado = Contexto.Cabanas
+                                    .Where(cabana => cabana.Nombre == nombre)
+                                    .ToList();
         }
 
         public IEnumerable<Cabana> FindCabanaMax(int maxPersonas)
         {
-            throw new NotImplementedException();
+
+            return Contexto.Cabanas
+                          .Where(cab => cab.MaxPersonas == maxPersonas)
+                          .ToList();
+
         }
 
         public IEnumerable<Cabana> FindCabanaTipo(Tipo tipo)
         {
-            throw new NotImplementedException();
+            return Contexto.Cabanas
+                          .Where(cab => cab.TipoCabana.nombre == tipo.nombre)
+                          .ToList();
         }
 
         public IEnumerable<Cabana> FindCabanasHabilitadas(bool habilitadas)
         {
-            throw new NotImplementedException();
+            return Contexto.Cabanas
+                           .Where(cab => cab.Habilitado == habilitadas)
+                           .ToList();
         }
 
         public void Add(Cabana obj)
         {
-            throw new NotImplementedException();
-            //obj.Validar();
-            //Contexto.Add(obj); --> es lo mismo que poner: Contexto.Entry(obj).State=EntityState.Added;
-            //Contexto.SaveChanges();
+
+            obj.Validar();
+            Contexto.Add(obj); // es lo mismo que poner: Contexto.Entry(obj).State = EntityState.Added;
+            Contexto.SaveChanges();
         }
 
         public IEnumerable<Cabana> FindAll()
         {
-            throw new NotImplementedException();
-            //return Contexto.Cabanas.ToList();
-            //return Contexto.Cabanas.Include(cabana => cabana.Tipo).ToList(); --> para traer el tipo
+            return Contexto.Cabanas.ToList();
+            //return Contexto.Cabanas.Include(cabana => cabana.Tipo)
+            //.ToList(); --> para traer el tipo
         }
 
         public void Remove(int id)
         {
-            throw new NotImplementedException();
-            // Cabana aBorrar= FindById(id);
-            // Contexto.Remove(aBorrar);
-            // Contexto.SaveChanges();
+            Cabana aBorrar = FindById(id);
+            Contexto.Remove(aBorrar);
+            Contexto.SaveChanges();
         }
 
         public void Update(Cabana obj)

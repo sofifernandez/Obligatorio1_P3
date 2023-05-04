@@ -11,9 +11,9 @@ namespace Datos.Repositorios
 {
     internal class RepositorioMantenimiento : IRepositorioMantenimiento
     {   
-        public LibreriaContext Contexto { get; set; }
+        public HotelContext Contexto { get; set; }
 
-        public RepositorioMantenimiento(LibreriaContext contexto)
+        public RepositorioMantenimiento(HotelContext contexto)
         {
             Contexto = contexto;
         }
@@ -24,12 +24,15 @@ namespace Datos.Repositorios
 
         public IEnumerable<Mantenimiento> FindAll()
         {
-            throw new NotImplementedException();
+            return Contexto.Mantenimientos.ToList();
         }
 
         public Mantenimiento FindById(int id)
         {
-            throw new NotImplementedException();
+            //Mantenimiento no tiene ID, habria que agregarle
+            return contexto.mantenimientos
+                            .where(man => man.id == id)
+                            .singleordefault();
         }
 
         public IEnumerable<Mantenimiento> FindMantenimientosFechas(DateTime startDate, DateTime endDate, Cabana miCabana)

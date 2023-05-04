@@ -11,9 +11,9 @@ namespace Datos.Repositorios
 {
     public class RepositorioUsuario : IRepositorioUsuario
     {
-        public LibreriaContext Contexto { get; set; }
+        public HotelContext Contexto { get; set; }
 
-        public RepositorioUsuario(LibreriaContext contexto)
+        public RepositorioUsuario(HotelContext contexto)
         {
             Contexto = contexto;    
         }
