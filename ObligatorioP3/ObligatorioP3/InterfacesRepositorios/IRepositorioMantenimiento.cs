@@ -9,7 +9,7 @@ namespace Dominio.InterfacesRepositorios
 {
     public interface IRepositorioMantenimiento: IRepositorio<Mantenimiento>
     {
-        IEnumerable<Mantenimiento> FindMantenimientosFechas(DateTime startDate, DateTime endDate, Cabana miCabana);
+        IEnumerable<Mantenimiento> FindMantenimientosFechas(DateTime startDate, DateTime endDate, int CabanaId);
 
     }
 }

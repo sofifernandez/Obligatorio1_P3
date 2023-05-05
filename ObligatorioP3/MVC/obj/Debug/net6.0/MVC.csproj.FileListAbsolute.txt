@@ -95,3 +95,5 @@ C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio_1\ObligatorioP3\MVC\obj\Deb
 C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio_1\ObligatorioP3\MVC\obj\Debug\net6.0\MVC.pdb
 C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio_1\ObligatorioP3\MVC\obj\Debug\net6.0\MVC.genruntimeconfig.cache
 C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio_1\ObligatorioP3\MVC\obj\Debug\net6.0\ref\MVC.dll
+C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio_1\ObligatorioP3\MVC\bin\Debug\net6.0\Aplicacion.dll
+C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio_1\ObligatorioP3\MVC\bin\Debug\net6.0\Aplicacion.pdb

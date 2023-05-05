@@ -9,7 +9,7 @@ using Dominio.EntidadesDominio;
 
 namespace Datos.Repositorios
 {
-    internal class RepositorioMantenimiento : IRepositorioMantenimiento
+    public class RepositorioMantenimiento : IRepositorioMantenimiento
     {   
         public HotelContext Contexto { get; set; }
 
@@ -19,7 +19,9 @@ namespace Datos.Repositorios
         }
         public void Add(Mantenimiento obj)
         {
-            throw new NotImplementedException();
+            //obj.Validar();
+            Contexto.Mantenimientos.Add(obj);
+            Contexto.SaveChanges();
         }
 
         public IEnumerable<Mantenimiento> FindAll()
@@ -29,15 +31,23 @@ namespace Datos.Repositorios
 
         public Mantenimiento FindById(int id)
         {
-            //Mantenimiento no tiene ID, habria que agregarle
-            return contexto.mantenimientos
-                            .where(man => man.id == id)
-                            .singleordefault();
+            Mantenimiento buscado = Contexto.Mantenimientos.Find(id);
+            if (buscado == null)
+            {
+                throw new Exception("El mantenimiento no existe");
+            }
+            return buscado;
         }
 
-        public IEnumerable<Mantenimiento> FindMantenimientosFechas(DateTime startDate, DateTime endDate, Cabana miCabana)
+        public IEnumerable<Mantenimiento> FindMantenimientosFechas(DateTime startDate, DateTime endDate, int CabanaId)
         {
-            throw new NotImplementedException();
+            var resultado = Contexto.Mantenimientos
+                .Where(mant => mant.CabanaId == CabanaId)
+                .Where(mant=>mant.FechaMant >= startDate)
+                .Where(mant=>mant.FechaMant<= endDate)
+                .OrderByDescending(mant=>mant.CostoMant) 
+                .ToList();
+            return resultado;
         }
 
         public void Remove(int id)

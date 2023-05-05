@@ -22,9 +22,8 @@ namespace Datos.Repositorios
 
         public IEnumerable<Cabana> FindCabanaNombre(string nombre)
         {
-            throw new NotImplementedException();
-            var resultado = Contexto.Cabanas
-                                    .Where(cabana => cabana.Nombre == nombre)
+            return Contexto.Cabanas
+                                    .Where(cabana => cabana.NombreCabana == nombre)
                                     .ToList();
         }
 
@@ -40,7 +39,7 @@ namespace Datos.Repositorios
         public IEnumerable<Cabana> FindCabanaTipo(Tipo tipo)
         {
             return Contexto.Cabanas
-                          .Where(cab => cab.TipoCabana.nombre == tipo.nombre)
+                          .Where(cab => cab.Tipo.Id == tipo.Id)
                           .ToList();
         }
 
@@ -54,7 +53,7 @@ namespace Datos.Repositorios
         public void Add(Cabana obj)
         {
 
-            obj.Validar();
+           // obj.Validar();
             Contexto.Add(obj); // es lo mismo que poner: Contexto.Entry(obj).State = EntityState.Added;
             Contexto.SaveChanges();
         }
@@ -75,19 +74,18 @@ namespace Datos.Repositorios
 
         public void Update(Cabana obj)
         {
-            throw new NotImplementedException();
-            // Contexto.Temas.Update(obj);
-            // Contexto.SaveChanges();
+            Contexto.Cabanas.Update(obj);
+            Contexto.SaveChanges();
         }
 
         public Cabana FindById(int id)
         {
-            throw new NotImplementedException();
-            //Cabana buscada=Contexto.Cabanas.Find(id);
-            // if(buscada ==null){
-            //  throw new Exception('La cabana ingresada no existe');
-            // }
-            // return buscada;
+            Cabana buscada = Contexto.Cabanas.Find(id);
+            if (buscada == null)
+            {
+                throw new Exception("La cabana ingresada no existe");
+            }
+            return buscada;
 
 
             // con linQ: para traer los tipos con include
@@ -97,14 +95,8 @@ namespace Datos.Repositorios
             // .SingleOrDefault(); --> para decirle que va a traer una fila
         }
 
-        public IEnumerable<Cabana> FindCabanaTipo(int maxPersonas)
-        {
-            throw new NotImplementedException();
-        }
+       
 
-        public IEnumerable<Cabana> FindCabanasHabilitas(int maxPersonas)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
