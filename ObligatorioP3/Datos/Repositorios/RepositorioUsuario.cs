@@ -34,7 +34,12 @@ namespace Datos.Repositorios
 
         public void Login(string email, string password)
         {
-            throw new NotImplementedException();
+            Usuario? usuario = Contexto.Usuarios
+                                            .Where(usuario => usuario.Email == email)
+                                            .Where(usuario => usuario.Password == password)
+                                            .SingleOrDefault();
+            //CÓMO SIGUE ESTO?
+            
         }
 
         public void Remove(int id)

@@ -52,12 +52,16 @@ namespace Datos.Repositorios
 
         public void Remove(int id)
         {
-            throw new NotImplementedException();
+            Mantenimiento aBorrar = FindById(id);
+            Contexto.Mantenimientos.Remove(aBorrar);
+            Contexto.SaveChanges();
         }
 
         public void Update(Mantenimiento obj)
         {
-            throw new NotImplementedException();
+            //obj.Validar();
+            Contexto.Mantenimientos.Update(obj);
+            Contexto.SaveChanges();
         }
     }
 }

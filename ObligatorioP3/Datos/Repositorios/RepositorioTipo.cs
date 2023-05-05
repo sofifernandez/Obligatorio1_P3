@@ -28,27 +28,35 @@ namespace Datos.Repositorios
 
         public IEnumerable<Tipo> FindAll()
         {
-            throw new NotImplementedException();
+            return Contexto.Tipos.ToList();
         }
 
         public Tipo FindById(int id)
         {
-            throw new NotImplementedException();
+            Tipo buscado = Contexto.Tipos.Find(id);
+            return buscado == null ? throw new Exception("El tipo ingresado no existe") : buscado;
         }
 
         public Tipo FindTipoByNombre(string nombreTipo)
         {
-            throw new NotImplementedException();
+
+            return Contexto.Tipos
+                           .Where(tipo => tipo.Nombre == nombreTipo)
+                           .SingleOrDefault();
         }
 
         public void Remove(int id)
         {
-            throw new NotImplementedException();
+            Tipo aBorrar = FindById(id);
+            Contexto.Tipos.Remove(aBorrar);
+            Contexto.SaveChanges();
         }
 
         public void Update(Tipo obj)
         {
-            throw new NotImplementedException();
+            obj.Validar();
+            Contexto.Tipos.Update(obj);
+            Contexto.SaveChanges();
         }
     }
 }

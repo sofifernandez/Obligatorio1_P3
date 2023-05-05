@@ -20,7 +20,7 @@ namespace Datos.Repositorios
             Contexto = ctx;
         }
 
-        public IEnumerable<Cabana> FindCabanaNombre(string nombre)
+        public IEnumerable<Cabana> FindCabanaNombre(string nombre) //ACÁ NO TENDRÍA QUE SER UNA SOLA???
         {
             return Contexto.Cabanas
                                     .Where(cabana => cabana.NombreCabana == nombre)
@@ -66,7 +66,7 @@ namespace Datos.Repositorios
         public void Remove(int id)
         {
             Cabana aBorrar = FindById(id);
-            Contexto.Remove(aBorrar);
+            Contexto.Cabanas.Remove(aBorrar);
             Contexto.SaveChanges();
         }
 
@@ -79,11 +79,7 @@ namespace Datos.Repositorios
         public Cabana FindById(int id)
         {
             Cabana buscada = Contexto.Cabanas.Find(id);
-            if (buscada == null)
-            {
-                throw new Exception("La cabana ingresada no existe");
-            }
-            return buscada;
+            return buscada == null ? throw new Exception("La cabana ingresada no existe") : buscada;
 
 
             // con linQ: para traer los tipos con include
@@ -93,8 +89,8 @@ namespace Datos.Repositorios
             // .SingleOrDefault(); --> para decirle que va a traer una fila
         }
 
-       
 
-        
+
+
     }
 }
