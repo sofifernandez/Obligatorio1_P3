@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dominio.EntidadesDominio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace Aplicacion.InterfacesCU
 {
     public interface IAltaTipo
     {
+        void Alta(Tipo t);
     }
 }

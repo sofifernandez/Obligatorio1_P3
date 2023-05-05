@@ -10,9 +10,9 @@ namespace Dominio.EntidadesDominio
     public class Usuario
     {
         public int Id { get; set; }
-        [EmailAddress]
-        public string Emai { get; set; }
-        [MinLength(6)]
+        [EmailAddress(ErrorMessage ="El campo ingresado no tiene formato de email")]
+        public string Email { get; set; }
+        [MinLength(6, ErrorMessage ="La contraseña debe tener más de 6 caracteres")]
         public string Password { get; set; }
 
         //VALIDAR QUE LA PASSWORD TENGA MAYUSCULAS Y MINUSCULAS Y NUMEROS

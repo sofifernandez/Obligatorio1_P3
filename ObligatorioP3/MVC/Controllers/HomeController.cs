@@ -1,6 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MVC.Models;
 using System.Diagnostics;
+using Aplicacion.InterfacesCU;
+using Dominio.EntidadesDominio;
+using Dominio.InterfacesRepositorios;
+using Aplicacion.CU;
 
 namespace MVC.Controllers
 {

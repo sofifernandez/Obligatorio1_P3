@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Aplicacion.CU
 {
     public class AltaCabana:IAltaCabana
@@ -23,8 +24,8 @@ namespace Aplicacion.CU
         public void Alta(Cabana c)
         {
             //OBTENER VALORES FRESCOS DE PARÁMETROS Y SETEARLOS
-            Cabana.MinDescripCabana = int.Parse(RepoParametro.ValorParametro("CantMaxCarNomTema"));
-            Cabana.MinDescripCabana = int.Parse(RepoParametro.ValorParametro("CantMinCarNomTema"));
+            Cabana.MinDescripCabana = int.Parse(RepoParametro.ValorParametro("MinDescripCabana"));
+            Cabana.MaxDescripCabana = int.Parse(RepoParametro.ValorParametro("MaxDescripCabana"));
 
             RepoCabana.Add(c);
         }

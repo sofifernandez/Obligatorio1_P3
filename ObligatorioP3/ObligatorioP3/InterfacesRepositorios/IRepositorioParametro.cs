@@ -7,7 +7,7 @@ using Dominio.EntidadesAuxiliares;
 
 namespace Dominio.InterfacesRepositorios
 {
-    public interface IRepositorioParametro:IRepositorio<Parametro>
+    public interface IRepositorioParametro : IRepositorio<Parametro>
     {
         string ValorParametro(string nombre);
     }
