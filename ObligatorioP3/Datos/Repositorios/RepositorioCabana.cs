@@ -53,16 +53,14 @@ namespace Datos.Repositorios
         public void Add(Cabana obj)
         {
 
-           // obj.Validar();
-            Contexto.Add(obj); // es lo mismo que poner: Contexto.Entry(obj).State = EntityState.Added;
+            obj.Validar();
+            Contexto.Add(obj); 
             Contexto.SaveChanges();
         }
 
         public IEnumerable<Cabana> FindAll()
         {
             return Contexto.Cabanas.ToList();
-            //return Contexto.Cabanas.Include(cabana => cabana.Tipo)
-            //.ToList(); --> para traer el tipo
         }
 
         public void Remove(int id)

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Datos.ContextoEF;
 using Dominio.InterfacesRepositorios;
 using Dominio.EntidadesDominio;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace Datos.Repositorios
 {
@@ -20,7 +21,9 @@ namespace Datos.Repositorios
         }
         public void Add(Tipo obj)
         {
-            throw new NotImplementedException();
+            obj.Validar();
+            Contexto.Tipos.Add(obj);
+            Contexto.SaveChanges();
         }
 
         public IEnumerable<Tipo> FindAll()
