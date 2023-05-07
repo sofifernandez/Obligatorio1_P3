@@ -26,7 +26,7 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Login">Home</a>
                             </li>
                         }
-                        else
+                        @if (Context.Session.GetString("email") != null)
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Logout">Salir</a>

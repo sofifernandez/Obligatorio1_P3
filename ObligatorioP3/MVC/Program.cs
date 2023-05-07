@@ -27,9 +27,18 @@ var configuration=configurationBuilder.Build();
 string miConexion = configuration.GetConnectionString("MiConexion");
 builder.Services.AddDbContext<HotelContext>(options=>options.UseSqlServer(miConexion));
 
+builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromSeconds(10);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
+
 var app = builder.Build();
 
-app.UseSession();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -42,7 +51,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
