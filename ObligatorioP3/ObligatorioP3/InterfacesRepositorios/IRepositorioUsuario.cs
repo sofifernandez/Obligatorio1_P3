@@ -9,6 +9,6 @@ namespace Dominio.InterfacesRepositorios
 {
     public interface IRepositorioUsuario: IRepositorio<Usuario>
     {
-        public void Login(string email,  string password);
+        public Usuario Login(string email,  string password);
     }
 }

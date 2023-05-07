@@ -5,6 +5,7 @@ using Aplicacion.InterfacesCU;
 using Dominio.EntidadesDominio;
 using Dominio.InterfacesRepositorios;
 using Aplicacion.CU;
+using System.ComponentModel.DataAnnotations;
 
 namespace MVC.Controllers
 {
@@ -19,7 +20,15 @@ namespace MVC.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if (HttpContext.Session.GetString("email") != null)
+            {
+                ViewBag.Usuario = HttpContext.Session.GetString("email");
+                return View();
+            }
+            else 
+            {
+                return Redirect("/Usuario/Login");
+            }
         }
 
         public IActionResult Privacy()

@@ -1,0 +1,20 @@
+- 1) resgitro usuario
+- 2) login (HOME, index)
+- 3) logout
+
+
+TIPO CABAÑA
+-listar todos
+-buscar por nombre
+-delete
+-alta
+-edit
+
+CABANA
+-alta
+-buscar cabana por nombre, tipo, cant max, habilitadas
+- A TODAS LAS VISTAS: LINK PARA AGREGAR MANTENIMIENTO, Y VER LOS MANTENIMIENTOS (entre dos fechas)
+
+MANTENIMIENTO
+- agregar (max 3 mantiniemientos por día por cabana)
+- listar entre dos fechas

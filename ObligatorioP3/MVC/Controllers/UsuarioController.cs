@@ -1,84 +1,61 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Dominio.EntidadesDominio;
+using Dominio.InterfacesRepositorios;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace MVC.Controllers
 {
     public class UsuarioController : Controller
     {
+        IRepositorioUsuario RepoUsuario { get; set; }
+
+        public UsuarioController(IRepositorioUsuario repo)
+            {
+            RepoUsuario = repo;
+            }
+
         // GET: UsuarioController
-        public ActionResult Index()
+        public ActionResult Login()
         {
             return View();
         }
 
-        // GET: UsuarioController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
+       
 
-        // GET: UsuarioController/Create
-        public ActionResult Create()
-        {
-
-            return View();
-        }
-
-        // POST: UsuarioController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Login(Usuario unUsuario)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                string email = unUsuario.Email;
+                string password = unUsuario.Password;
+                Usuario usuario = RepoUsuario.Login(email, password);
+                if (usuario != null)
+                {
+                    HttpContext.Session.SetString("email", email);
+                    return Redirect("/Home/Index");
+                }
+                else 
+                {
+                    ViewBag.Error = "El usuario o la contraseña son incorrectos";
+                    return View();
+                }
+
+                
             }
-            catch
+            catch (Exception e)
             {
+                ViewBag.Error = e.Message;
                 return View();
             }
         }
-
-        // GET: UsuarioController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Logout()
         {
-            return View();
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login");
+
         }
 
-        // POST: UsuarioController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: UsuarioController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: UsuarioController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

@@ -28,8 +28,4 @@
     <ProjectReference Include="..\ObligatorioP3\Dominio.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Cabana\" />
-  </ItemGroup>
-
 </Project>

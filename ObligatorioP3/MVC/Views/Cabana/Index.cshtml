@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Dominio.EntidadesDominio.Cabana>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreCabana)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescripCabana)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Jacuzzi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Habilitado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxPersonas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FotoCabana)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoId)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.MinDescripCabana)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxDescripCabana)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCabana)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescripCabana)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Jacuzzi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Habilitado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxPersonas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FotoCabana)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoId)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.MinDescripCabana)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxDescripCabana)
+            </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

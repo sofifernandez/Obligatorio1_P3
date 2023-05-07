@@ -32,13 +32,13 @@ namespace Datos.Repositorios
             throw new NotImplementedException();
         }
 
-        public void Login(string email, string password)
+        public Usuario Login(string email, string password)
         {
             Usuario? usuario = Contexto.Usuarios
                                             .Where(usuario => usuario.Email == email)
                                             .Where(usuario => usuario.Password == password)
                                             .SingleOrDefault();
-            //CÓMO SIGUE ESTO?
+            return usuario;
             
         }
 
