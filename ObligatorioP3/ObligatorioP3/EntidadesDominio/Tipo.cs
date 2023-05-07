@@ -7,11 +7,14 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
+using Dominio.InterfacesDominio;
 
 namespace Dominio.EntidadesDominio
 {
     [Index(nameof(Nombre), IsUnique=true)]
-    public class Tipo
+
+    public class Tipo: IValidable
+
     {
         public int Id { get; set; }
         [Required(ErrorMessage ="El nombre es un campo obligatorio")]

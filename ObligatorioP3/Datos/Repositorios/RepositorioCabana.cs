@@ -19,12 +19,12 @@ namespace Datos.Repositorios
         {
             Contexto = ctx;
         }
-
-        public IEnumerable<Cabana> FindCabanaNombre(string nombre) //ACÁ NO TENDRÍA QUE SER UNA SOLA???
+        // Ver cque nombre este dentro de NombreCabana****
+        public IEnumerable<Cabana> FindCabanaNombre(string nombre) 
         {
             return Contexto.Cabanas
-                                    .Where(cabana => cabana.NombreCabana == nombre)
-                                    .ToList();
+                           .Where(cabana => cabana.NombreCabana.Contains(nombre))
+                           .ToList();
         }
 
         public IEnumerable<Cabana> FindCabanaMax(int maxPersonas)
