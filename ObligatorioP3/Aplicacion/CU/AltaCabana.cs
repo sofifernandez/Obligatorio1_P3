@@ -26,7 +26,6 @@ namespace Aplicacion.CU
             //OBTENER VALORES FRESCOS DE PARÁMETROS Y SETEARLOS
             Cabana.MinDescripCabana = int.Parse(RepoParametro.ValorParametro("MinDescripCabana"));
             Cabana.MaxDescripCabana = int.Parse(RepoParametro.ValorParametro("MaxDescripCabana"));
-
             RepoCabana.Add(c);
         }
     }

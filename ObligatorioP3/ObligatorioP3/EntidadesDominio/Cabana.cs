@@ -18,11 +18,15 @@ namespace Dominio.EntidadesDominio
     {
         public int Id { get; set; }
         [MaxLength(50,ErrorMessage ="El nombre no puede tener más 50 caracteres")] //-->ESTO ES PORQUE QUEREMOS QUE SEA UNIQUE Y NOS VA A TIRAR ERROR LA BASE DE DATOS, PORQUE POR DEFECTO ES NVARMAX
+        [Display(Name = "Nombre")]
         public string NombreCabana { get; set; }
+        [Display(Name = "Descripción")]
         public string DescripCabana { get; set;}
         public bool Jacuzzi { get; set; }
         public bool Habilitado { get; set; }
+        [Display(Name = "Cant. de huéspedes")]
         public int MaxPersonas { get; set; }
+        [Display(Name = "Foto")]
         public string FotoCabana { get; set; }
         public Tipo Tipo { get; set; }
         public int TipoId { get; set; }

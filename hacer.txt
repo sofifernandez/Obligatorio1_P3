@@ -1,14 +1,23 @@
-- 1) resgitro usuario
-- 2) login (HOME, index)
-- 3) logout
+
+
+--OJO! FALTA PONER TODO CON LA AUTORIZACION--
+
+
+
+USUARIOS
+1) resgitro usuario --CHECK
+2) login (HOME, index)--CHECK
+3) logout --CHECK
+
+
 
 
 TIPO CABAÑA
--listar todos
--buscar por nombre
--delete
--alta
--edit
+-listar todos --CHECK
+-buscar por nombre --CHECK
+-delete --CHECK
+-alta --CHECK
+-edit --CHECK
 
 CABANA
 -alta

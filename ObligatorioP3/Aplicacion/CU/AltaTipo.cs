@@ -24,7 +24,8 @@ namespace Aplicacion.CU
         {
             //OBTENER VALORES FRESCOS DE PARÁMETROS Y SETEARLOS
             Tipo.MinDescripTipo = int.Parse(RepoParametro.ValorParametro("MinDescripTipo"));
-            Tipo.MinDescripTipo = int.Parse(RepoParametro.ValorParametro("MinDescripTipo"));
+            Tipo.MaxDescripTipo = int.Parse(RepoParametro.ValorParametro("MaxDescripTipo"));
+            RepoTipo.Add(t);
         }
     }
 }

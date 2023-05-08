@@ -20,6 +20,7 @@ builder.Services.AddScoped<IRepositorioParametro, RepositorioParametro > ();
 builder.Services.AddScoped<IAltaCabana, AltaCabana>();
 builder.Services.AddScoped<IAltaMantenimiento, AltaMantenimiento>();
 builder.Services.AddScoped<IAltaTipo, AltaTipo>();
+builder.Services.AddScoped<IEditarTipo, EditarTipo>();
 
 var configurationBuilder=new ConfigurationBuilder();
 configurationBuilder.AddJsonFile("appsettings.json", false, true);
