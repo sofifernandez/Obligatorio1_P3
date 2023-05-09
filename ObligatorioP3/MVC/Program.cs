@@ -30,14 +30,14 @@ builder.Services.AddDbContext<HotelContext>(options=>options.UseSqlServer(miCone
 
 builder.Services.AddDistributedMemoryCache();
 
-builder.Services.AddSession(options =>
-{
-    options.IdleTimeout = TimeSpan.FromSeconds(10);
-    options.Cookie.HttpOnly = true;
-    options.Cookie.IsEssential = true;
-});
+//builder.Services.AddSession(options =>
+//{
+//    options.IdleTimeout = TimeSpan.FromSeconds(10);
+//    options.Cookie.HttpOnly = true;
+//    options.Cookie.IsEssential = true;
+//});
 
-
+builder.Services.AddSession();
 var app = builder.Build();
 
 
@@ -46,6 +46,7 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
 }
+app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();

@@ -19,14 +19,19 @@ namespace Dominio.EntidadesDominio
         public int Id { get; set; }
         [MaxLength(50,ErrorMessage ="El nombre no puede tener más 50 caracteres")] //-->ESTO ES PORQUE QUEREMOS QUE SEA UNIQUE Y NOS VA A TIRAR ERROR LA BASE DE DATOS, PORQUE POR DEFECTO ES NVARMAX
         [Display(Name = "Nombre")]
+        [Required(ErrorMessage = "El nombre es un campo obligatorio")]
         public string NombreCabana { get; set; }
         [Display(Name = "Descripción")]
+        [Required(ErrorMessage ="La descripción es un campo obligatorio")]
         public string DescripCabana { get; set;}
         public bool Jacuzzi { get; set; }
         public bool Habilitado { get; set; }
         [Display(Name = "Cant. de huéspedes")]
+        [Range(0,15,ErrorMessage ="El valor debe estar entre 0 y 15")]
+        [Required(ErrorMessage = "La cantidad de huéspedes es un campo obligatorio")]
         public int MaxPersonas { get; set; }
         [Display(Name = "Foto")]
+        [Required(ErrorMessage = "La foto es obligatoria")]
         public string FotoCabana { get; set; }
         public Tipo Tipo { get; set; }
         public int TipoId { get; set; }
@@ -35,7 +40,7 @@ namespace Dominio.EntidadesDominio
         public static int MinDescripCabana { get; set; }
         public static int MaxDescripCabana { get; set; }
 
-        private static Regex alphabetRegex = new ("^[a-zA-Z ]+$");
+        private static Regex alphabetRegex = new ("^[a-zA-Z áéíóúÁÉÍÓÚ]+$");
 
 
         public void Validar()
@@ -47,19 +52,19 @@ namespace Dominio.EntidadesDominio
 
         private void ValidarNombre() 
         {
-            if (string.IsNullOrEmpty(NombreCabana)){throw new Exception("El nombre de la cabaña no puede ser nulo o vacío");}
-            if (!alphabetRegex.IsMatch(NombreCabana)){throw new Exception("El nombr puede contener solo letras y espacios");}
-            if (NombreCabana[0].Equals(" ")) {throw new Exception("No puede haber un espacio al comienzo del nombre");}
-            if (NombreCabana[NombreCabana.Length - 1].Equals(" ")) { throw new Exception("No puede haber un espacio al final del nombre"); }
+            //if (string.IsNullOrEmpty(NombreCabana)){throw new Exception("El nombre de la cabaña no puede ser nulo o vacío");}
+            if (!alphabetRegex.IsMatch(NombreCabana)){throw new Exception("El nombre puede contener solo letras y espacios");}
+            if (NombreCabana[0].ToString()==" ") {throw new Exception("No puede haber un espacio al comienzo del nombre");}
+            if (NombreCabana[NombreCabana.Length - 1].ToString() == " ") { throw new Exception("No puede haber un espacio al final del nombre"); }
         }
 
         private void ValidarDescripcion()
         {
-            if (DescripCabana.Length < MinDescripCabana){throw new Exception("El nombre del tema no puede tener menos de " + MinDescripCabana);}
-            if (DescripCabana.Length > MaxDescripCabana){throw new Exception("El nombre del tema no puede tener más de " + MaxDescripCabana);}
+            if (DescripCabana.Length < MinDescripCabana){throw new Exception("La descripción de la cabaña no puede tener menos de " + MinDescripCabana);}
+            if (DescripCabana.Length > MaxDescripCabana){throw new Exception("La descripción de la cabaña no puede tener más de " + MaxDescripCabana);}
         }
 
-        //VALIDAR EL NOMBRE--> CARACTERES ALFABETICOS Y ESPACIOS EMBEBIDOS (NO AL INICIO NI AL FINAL)
+       
         //LA FOTO
         
 

@@ -26,7 +26,7 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Login">Home</a>
                             </li>
                         }
-                        @if (Context.Session.GetString("email") != null)
+                        @if (!string.IsNullOrEmpty(Context.Session.GetString("email")))
                         {
                            
                             <li class="nav-item">

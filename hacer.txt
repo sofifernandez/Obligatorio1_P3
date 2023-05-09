@@ -10,8 +10,6 @@ USUARIOS
 3) logout --CHECK
 
 
-
-
 TIPO CABAÑA
 -listar todos --CHECK
 -buscar por nombre --CHECK
@@ -19,9 +17,10 @@ TIPO CABAÑA
 -alta --CHECK
 -edit --CHECK
 
+
 CABANA
--alta
--buscar cabana por nombre, tipo, cant max, habilitadas
+-alta --CHECK
+-buscar cabana por nombre, tipo, cant max, habilitadas --> TODO ESTO EN UNA VISTA SOLA
 - A TODAS LAS VISTAS: LINK PARA AGREGAR MANTENIMIENTO, Y VER LOS MANTENIMIENTOS (entre dos fechas)
 
 MANTENIMIENTO

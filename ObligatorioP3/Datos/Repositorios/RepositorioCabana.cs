@@ -60,7 +60,7 @@ namespace Datos.Repositorios
 
         public IEnumerable<Cabana> FindAll()
         {
-            return Contexto.Cabanas.ToList();
+            return Contexto.Cabanas.Include(cab=>cab.Tipo).ToList();
         }
 
         public void Remove(int id)

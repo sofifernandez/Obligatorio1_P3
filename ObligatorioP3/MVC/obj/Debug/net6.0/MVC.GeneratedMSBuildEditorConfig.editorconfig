@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio_1\ObligatorioP3\MVC
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio_1/ObligatorioP3/MVC/Views/Cabana/BuscarPorNombre.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FiYW5hXEJ1c2NhclBvck5vbWJyZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio_1/ObligatorioP3/MVC/Views/Cabana/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FiYW5hXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

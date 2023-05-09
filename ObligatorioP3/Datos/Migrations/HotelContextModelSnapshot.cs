@@ -127,11 +127,10 @@ namespace Datos.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CostoTipo")
+                    b.Property<int?>("CostoTipo")
                         .HasColumnType("int");
 
                     b.Property<string>("DescTipo")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
