@@ -33,9 +33,11 @@ namespace MVC.Controllers
 
 
         [HttpPost]
-        public ActionResult MantEntreFechas(DateOnly fechaIni, DateOnly fechaFin, int idCabana)
+        public ActionResult MantEntreFechas(string fechaIni, string fechaFin, int CabanaId)
         {
-            IEnumerable<Mantenimiento> mantenimientos = RepositorioMant.FindMantenimientosFechas(fechaIni, fechaFin, idCabana);
+            DateOnly desde= DateOnly.Parse(fechaIni);
+            DateOnly hasta = DateOnly.Parse(fechaFin);
+            IEnumerable<Mantenimiento> mantenimientos = RepositorioMant.FindMantenimientosFechas(desde, hasta, CabanaId);
             if (mantenimientos.Count() == 0)
             {
                 ViewBag.NotFound = "No existen resultados";
@@ -52,9 +54,9 @@ namespace MVC.Controllers
         }
 
         // GET: MantenimientoController/Create
-        public ActionResult Create(int idCabana)
+        public ActionResult Create(int CabanaId)
         {
-            Cabana cabana = RepositorioCabana.FindById(idCabana);
+            Cabana cabana = RepositorioCabana.FindById(CabanaId);
             ViewBag.Cabana=cabana;
             return View();
         }
