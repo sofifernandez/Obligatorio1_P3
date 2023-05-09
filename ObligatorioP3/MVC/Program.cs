@@ -18,7 +18,6 @@ builder.Services.AddScoped<IRepositorioTipo, RepositorioTipo>();
 builder.Services.AddScoped<IRepositorioUsuario, RepositorioUsuario>();
 builder.Services.AddScoped<IRepositorioParametro, RepositorioParametro > ();
 builder.Services.AddScoped<IAltaCabana, AltaCabana>();
-builder.Services.AddScoped<IAltaMantenimiento, AltaMantenimiento>();
 builder.Services.AddScoped<IAltaTipo, AltaTipo>();
 builder.Services.AddScoped<IEditarTipo, EditarTipo>();
 

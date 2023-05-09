@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Datos.ContextoEF;
 using Dominio.InterfacesRepositorios;
 using Dominio.EntidadesDominio;
+using Microsoft.EntityFrameworkCore;
 
 namespace Datos.Repositorios
 {
@@ -39,12 +40,12 @@ namespace Datos.Repositorios
             return buscado;
         }
 
-        public IEnumerable<Mantenimiento> FindMantenimientosFechas(DateTime startDate, DateTime endDate, int CabanaId)
+        public IEnumerable<Mantenimiento> FindMantenimientosFechas(DateOnly startDate, DateOnly endDate, int CabanaId)
         {
-            var resultado = Contexto.Mantenimientos
+           var resultado = Contexto.Mantenimientos
                 .Where(mant => mant.CabanaId == CabanaId)
-                .Where(mant=>mant.FechaMant >= startDate)
-                .Where(mant=>mant.FechaMant<= endDate)
+                .Where(mant=>mant.FechaMant.Date.CompareTo(startDate) >=0) //no funcionan los operadores = < > para comparar directamente
+                .Where(mant => mant.FechaMant.Date.CompareTo(endDate) <= 0)
                 .OrderByDescending(mant=>mant.CostoMant) 
                 .ToList();
             return resultado;
@@ -62,6 +63,15 @@ namespace Datos.Repositorios
             //obj.Validar();
             Contexto.Mantenimientos.Update(obj);
             Contexto.SaveChanges();
+        }
+
+        public IEnumerable<Mantenimiento> FindMantenimientosCabana(int idCabana)
+        {
+            var resultado = Contexto.Mantenimientos
+                .Where(mant => mant.CabanaId == idCabana)
+                .Include(mant=>mant.Cabana)
+                .ToList();
+            return resultado;
         }
     }
 }

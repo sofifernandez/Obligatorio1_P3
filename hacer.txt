@@ -1,28 +1,36 @@
-
-
 --OJO! FALTA PONER TODO CON LA AUTORIZACION--
-
-
+--OJO! FALTA LO DE LA FOTO EN CABANA--
+--ignorar mayusculas y minusculas cuando se busca por nombre (cabana y  tipo)
+--eliminar homecontroller?
+-- validacion de mantenimiento??
 
 USUARIOS
 1) resgitro usuario --CHECK
 2) login (HOME, index)--CHECK
 3) logout --CHECK
 
-
-TIPO CABAÑA
+TIPO
 -listar todos --CHECK
 -buscar por nombre --CHECK
 -delete --CHECK
 -alta --CHECK
 -edit --CHECK
 
-
-CABANA
+CABANA (no hay update, delete, ni details????). 
 -alta --CHECK
--buscar cabana por nombre, tipo, cant max, habilitadas --> TODO ESTO EN UNA VISTA SOLA
+-buscar cabana por nombre, tipo, cant max, habilitadas --CHECK
 - A TODAS LAS VISTAS: LINK PARA AGREGAR MANTENIMIENTO, Y VER LOS MANTENIMIENTOS (entre dos fechas)
 
 MANTENIMIENTO
 - agregar (max 3 mantiniemientos por día por cabana)
 - listar entre dos fechas
+
+
+PREGUNTAS
+Generales:
+Por defecto se crearon los campos como not null, para que no aparezca el mensaje en inglés le pusimos Required y el mensaje. Lo sacamos y hacemos nullable el campo en la base de datos?
+
+CABANA 
+- no hay update, delete, ni details????
+- Tendría que mostrar la cant max de huespedes y de ahí para arriba no? o exacto el número?
+

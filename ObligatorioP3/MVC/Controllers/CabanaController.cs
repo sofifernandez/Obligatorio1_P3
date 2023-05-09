@@ -4,6 +4,7 @@ using Aplicacion.CU;
 using Aplicacion.InterfacesCU;
 using Dominio.InterfacesRepositorios;
 using Dominio.EntidadesDominio;
+using System.IO;
 
 namespace MVC.Controllers
 {
@@ -21,28 +22,76 @@ namespace MVC.Controllers
             RepositorioTipo = repositorioTipo;
         }
 
-        // GET: CabanaController
+        //-------------------------------------------------------------------------------------
+        //LISTADO-----------------------------------------------------------------------------
         public ActionResult Index()
         {
             IEnumerable<Cabana> cabanas = RepositorioCabana.FindAll();
+            ViewBag.Tipos= RepositorioTipo.FindAll();
             return View(cabanas);
         }
 
+
+        //-------------------------------------------------------------------------------------
+        //BÚSQUEDAS-----------------------------------------------------------------------------
         [HttpPost]
         public ActionResult BuscarPorNombre(string nombre) 
         { 
             IEnumerable<Cabana> cabanas=RepositorioCabana.FindCabanaNombre(nombre);
             if (cabanas.Count()>0) 
             {
-                return View("Index",cabanas);
+                return View("ResultadoBusqueda",cabanas);
             } else 
             {
                 ViewBag.NotFound = "No existen resultados";
-                return View(cabanas); 
+                return View("ResultadoBusqueda", cabanas); 
             }
         }
 
+        [HttpGet]
+        public ActionResult BuscarHabilitadas()
+        {
+            IEnumerable<Cabana> cabanas = RepositorioCabana.FindCabanasHabilitadas();
+            if (cabanas.Count() > 0)
+            {
+                return View("ResultadoBusqueda", cabanas);
+            }
+            else
+            {
+                ViewBag.NotFound = "No existen resultados";
+                return View("ResultadoBusqueda", cabanas);
+            }
+        }
 
+        [HttpPost]
+        public ActionResult BuscarPorMaxHuespedes(int maxHuespedes)
+        {
+            IEnumerable<Cabana> cabanas = RepositorioCabana.FindCabanaMax(maxHuespedes);
+            if (cabanas.Count() > 0)
+            {
+                return View("ResultadoBusqueda", cabanas);
+            }
+            else
+            {
+                ViewBag.NotFound = "No existen resultados";
+                return View("ResultadoBusqueda", cabanas);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult BuscarPorTipo(int idTipo)
+        {
+            IEnumerable<Cabana> cabanas = RepositorioCabana.FindCabanaTipo(idTipo);
+            if (cabanas.Count() > 0)
+            {
+                return View("ResultadoBusqueda", cabanas);
+            }
+            else
+            {
+                ViewBag.NotFound = "No existen resultados";
+                return View("ResultadoBusqueda", cabanas);
+            }
+        }
 
 
         // GET: CabanaController/Details/5

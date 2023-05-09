@@ -24,6 +24,7 @@ namespace Datos.Repositorios
         {
             return Contexto.Cabanas
                            .Where(cabana => cabana.NombreCabana.Contains(nombre))
+                           .Include(cabana=>cabana.Tipo)
                            .ToList();
         }
 
@@ -32,21 +33,24 @@ namespace Datos.Repositorios
 
             return Contexto.Cabanas
                           .Where(cab => cab.MaxPersonas == maxPersonas)
+                          .Include(cabana => cabana.Tipo)
                           .ToList();
 
         }
 
-        public IEnumerable<Cabana> FindCabanaTipo(Tipo tipo)
+        public IEnumerable<Cabana> FindCabanaTipo(int idTipo)
         {
             return Contexto.Cabanas
-                          .Where(cab => cab.Tipo.Id == tipo.Id)
+                          .Where(cab => cab.Tipo.Id == idTipo)
+                          .Include(cabana => cabana.Tipo)
                           .ToList();
         }
 
-        public IEnumerable<Cabana> FindCabanasHabilitadas(bool habilitadas)
+        public IEnumerable<Cabana> FindCabanasHabilitadas()
         {
             return Contexto.Cabanas
-                           .Where(cab => cab.Habilitado == habilitadas)
+                           .Where(cab => cab.Habilitado == true)
+                           .Include(cabana => cabana.Tipo)
                            .ToList();
         }
 

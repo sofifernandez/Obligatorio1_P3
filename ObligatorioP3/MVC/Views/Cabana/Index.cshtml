@@ -11,7 +11,7 @@
 </p>
 
 <div class="border-dark border-2">
-    <p>Buscar cabaña por nombre</p>
+    <h4>Buscar cabaña por nombre</h4>
     <form asp-action="BuscarPorNombre">
         <div class="form-group">
             <input type="text" name="nombre" placeholder="Nombre" />
@@ -21,6 +21,44 @@
         </div>
     </form>
 </div>
+
+<div class="border-dark border-2">
+    <h4>Buscar cabañas habilitadas</h4>
+    <button class="btn btn-primary">
+        <a asp-action="BuscarHabilitadas" class="text-white text-decoration-none">Buscar</a>
+    </button>
+</div>
+
+<div class="border-dark border-2">
+    <h4>Buscar cabaña por núm. máximo de huéspedes</h4>
+    <form asp-action="BuscarPorMaxHuespedes">
+        <div class="form-group">
+            <input type="number" name="maxHuespedes" placeholder="Huéspedes" />
+        </div>
+        <div class="form-group mt-2">
+            <input type="submit" value="Buscar" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+<div class="border-dark border-2">
+    <h4>Buscar cabaña por tipo</h4>
+    <form asp-action="BuscarPorTipo">
+        <div class="form-group">
+            <label for="idTipo" class="control-label">Seleccione un tipo</label>
+            <select name="idTipo" id="tipo">
+                @foreach (var tipo in ViewBag.Tipos)
+                {
+                    <option value="@tipo.Id">@tipo.Nombre</option>
+                }
+            </select>
+        </div>
+        <div class="form-group mt-2">
+            <input type="submit" value="Buscar" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
 
 <table class="table">
     <thead>
@@ -50,6 +88,7 @@
                 Tipo
             </th>
             <th></th>
+            <th>Mantenimientos</th>
         </tr>
     </thead>
     <tbody>
@@ -83,6 +122,10 @@
                 @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
                 @Html.ActionLink("Details", "Details", new { id=item.Id }) |
                 @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            </td>
+            <td>
+                    @Html.ActionLink("Mentenimientos", "Index", "Mantenimiento", new { idCabana=item.Id }) 
+                   
             </td>
         </tr>
 }

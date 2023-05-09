@@ -16,10 +16,6 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio_1\ObligatorioP3\MVC
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio_1/ObligatorioP3/MVC/Views/Cabana/BuscarPorNombre.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FiYW5hXEJ1c2NhclBvck5vbWJyZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio_1/ObligatorioP3/MVC/Views/Cabana/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FiYW5hXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -28,12 +24,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FiYW5hXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio_1/ObligatorioP3/MVC/Views/Cabana/ResultadoBusqueda.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FiYW5hXFJlc3VsdGFkb0J1c3F1ZWRhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio_1/ObligatorioP3/MVC/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio_1/ObligatorioP3/MVC/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio_1/ObligatorioP3/MVC/Views/Mantenimiento/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudGVuaW1pZW50b1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio_1/ObligatorioP3/MVC/Views/Mantenimiento/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudGVuaW1pZW50b1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio_1/ObligatorioP3/MVC/Views/Shared/Error.cshtml]
