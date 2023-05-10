@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio1_P3\\ObligatorioP3\\MVC\\MVC.csproj": {}
+    "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\MVC\\MVC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio1_P3\\ObligatorioP3\\Aplicacion\\Aplicacion.csproj": {
+    "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\Aplicacion\\Aplicacion.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio1_P3\\ObligatorioP3\\Aplicacion\\Aplicacion.csproj",
+        "projectUniqueName": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\Aplicacion\\Aplicacion.csproj",
         "projectName": "Aplicacion",
-        "projectPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio1_P3\\ObligatorioP3\\Aplicacion\\Aplicacion.csproj",
-        "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio1_P3\\ObligatorioP3\\Aplicacion\\obj\\",
+        "projectPath": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\Aplicacion\\Aplicacion.csproj",
+        "packagesPath": "C:\\Users\\sofia\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\Aplicacion\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sofia\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,15 +26,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio1_P3\\ObligatorioP3\\Datos\\Datos.csproj": {
-                "projectPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio1_P3\\ObligatorioP3\\Datos\\Datos.csproj"
+              "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\Datos\\Datos.csproj": {
+                "projectPath": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\Datos\\Datos.csproj"
               }
             }
           }
@@ -68,20 +67,20 @@
         }
       }
     },
-    "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio1_P3\\ObligatorioP3\\Datos\\Datos.csproj": {
+    "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\Datos\\Datos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio1_P3\\ObligatorioP3\\Datos\\Datos.csproj",
+        "projectUniqueName": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\Datos\\Datos.csproj",
         "projectName": "Datos",
-        "projectPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio1_P3\\ObligatorioP3\\Datos\\Datos.csproj",
-        "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio1_P3\\ObligatorioP3\\Datos\\obj\\",
+        "projectPath": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\Datos\\Datos.csproj",
+        "packagesPath": "C:\\Users\\sofia\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\Datos\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sofia\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -90,15 +89,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio1_P3\\ObligatorioP3\\ObligatorioP3\\Dominio.csproj": {
-                "projectPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio1_P3\\ObligatorioP3\\ObligatorioP3\\Dominio.csproj"
+              "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\ObligatorioP3\\Dominio.csproj": {
+                "projectPath": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\ObligatorioP3\\Dominio.csproj"
               }
             }
           }
@@ -154,20 +152,20 @@
         }
       }
     },
-    "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio1_P3\\ObligatorioP3\\MVC\\MVC.csproj": {
+    "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\MVC\\MVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio1_P3\\ObligatorioP3\\MVC\\MVC.csproj",
+        "projectUniqueName": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\MVC\\MVC.csproj",
         "projectName": "MVC",
-        "projectPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio1_P3\\ObligatorioP3\\MVC\\MVC.csproj",
-        "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio1_P3\\ObligatorioP3\\MVC\\obj\\",
+        "projectPath": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\MVC\\MVC.csproj",
+        "packagesPath": "C:\\Users\\sofia\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\MVC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sofia\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -176,21 +174,20 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio1_P3\\ObligatorioP3\\Aplicacion\\Aplicacion.csproj": {
-                "projectPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio1_P3\\ObligatorioP3\\Aplicacion\\Aplicacion.csproj"
+              "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\Aplicacion\\Aplicacion.csproj": {
+                "projectPath": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\Aplicacion\\Aplicacion.csproj"
               },
-              "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio1_P3\\ObligatorioP3\\Datos\\Datos.csproj": {
-                "projectPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio1_P3\\ObligatorioP3\\Datos\\Datos.csproj"
+              "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\Datos\\Datos.csproj": {
+                "projectPath": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\Datos\\Datos.csproj"
               },
-              "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio1_P3\\ObligatorioP3\\ObligatorioP3\\Dominio.csproj": {
-                "projectPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio1_P3\\ObligatorioP3\\ObligatorioP3\\Dominio.csproj"
+              "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\ObligatorioP3\\Dominio.csproj": {
+                "projectPath": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\ObligatorioP3\\Dominio.csproj"
               }
             }
           }
@@ -261,20 +258,20 @@
         }
       }
     },
-    "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio1_P3\\ObligatorioP3\\ObligatorioP3\\Dominio.csproj": {
+    "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\ObligatorioP3\\Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio1_P3\\ObligatorioP3\\ObligatorioP3\\Dominio.csproj",
+        "projectUniqueName": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\ObligatorioP3\\Dominio.csproj",
         "projectName": "Dominio",
-        "projectPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio1_P3\\ObligatorioP3\\ObligatorioP3\\Dominio.csproj",
-        "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio1_P3\\ObligatorioP3\\ObligatorioP3\\obj\\",
+        "projectPath": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\ObligatorioP3\\Dominio.csproj",
+        "packagesPath": "C:\\Users\\sofia\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\ObligatorioP3\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sofia\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -283,7 +280,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

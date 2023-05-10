@@ -137,11 +137,11 @@ namespace MVC.Controllers
                 FileInfo fi = new FileInfo(vm.Foto.FileName);
                 string extension = fi.Extension; //me quedo solo con la extension del archivo
 
-                if (extension == "png" || extension == "jpg")
+                if (extension != ".png" || extension != ".jpg")
                 {
                     throw new Exception("El archivo debe ser .png o .jpg");
                 }
-                string nomArchivoFoto = vm.Cabana.NombreCabana + extension;
+                string nomArchivoFoto = vm.Cabana.NombreCabana +"_001" + extension;
 
                 Tipo tipo = RepositorioTipo.FindById(idTipo);
                 vm.Cabana.Tipo = tipo;
@@ -165,9 +165,10 @@ namespace MVC.Controllers
                 IEnumerable<Tipo> tipos = RepositorioTipo.FindAll();
                 ViewBag.Tipos = tipos;
                 ViewBag.ErrorInfo=ex.Message;
+                // Este if es para mostrar el error de unique
                 if (ex.InnerException != null && ex.InnerException.Message.Contains("Cannot insert duplicate key row in object")) 
                 {
-                    ViewBag.ErrorInfo = " ";
+                    //ViewBag.ErrorInfo = " ";
                     ViewBag.ErrorUnique = "El nombre de cabaña ya existe";
                 }
                 return View();
