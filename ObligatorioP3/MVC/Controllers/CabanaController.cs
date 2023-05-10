@@ -5,21 +5,25 @@ using Aplicacion.InterfacesCU;
 using Dominio.InterfacesRepositorios;
 using Dominio.EntidadesDominio;
 using System.IO;
+using MVC.Models;
+using System.Net.NetworkInformation;
+
 
 namespace MVC.Controllers
 {
     public class CabanaController : Controller
     {
+        public IWebHostEnvironment WHE { set; get; } 
         IAltaCabana CUAltaCabana { get; set; } 
-
         IRepositorioCabana RepositorioCabana { get; set; }
         IRepositorioTipo RepositorioTipo { get; set; }
 
-        public CabanaController(IAltaCabana cuAltaCabana, IRepositorioCabana repositorioCabana, IRepositorioTipo repositorioTipo)
+        public CabanaController(IAltaCabana cuAltaCabana, IRepositorioCabana repositorioCabana, IRepositorioTipo repositorioTipo, IWebHostEnvironment whe)
         {
             CUAltaCabana = cuAltaCabana;
             RepositorioCabana = repositorioCabana;
             RepositorioTipo = repositorioTipo;
+            WHE = whe;
         }
 
         //-------------------------------------------------------------------------------------
@@ -114,13 +118,14 @@ namespace MVC.Controllers
             }
             IEnumerable<Tipo> tipos= RepositorioTipo.FindAll();
             ViewBag.Tipos = tipos;
-            return View();
+            AltaCabanaViewModel vm = new AltaCabanaViewModel();
+            return View(vm);
         }
 
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Cabana cabana, int idTipo)
+        public ActionResult Create(AltaCabanaViewModel vm, int idTipo)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
             {
@@ -129,10 +134,31 @@ namespace MVC.Controllers
 
             try
             {
+                FileInfo fi = new FileInfo(vm.Foto.FileName);
+                string extension = fi.Extension; //me quedo solo con la extension del archivo
+
+                if (extension == "png" || extension == "jpg")
+                {
+                    throw new Exception("El archivo debe ser .png o .jpg");
+                }
+                string nomArchivoFoto = vm.Cabana.NombreCabana + extension;
+
                 Tipo tipo = RepositorioTipo.FindById(idTipo);
-                cabana.Tipo = tipo;
-                CUAltaCabana.Alta(cabana);
+                vm.Cabana.Tipo = tipo;
+                vm.Cabana.FotoCabana = nomArchivoFoto;
+                CUAltaCabana.Alta(vm.Cabana);
+
+                string rutaWwwRoot = WHE.WebRootPath;
+                string rutaCarpeta = Path.Combine(rutaWwwRoot, "Imagenes"); //Genero la ruta hasta la carpeta
+                string rutaArchivo = Path.Combine(rutaCarpeta, nomArchivoFoto); //Genero la ruta hasta la foto
+
+                FileStream fs = new FileStream(rutaArchivo, FileMode.Create); //conecto el IFromFile (mi foto) a FileSystem de la maquina
+                
+                vm.Foto.CopyTo(fs);
+
                 return RedirectToAction(nameof(Index));
+
+
             }
             catch (Exception ex)
             {

@@ -82,12 +82,14 @@
                 @Html.DisplayNameFor(model => model.MaxPersonas)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FotoCabana)
+                Foto
             </th>
             <th>
                 Tipo
             </th>
-            <th>Mantenimientos</th>
+            <th>
+                Mantenimientos
+             </th>
         </tr>
     </thead>
     <tbody>
@@ -112,7 +114,8 @@
                 @Html.DisplayFor(modelItem => item.MaxPersonas)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FotoCabana)
+                <img src="/Imagenes/@item.FotoCabana" height="100">
+                
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Tipo.Nombre)

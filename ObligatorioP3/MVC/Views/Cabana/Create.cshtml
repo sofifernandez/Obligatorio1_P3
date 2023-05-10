@@ -1,4 +1,5 @@
-﻿@model Dominio.EntidadesDominio.Cabana
+﻿@model MVC.Models.AltaCabanaViewModel;
+
 
 @{
     ViewData["Title"] = "Create";
@@ -10,37 +11,37 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="NombreCabana" class="control-label"></label>
-                <input asp-for="NombreCabana" class="form-control" />
-                <span asp-validation-for="NombreCabana" class="text-danger"></span>
+                <label asp-for="Cabana.NombreCabana" class="control-label"></label>
+                <input asp-for="Cabana.NombreCabana" class="form-control" />
+                <span asp-validation-for="Cabana.NombreCabana" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DescripCabana" class="control-label"></label>
-                <input asp-for="DescripCabana" class="form-control" />
-                <span asp-validation-for="DescripCabana" class="text-danger"></span>
+                <label asp-for="Cabana.DescripCabana" class="control-label"></label>
+                <input asp-for="Cabana.DescripCabana" class="form-control" />
+                <span asp-validation-for="Cabana.DescripCabana" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Jacuzzi" /> @Html.DisplayNameFor(model => model.Jacuzzi)
+                    <input class="form-check-input" asp-for="Cabana.Jacuzzi" /> @Html.DisplayNameFor(model => model.Cabana.Jacuzzi)
                 </label>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Habilitado" /> @Html.DisplayNameFor(model => model.Habilitado)
+                    <input class="form-check-input" asp-for="Cabana.Habilitado" /> @Html.DisplayNameFor(model => model.Cabana.Habilitado)
                 </label>
             </div>
             <div class="form-group">
-                <label asp-for="MaxPersonas" class="control-label"></label>
-                <input asp-for="MaxPersonas" class="form-control" />
-                <span asp-validation-for="MaxPersonas" class="text-danger"></span>
+                <label asp-for="Cabana.MaxPersonas" class="control-label"></label>
+                <input asp-for="Cabana.MaxPersonas" class="form-control" />
+                <span asp-validation-for="Cabana.MaxPersonas" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FotoCabana" class="control-label"></label>
-                <input asp-for="FotoCabana" class="form-control" />
-                <span asp-validation-for="FotoCabana" class="text-danger"></span>
+                <label asp-for="Foto" class="control-label"></label>
+                <input asp-for="Foto" class="form-control" /> @*Aca se genera el input File*@
+                <span asp-validation-for="Foto" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label for="idTipo" class="control-label">Seleccione un tipo</label>
