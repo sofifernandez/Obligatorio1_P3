@@ -6,20 +6,34 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Datos.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class inicial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Parametros",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Valor = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Parametros", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Tipos",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DescTipo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CostoTipo = table.Column<int>(type: "int", nullable: false)
+                    Nombre = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    DescTipo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CostoTipo = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -32,7 +46,7 @@ namespace Datos.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Emai = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -47,11 +61,11 @@ namespace Datos.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NombreCabana = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    DescripCabana = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DescripCabana = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Jacuzzi = table.Column<bool>(type: "bit", nullable: false),
                     Habilitado = table.Column<bool>(type: "bit", nullable: false),
                     MaxPersonas = table.Column<int>(type: "int", nullable: false),
-                    FotoCabana = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FotoCabana = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TipoId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -72,9 +86,9 @@ namespace Datos.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FechaMant = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DescMant = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    DescMant = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
                     CostoMant = table.Column<int>(type: "int", nullable: false),
-                    Personal = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Personal = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CabanaId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -103,6 +117,12 @@ namespace Datos.Migrations
                 name: "IX_Mantenimientos_CabanaId",
                 table: "Mantenimientos",
                 column: "CabanaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tipos_Nombre",
+                table: "Tipos",
+                column: "Nombre",
+                unique: true);
         }
 
         /// <inheritdoc />
@@ -110,6 +130,9 @@ namespace Datos.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Mantenimientos");
+
+            migrationBuilder.DropTable(
+                name: "Parametros");
 
             migrationBuilder.DropTable(
                 name: "Usuarios");

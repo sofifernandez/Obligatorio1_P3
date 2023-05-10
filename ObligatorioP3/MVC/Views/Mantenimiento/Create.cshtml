@@ -32,7 +32,7 @@
                 <input asp-for="Personal" class="form-control" />
                 <span asp-validation-for="Personal" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" hidden>
                 <label asp-for="CabanaId" class="control-label"></label>
                 <input asp-for="CabanaId" class="form-control" value="@ViewBag.Cabana.Id" readonly/>
                 <span asp-validation-for="CabanaId" class="text-danger"></span>
@@ -43,9 +43,10 @@
         </form>
     </div>
 </div>
+<div>@ViewBag.Error</div>
 
 <div>
-    <a asp-action="Index">Volver</a>
+    @Html.ActionLink("Volver", "Index", new {  CabanaId=ViewBag.Cabana.Id })
 </div>
 
 @section Scripts {

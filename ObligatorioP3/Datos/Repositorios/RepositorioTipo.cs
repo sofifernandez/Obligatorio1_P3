@@ -41,7 +41,7 @@ namespace Datos.Repositorios
         {
 
             return Contexto.Tipos
-                           .Where(tipo => tipo.Nombre == nombreTipo)
+                           .Where(tipo => tipo.Nombre.ToLower() == nombreTipo.ToLower())
                            .SingleOrDefault();
         }
 

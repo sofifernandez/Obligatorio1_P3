@@ -52,11 +52,9 @@ namespace Datos.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("DescripCabana")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FotoCabana")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Habilitado")
@@ -65,7 +63,7 @@ namespace Datos.Migrations
                     b.Property<bool>("Jacuzzi")
                         .HasColumnType("bit");
 
-                    b.Property<int>("MaxPersonas")
+                    b.Property<int?>("MaxPersonas")
                         .HasColumnType("int");
 
                     b.Property<string>("NombreCabana")
@@ -97,11 +95,10 @@ namespace Datos.Migrations
                     b.Property<int>("CabanaId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CostoMant")
+                    b.Property<int?>("CostoMant")
                         .HasColumnType("int");
 
                     b.Property<string>("DescMant")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
@@ -109,7 +106,6 @@ namespace Datos.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Personal")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -155,13 +151,16 @@ namespace Datos.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.ToTable("Usuarios");
                 });

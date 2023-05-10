@@ -1,8 +1,19 @@
---OJO! FALTA PONER TODO CON LA AUTORIZACION--
+
 --OJO! FALTA LO DE LA FOTO EN CABANA--
---ignorar mayusculas y minusculas cuando se busca por nombre (cabana y  tipo)
---eliminar homecontroller?
--- validacion de mantenimiento??
+--ACTUALIZAR ASTAH
+--AGREGAR 10 ENTIDADES DE CADA CLASE (MENOS USUARIO QUE SON 3)
+
+
+
+
+--ignorar mayusculas y minusculas cuando se busca por nombre (cabana y  tipo) (CHECK)
+--//VALIDAR QUE LA PASSWORD TENGA MAYUSCULAS Y MINUSCULAS Y NUMEROS (CHECK)
+--EMAIL DE USUAURIO UNIQUE (CHECK)
+--SI HAY TIEMPO, ALGUNA EXCEPCION PROPIA (CHECK)
+--OJO! FALTA PONER TODO CON LA AUTORIZACION-- (CHECK)
+
+
+
 
 USUARIOS
 1) resgitro usuario --CHECK
@@ -16,21 +27,15 @@ TIPO
 -alta --CHECK
 -edit --CHECK
 
-CABANA (no hay update, delete, ni details????). 
+CABANA 
 -alta --CHECK
 -buscar cabana por nombre, tipo, cant max, habilitadas --CHECK
-- A TODAS LAS VISTAS: LINK PARA AGREGAR MANTENIMIENTO, Y VER LOS MANTENIMIENTOS (entre dos fechas)
+- A TODAS LAS VISTAS: LINK PARA AGREGAR MANTENIMIENTO, Y VER LOS MANTENIMIENTOS (entre dos fechas) --CHECK
 
 MANTENIMIENTO
-- agregar (max 3 mantiniemientos por día por cabana)
-- listar entre dos fechas
+- agregar (max 3 mantiniemientos por día por cabana) --CHECK
+- listar entre dos fechas --CHECK
 
 
-PREGUNTAS
-Generales:
-Por defecto se crearon los campos como not null, para que no aparezca el mensaje en inglés le pusimos Required y el mensaje. Lo sacamos y hacemos nullable el campo en la base de datos?
 
-CABANA 
-- no hay update, delete, ni details????
-- Tendría que mostrar la cant max de huespedes y de ahí para arriba no? o exacto el número?
 

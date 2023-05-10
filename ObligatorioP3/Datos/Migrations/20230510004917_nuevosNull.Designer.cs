@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Datos.Migrations
 {
     [DbContext(typeof(HotelContext))]
-    [Migration("20230505161557_conelScope")]
-    partial class conelScope
+    [Migration("20230510004917_nuevosNull")]
+    partial class nuevosNull
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -55,11 +55,9 @@ namespace Datos.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("DescripCabana")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FotoCabana")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Habilitado")
@@ -68,7 +66,7 @@ namespace Datos.Migrations
                     b.Property<bool>("Jacuzzi")
                         .HasColumnType("bit");
 
-                    b.Property<int>("MaxPersonas")
+                    b.Property<int?>("MaxPersonas")
                         .HasColumnType("int");
 
                     b.Property<string>("NombreCabana")
@@ -100,11 +98,10 @@ namespace Datos.Migrations
                     b.Property<int>("CabanaId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CostoMant")
+                    b.Property<int?>("CostoMant")
                         .HasColumnType("int");
 
                     b.Property<string>("DescMant")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
@@ -112,7 +109,6 @@ namespace Datos.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Personal")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -130,11 +126,10 @@ namespace Datos.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CostoTipo")
+                    b.Property<int?>("CostoTipo")
                         .HasColumnType("int");
 
                     b.Property<string>("DescTipo")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")

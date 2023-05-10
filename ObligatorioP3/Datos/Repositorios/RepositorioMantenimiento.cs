@@ -21,8 +21,19 @@ namespace Datos.Repositorios
         public void Add(Mantenimiento obj)
         {
             //obj.Validar();
-            Contexto.Mantenimientos.Add(obj);
-            Contexto.SaveChanges();
+            int mismaFecha=Contexto.Mantenimientos
+                .Where(mant=>mant.CabanaId==obj.CabanaId)
+                .Where(mant=>mant.FechaMant.Date==obj.FechaMant.Date)
+                .Count();
+            if (mismaFecha < 3)
+            {
+                Contexto.Mantenimientos.Add(obj);
+                Contexto.SaveChanges();
+            }
+            else 
+            {
+                throw new Exception("Solo se pueden agregar 3 mantenimientos por cabaña por día");
+            }
         }
 
         public IEnumerable<Mantenimiento> FindAll()
@@ -40,12 +51,12 @@ namespace Datos.Repositorios
             return buscado;
         }
 
-        public IEnumerable<Mantenimiento> FindMantenimientosFechas(DateOnly startDate, DateOnly endDate, int CabanaId)
+        public IEnumerable<Mantenimiento> FindMantenimientosFechas(DateTime startDate, DateTime endDate, int CabanaId)
         {
            var resultado = Contexto.Mantenimientos
                 .Where(mant => mant.CabanaId == CabanaId)
-                .Where(mant=>mant.FechaMant.Date.CompareTo(startDate) >=0) //no funcionan los operadores = < > para comparar directamente
-                .Where(mant => mant.FechaMant.Date.CompareTo(endDate) <= 0)
+                .Where(mant=>mant.FechaMant.Date.CompareTo(startDate.Date) >=0) //no funcionan los operadores = < > para comparar directamente
+                .Where(mant => mant.FechaMant.Date.CompareTo(endDate.Date) <= 0)
                 .OrderByDescending(mant=>mant.CostoMant) 
                 .ToList();
             return resultado;

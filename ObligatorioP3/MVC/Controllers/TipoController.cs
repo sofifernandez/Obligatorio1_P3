@@ -29,6 +29,10 @@ namespace MVC.Controllers
         //LISTADO-----------------------------------------------------------------------------
         public ActionResult Index()
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            {
+                return Redirect("/Usuario/Login");
+            }
             IEnumerable<Tipo> tipos = RepositorioTipo.FindAll();
             return View(tipos);
         }
@@ -39,32 +43,34 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult Index(string nombre)
         {
-
-            Tipo tipo = RepositorioTipo.FindTipoByNombre(nombre);
-            TempData["MiTipo"] = JsonConvert.SerializeObject(tipo);
-            return RedirectToAction("Buscar");
-        }
-
-        [HttpGet]
-        public ActionResult Buscar()
-        {
-            TempData["MiTipo"] = JsonConvert.DeserializeObject<Tipo>(TempData["MiTipo"].ToString());
-            Tipo miTipo = TempData["MiTipo"] as Tipo;
-            if (miTipo != null)
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
             {
-                return View(miTipo);
+                return Redirect("/Usuario/Login");
             }
-            else
+            Tipo tipo = RepositorioTipo.FindTipoByNombre(nombre);
+           
+            if (tipo == null)
             {
                 ViewBag.Error = "No existe un tipo de cabaña con ese nombre";
-                return View();
+                return View("ResultadoBusqueda");
             }
+            else 
+            {
+                return View("ResultadoBusqueda", tipo);
+            }
+            
         }
+
+       
 
         //-------------------------------------------------------------------------------------
         //DETALLES-----------------------------------------------------------------------------
         public ActionResult Details(int id)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            {
+                return Redirect("/Usuario/Login");
+            }
             Tipo tipo= RepositorioTipo.FindById(id);
             return View(tipo);
         }
@@ -73,6 +79,10 @@ namespace MVC.Controllers
         //CREAR-----------------------------------------------------------------------------
         public ActionResult Create()
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            {
+                return Redirect("/Usuario/Login");
+            }
             return View();
         }
 
@@ -80,6 +90,10 @@ namespace MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Tipo tipo)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            {
+                return Redirect("/Usuario/Login");
+            }
             try
             {
                 AltaTipo.Alta(tipo);
@@ -96,6 +110,10 @@ namespace MVC.Controllers
         //EDITAR-----------------------------------------------------------------------------
         public ActionResult Edit(int id)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            {
+                return Redirect("/Usuario/Login");
+            }
             Tipo tipo = RepositorioTipo.FindById(id);
             return View(tipo);
         }
@@ -104,6 +122,10 @@ namespace MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, Tipo tipo)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            {
+                return Redirect("/Usuario/Login");
+            }
             try
             {
 
@@ -121,6 +143,10 @@ namespace MVC.Controllers
         //DELETE-----------------------------------------------------------------------------
         public ActionResult Delete(int id)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            {
+                return Redirect("/Usuario/Login");
+            }
             Tipo tipo=RepositorioTipo.FindById(id);
             return View(tipo);
         }
@@ -130,6 +156,10 @@ namespace MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            {
+                return Redirect("/Usuario/Login");
+            }
             try
             {
                 RepositorioTipo.Remove(id);

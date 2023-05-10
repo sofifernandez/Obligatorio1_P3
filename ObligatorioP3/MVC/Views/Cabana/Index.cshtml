@@ -10,7 +10,7 @@
     <a asp-action="Create">Agregar nueva</a>
 </p>
 
-<div class="border-dark border-2">
+<div class="border-2 border-dark mt-4">
     <h4>Buscar cabaña por nombre</h4>
     <form asp-action="BuscarPorNombre">
         <div class="form-group">
@@ -22,14 +22,14 @@
     </form>
 </div>
 
-<div class="border-dark border-2">
+<div class="border-dark border-2 mt-4">
     <h4>Buscar cabañas habilitadas</h4>
     <button class="btn btn-primary">
         <a asp-action="BuscarHabilitadas" class="text-white text-decoration-none">Buscar</a>
     </button>
 </div>
 
-<div class="border-dark border-2">
+<div class="border-dark border-2 mt-4">
     <h4>Buscar cabaña por núm. máximo de huéspedes</h4>
     <form asp-action="BuscarPorMaxHuespedes">
         <div class="form-group">
@@ -41,7 +41,7 @@
     </form>
 </div>
 
-<div class="border-dark border-2">
+<div class="border-dark border-2 mt-4">
     <h4>Buscar cabaña por tipo</h4>
     <form asp-action="BuscarPorTipo">
         <div class="form-group">
@@ -87,7 +87,6 @@
             <th>
                 Tipo
             </th>
-            <th></th>
             <th>Mantenimientos</th>
         </tr>
     </thead>
@@ -119,12 +118,7 @@
                 @Html.DisplayFor(modelItem => item.Tipo.Nombre)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-            </td>
-            <td>
-                    @Html.ActionLink("Mentenimientos", "Index", "Mantenimiento", new { idCabana=item.Id }) 
+                @Html.ActionLink("Ver", "Index", "Mantenimiento", new { CabanaId=item.Id }) 
                    
             </td>
         </tr>

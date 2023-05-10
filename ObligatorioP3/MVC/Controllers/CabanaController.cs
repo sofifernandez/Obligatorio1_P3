@@ -26,6 +26,10 @@ namespace MVC.Controllers
         //LISTADO-----------------------------------------------------------------------------
         public ActionResult Index()
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email"))) 
+            {
+                return Redirect("/Usuario/Login");
+            }
             IEnumerable<Cabana> cabanas = RepositorioCabana.FindAll();
             ViewBag.Tipos= RepositorioTipo.FindAll();
             return View(cabanas);
@@ -36,84 +40,93 @@ namespace MVC.Controllers
         //BÚSQUEDAS-----------------------------------------------------------------------------
         [HttpPost]
         public ActionResult BuscarPorNombre(string nombre) 
-        { 
-            IEnumerable<Cabana> cabanas=RepositorioCabana.FindCabanaNombre(nombre);
-            if (cabanas.Count()>0) 
+        {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
             {
-                return View("ResultadoBusqueda",cabanas);
-            } else 
+                return Redirect("/Usuario/Login");
+            }
+
+            IEnumerable<Cabana> cabanas=RepositorioCabana.FindCabanaNombre(nombre);
+            if (cabanas.Count()==0) 
             {
                 ViewBag.NotFound = "No existen resultados";
-                return View("ResultadoBusqueda", cabanas); 
-            }
+            } 
+            return View("ResultadoBusqueda", cabanas); 
+            
         }
 
         [HttpGet]
         public ActionResult BuscarHabilitadas()
         {
-            IEnumerable<Cabana> cabanas = RepositorioCabana.FindCabanasHabilitadas();
-            if (cabanas.Count() > 0)
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
             {
-                return View("ResultadoBusqueda", cabanas);
+                return Redirect("/Usuario/Login");
             }
-            else
+
+            IEnumerable<Cabana> cabanas = RepositorioCabana.FindCabanasHabilitadas();
+            if (cabanas.Count() == 0)
             {
                 ViewBag.NotFound = "No existen resultados";
-                return View("ResultadoBusqueda", cabanas);
             }
+            return View("ResultadoBusqueda", cabanas);
         }
 
         [HttpPost]
         public ActionResult BuscarPorMaxHuespedes(int maxHuespedes)
         {
-            IEnumerable<Cabana> cabanas = RepositorioCabana.FindCabanaMax(maxHuespedes);
-            if (cabanas.Count() > 0)
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
             {
-                return View("ResultadoBusqueda", cabanas);
-            }
-            else
+                return Redirect("/Usuario/Login");
+            } 
+
+            IEnumerable<Cabana> cabanas = RepositorioCabana.FindCabanaMax(maxHuespedes);
+            if (cabanas.Count() == 0)
             {
                 ViewBag.NotFound = "No existen resultados";
-                return View("ResultadoBusqueda", cabanas);
             }
+            return View("ResultadoBusqueda", cabanas);
         }
 
         [HttpPost]
         public ActionResult BuscarPorTipo(int idTipo)
         {
-            IEnumerable<Cabana> cabanas = RepositorioCabana.FindCabanaTipo(idTipo);
-            if (cabanas.Count() > 0)
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
             {
-                return View("ResultadoBusqueda", cabanas);
+                return Redirect("/Usuario/Login");
             }
-            else
+
+            IEnumerable<Cabana> cabanas = RepositorioCabana.FindCabanaTipo(idTipo);
+            if (cabanas.Count() == 0)
             {
                 ViewBag.NotFound = "No existen resultados";
-                return View("ResultadoBusqueda", cabanas);
             }
+            return View("ResultadoBusqueda", cabanas);
         }
 
-
-        // GET: CabanaController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
 
         //-------------------------------------------------------------------------------------------------------
         //CREATE-------------------------------------------------------------------------------------------------
         public ActionResult Create()
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            {
+                return Redirect("/Usuario/Login");
+            }
             IEnumerable<Tipo> tipos= RepositorioTipo.FindAll();
             ViewBag.Tipos = tipos;
             return View();
         }
 
-        // POST: CabanaController/Create
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Cabana cabana, int idTipo)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            {
+                return Redirect("/Usuario/Login");
+            }
+
             try
             {
                 Tipo tipo = RepositorioTipo.FindById(idTipo);
@@ -129,10 +142,20 @@ namespace MVC.Controllers
                 if (ex.InnerException != null && ex.InnerException.Message.Contains("Cannot insert duplicate key row in object")) 
                 {
                     ViewBag.ErrorInfo = " ";
-                    ViewBag.Prueba = "El nombre de cabaña ya existe";
+                    ViewBag.ErrorUnique = "El nombre de cabaña ya existe";
                 }
                 return View();
             }
+        }
+
+
+        //-------------------------------------------------------------------------------------------------------
+        //NO IMPLEMENTADOS-----------------------------------------------------------------------------------------
+
+        // GET: CabanaController/Details/5
+        public ActionResult Details(int id)
+        {
+            return View();
         }
 
         // GET: CabanaController/Edit/5

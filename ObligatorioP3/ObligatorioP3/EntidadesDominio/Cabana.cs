@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Dominio.InterfacesDominio;
 using System.Text.RegularExpressions;
-
+using Dominio.ExcepcionesPropias;
 
 namespace Dominio.EntidadesDominio
 {
@@ -22,18 +22,15 @@ namespace Dominio.EntidadesDominio
         [Required(ErrorMessage = "El nombre es un campo obligatorio")]
         public string NombreCabana { get; set; }
         [Display(Name = "Descripción")]
-        [Required(ErrorMessage ="La descripción es un campo obligatorio")]
-        public string DescripCabana { get; set;}
+        public string? DescripCabana { get; set;}
         public bool Jacuzzi { get; set; }
         public bool Habilitado { get; set; }
         [Display(Name = "Cant. de huéspedes")]
         [Range(0,15,ErrorMessage ="El valor debe estar entre 0 y 15")]
-        [Required(ErrorMessage = "La cantidad de huéspedes es un campo obligatorio")]
-        public int MaxPersonas { get; set; }
+        public int? MaxPersonas { get; set; }
         [Display(Name = "Foto")]
-        [Required(ErrorMessage = "La foto es obligatoria")]
-        public string FotoCabana { get; set; }
-        public Tipo Tipo { get; set; }
+        public string? FotoCabana { get; set; }
+        public Tipo? Tipo { get; set; }
         public int TipoId { get; set; }
 
         //Constraints variables de la descripción: Min=10 y Max=500
@@ -52,10 +49,10 @@ namespace Dominio.EntidadesDominio
 
         private void ValidarNombre() 
         {
-            //if (string.IsNullOrEmpty(NombreCabana)){throw new Exception("El nombre de la cabaña no puede ser nulo o vacío");}
-            if (!alphabetRegex.IsMatch(NombreCabana)){throw new Exception("El nombre puede contener solo letras y espacios");}
-            if (NombreCabana[0].ToString()==" ") {throw new Exception("No puede haber un espacio al comienzo del nombre");}
-            if (NombreCabana[NombreCabana.Length - 1].ToString() == " ") { throw new Exception("No puede haber un espacio al final del nombre"); }
+
+            if (!alphabetRegex.IsMatch(NombreCabana)){throw new NombreCabanaException("El nombre puede contener solo letras y espacios");}
+            if (NombreCabana[0].ToString()==" ") {throw new NombreCabanaException("No puede haber un espacio al comienzo del nombre");}
+            if (NombreCabana[NombreCabana.Length - 1].ToString() == " ") { throw new NombreCabanaException("No puede haber un espacio al final del nombre"); }
         }
 
         private void ValidarDescripcion()

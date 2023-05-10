@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Dominio.EntidadesDominio.Mantenimiento>
+
+@{
+    ViewData["Title"] = "MantEntreFechas";
+}
+
+<h1>Resultado búsqueda para la cabaña @ViewBag.Cabana.NombreCabana</h1>
+
+
+<div>@ViewBag.NotFound</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaMant)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescMant)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CostoMant)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Personal)
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaMant)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescMant)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CostoMant)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Personal)
+            </td>
+           
+        </tr>
+}
+    </tbody>
+</table>
+
+<div>
+    @Html.ActionLink("Volver", "Index", new {  CabanaId=ViewBag.Cabana.Id })
+</div>

@@ -19,11 +19,11 @@ namespace Datos.Repositorios
         {
             Contexto = ctx;
         }
-        // Ver cque nombre este dentro de NombreCabana****
+
         public IEnumerable<Cabana> FindCabanaNombre(string nombre) 
         {
             return Contexto.Cabanas
-                           .Where(cabana => cabana.NombreCabana.Contains(nombre))
+                           .Where(cabana => cabana.NombreCabana.ToLower().Contains(nombre.ToLower()))
                            .Include(cabana=>cabana.Tipo)
                            .ToList();
         }
@@ -32,7 +32,7 @@ namespace Datos.Repositorios
         {
 
             return Contexto.Cabanas
-                          .Where(cab => cab.MaxPersonas == maxPersonas)
+                          .Where(cab => cab.MaxPersonas >= maxPersonas)
                           .Include(cabana => cabana.Tipo)
                           .ToList();
 
@@ -85,16 +85,7 @@ namespace Datos.Repositorios
             Cabana buscada = Contexto.Cabanas.Find(id);
             return buscada == null ? throw new Exception("La cabana ingresada no existe") : buscada;
 
-
-            // con linQ: para traer los tipos con include
-            // buscada = Contexto.Cabanas
-            // .Include(cabana=>cabana.Tipo)
-            // .Where(cabana => cabana.Id== id)
-            // .SingleOrDefault(); --> para decirle que va a traer una fila
         }
-
-
-
 
     }
 }

@@ -5,14 +5,22 @@
 namespace Datos.Migrations
 {
     /// <inheritdoc />
-    public partial class notnulldenuevo : Migration
+    public partial class nuevosNull : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<int>(
-                name: "CostoTipo",
-                table: "Tipos",
+                name: "CostoMant",
+                table: "Mantenimientos",
+                type: "int",
+                nullable: true,
+                oldClrType: typeof(int),
+                oldType: "int");
+
+            migrationBuilder.AlterColumn<int>(
+                name: "MaxPersonas",
+                table: "Cabanas",
                 type: "int",
                 nullable: true,
                 oldClrType: typeof(int),
@@ -23,8 +31,18 @@ namespace Datos.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<int>(
-                name: "CostoTipo",
-                table: "Tipos",
+                name: "CostoMant",
+                table: "Mantenimientos",
+                type: "int",
+                nullable: false,
+                defaultValue: 0,
+                oldClrType: typeof(int),
+                oldType: "int",
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<int>(
+                name: "MaxPersonas",
+                table: "Cabanas",
                 type: "int",
                 nullable: false,
                 defaultValue: 0,

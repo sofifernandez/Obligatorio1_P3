@@ -8,36 +8,42 @@ namespace MVC.Controllers
 {
     public class MantenimientoController : Controller
     {
-
         IRepositorioMantenimiento RepositorioMant { get; set; }
-
         IRepositorioCabana RepositorioCabana { get; set; }
        
-
         public MantenimientoController(IRepositorioMantenimiento repo, IRepositorioCabana repoCabana)
         {
             RepositorioMant = repo;
             RepositorioCabana = repoCabana;
         }
 
-
-        // GET: MantenimientoController
-        public ActionResult Index(int idCabana)
+        //-------------------------------------------------------------------------------------
+        //LISTADO-----------------------------------------------------------------------------
+        public ActionResult Index(int CabanaId)
         {
-            IEnumerable<Mantenimiento> mantenimientos= RepositorioMant.FindMantenimientosCabana(idCabana);
-            Cabana cabana=RepositorioCabana.FindById(idCabana);
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            {
+                return Redirect("/Usuario/Login");
+            }
+            IEnumerable<Mantenimiento> mantenimientos= RepositorioMant.FindMantenimientosCabana(CabanaId);
+            Cabana cabana=RepositorioCabana.FindById(CabanaId);
             ViewBag.Cabana = cabana;
             return View(mantenimientos);
         }
 
 
-
+        //-------------------------------------------------------------------------------------
+        //BÚSQUEDA-----------------------------------------------------------------------------
         [HttpPost]
-        public ActionResult MantEntreFechas(string fechaIni, string fechaFin, int CabanaId)
+        public ActionResult MantEntreFechas(DateTime fechaIni, DateTime fechaFin, int CabanaId)
         {
-            DateOnly desde= DateOnly.Parse(fechaIni);
-            DateOnly hasta = DateOnly.Parse(fechaFin);
-            IEnumerable<Mantenimiento> mantenimientos = RepositorioMant.FindMantenimientosFechas(desde, hasta, CabanaId);
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            {
+                return Redirect("/Usuario/Login");
+            }
+            IEnumerable<Mantenimiento> mantenimientos = RepositorioMant.FindMantenimientosFechas(fechaIni, fechaFin, CabanaId);
+            Cabana cabana = RepositorioCabana.FindById(CabanaId);
+            ViewBag.Cabana = cabana;
             if (mantenimientos.Count() == 0)
             {
                 ViewBag.NotFound = "No existen resultados";
@@ -47,29 +53,33 @@ namespace MVC.Controllers
 
 
 
-        // GET: MantenimientoController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: MantenimientoController/Create
+        //-------------------------------------------------------------------------------------
+        //CREAR-----------------------------------------------------------------------------
         public ActionResult Create(int CabanaId)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            {
+                return Redirect("/Usuario/Login");
+            }
             Cabana cabana = RepositorioCabana.FindById(CabanaId);
             ViewBag.Cabana=cabana;
             return View();
         }
 
-        // POST: MantenimientoController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Mantenimiento mantenimiento)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            {
+                return Redirect("/Usuario/Login");
+            }
             try
             {
+                Cabana cabana = RepositorioCabana.FindById(mantenimiento.CabanaId);
+                mantenimiento.Cabana = cabana;
                 RepositorioMant.Add(mantenimiento);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), new { CabanaId = cabana.Id});
             }
             catch (Exception ex)
             {
@@ -79,6 +89,13 @@ namespace MVC.Controllers
                 return View();
             }
         }
+
+
+
+
+
+        //-----------------------------------------------------------------------------------------------------------------------------------
+        //NO IMPLEMENTADOS--------------------------------------------------------------------------------------------------------------------
 
         // GET: MantenimientoController/Edit/5
         public ActionResult Edit(int id)
@@ -120,6 +137,12 @@ namespace MVC.Controllers
             {
                 return View();
             }
+        }
+
+        // GET: MantenimientoController/Details/5
+        public ActionResult Details(int id)
+        {
+            return View();
         }
     }
 }
