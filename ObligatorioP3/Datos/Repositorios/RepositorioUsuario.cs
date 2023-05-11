@@ -17,6 +17,24 @@ namespace Datos.Repositorios
         {
             Contexto = contexto;    
         }
+
+
+        //-----------------------------------------------------------------------------------------------------------------
+        //LOGIN------------------------------------------------------------------------------------------------------------
+        public Usuario Login(string email, string password)
+        {
+            Usuario? usuario = Contexto.Usuarios
+                                            .Where(usuario => usuario.Email == email)
+                                            .Where(usuario => usuario.Password == password)
+                                            .SingleOrDefault();
+            return usuario;
+
+        }
+
+
+
+        //-----------------------------------------------------------------------------------------------------------------
+        //NO IMPLEMENTADOS------------------------------------------------------------------------------------------------------------
         public void Add(Usuario obj)
         {
             throw new NotImplementedException();
@@ -32,15 +50,7 @@ namespace Datos.Repositorios
             throw new NotImplementedException();
         }
 
-        public Usuario Login(string email, string password)
-        {
-            Usuario? usuario = Contexto.Usuarios
-                                            .Where(usuario => usuario.Email == email)
-                                            .Where(usuario => usuario.Password == password)
-                                            .SingleOrDefault();
-            return usuario;
-            
-        }
+
 
         public void Remove(int id)
         {

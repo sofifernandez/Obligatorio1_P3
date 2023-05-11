@@ -15,7 +15,7 @@ namespace Dominio.EntidadesDominio
         public int Id { get; set; }
         [EmailAddress(ErrorMessage ="El campo ingresado no tiene formato de email")]
         public string Email { get; set; }
-        [MinLength(6, ErrorMessage ="La contraseña debe tener más de 6 caracteres")]
+        [MinLength(6, ErrorMessage ="La contraseña debe tener 6 caracteres o más")]
         public string Password { get; set; }
 
 

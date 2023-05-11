@@ -20,6 +20,23 @@ namespace Datos.Repositorios
             Contexto = ctx;
         }
 
+        //------------------------------------------------------------------------------------------
+        //CREATE------------------------------------------------------------------------------------
+        public void Add(Cabana obj)
+        {
+            obj.Validar();
+            Contexto.Add(obj);
+            Contexto.SaveChanges();
+        }
+
+        //------------------------------------------------------------------------------------------
+        //BÚSQUEDAS------------------------------------------------------------------------------------
+        public Cabana FindById(int id)
+        {
+            Cabana buscada = Contexto.Cabanas.Find(id);
+            return buscada == null ? throw new Exception("La cabana ingresada no existe") : buscada;
+        }
+
         public IEnumerable<Cabana> FindCabanaNombre(string nombre) 
         {
             return Contexto.Cabanas
@@ -54,19 +71,16 @@ namespace Datos.Repositorios
                            .ToList();
         }
 
-        public void Add(Cabana obj)
-        {
-
-            obj.Validar();
-            Contexto.Add(obj); 
-            Contexto.SaveChanges();
-        }
-
         public IEnumerable<Cabana> FindAll()
         {
             return Contexto.Cabanas.Include(cab=>cab.Tipo).ToList();
         }
 
+
+
+
+        //---------------------------------------------------------------------------------------------------
+        //NO IMPLEMENTADOS------------------------------------------------------------------------------------
         public void Remove(int id)
         {
             Cabana aBorrar = FindById(id);
@@ -80,12 +94,7 @@ namespace Datos.Repositorios
             Contexto.SaveChanges();
         }
 
-        public Cabana FindById(int id)
-        {
-            Cabana buscada = Contexto.Cabanas.Find(id);
-            return buscada == null ? throw new Exception("La cabana ingresada no existe") : buscada;
 
-        }
 
     }
 }

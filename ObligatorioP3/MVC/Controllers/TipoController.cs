@@ -34,6 +34,10 @@ namespace MVC.Controllers
                 return Redirect("/Usuario/Login");
             }
             IEnumerable<Tipo> tipos = RepositorioTipo.FindAll();
+            if (tipos.Count() == 0) 
+            {
+                ViewBag.NotFound = "No hay tipos de cabañas ingresados";
+            }
             return View(tipos);
         }
 
@@ -165,9 +169,11 @@ namespace MVC.Controllers
                 RepositorioTipo.Remove(id);
                 return RedirectToAction(nameof(Index));
             }
-            catch 
+            catch  (Exception ex)
             {
-                return View();
+                Tipo tipo = RepositorioTipo.FindById(id);
+                ViewBag.ErrorInfo = ex.Message;
+                return View(tipo);
             }
         }
     }

@@ -40,7 +40,7 @@ namespace Datos.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Parametros");
+                    b.ToTable("Parametros", (string)null);
                 });
 
             modelBuilder.Entity("Dominio.EntidadesDominio.Cabana", b =>
@@ -81,7 +81,7 @@ namespace Datos.Migrations
 
                     b.HasIndex("TipoId");
 
-                    b.ToTable("Cabanas");
+                    b.ToTable("Cabanas", (string)null);
                 });
 
             modelBuilder.Entity("Dominio.EntidadesDominio.Mantenimiento", b =>
@@ -112,7 +112,7 @@ namespace Datos.Migrations
 
                     b.HasIndex("CabanaId");
 
-                    b.ToTable("Mantenimientos");
+                    b.ToTable("Mantenimientos", (string)null);
                 });
 
             modelBuilder.Entity("Dominio.EntidadesDominio.Tipo", b =>
@@ -138,7 +138,7 @@ namespace Datos.Migrations
                     b.HasIndex("Nombre")
                         .IsUnique();
 
-                    b.ToTable("Tipos");
+                    b.ToTable("Tipos", (string)null);
                 });
 
             modelBuilder.Entity("Dominio.EntidadesDominio.Usuario", b =>
@@ -162,7 +162,7 @@ namespace Datos.Migrations
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.ToTable("Usuarios");
+                    b.ToTable("Usuarios", (string)null);
                 });
 
             modelBuilder.Entity("Dominio.EntidadesDominio.Cabana", b =>

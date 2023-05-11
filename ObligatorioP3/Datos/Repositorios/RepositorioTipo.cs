@@ -19,6 +19,8 @@ namespace Datos.Repositorios
         {
             Contexto = ctx;
         }
+        //------------------------------------------------------------------------------------------
+        //CREATE------------------------------------------------------------------------------------
         public void Add(Tipo obj)
         {
             obj.Validar();
@@ -26,6 +28,8 @@ namespace Datos.Repositorios
             Contexto.SaveChanges();
         }
 
+        //------------------------------------------------------------------------------------------
+        //BÚSQUEDAS------------------------------------------------------------------------------------
         public IEnumerable<Tipo> FindAll()
         {
             return Contexto.Tipos.ToList();
@@ -45,13 +49,24 @@ namespace Datos.Repositorios
                            .SingleOrDefault();
         }
 
+        //------------------------------------------------------------------------------------------
+        //BORRAR------------------------------------------------------------------------------------
         public void Remove(int id)
         {
             Tipo aBorrar = FindById(id);
+            int enUso= Contexto.Cabanas 
+                .Where(cab=>cab.TipoId==id)
+                .Count();
+            if (enUso > 0) 
+            {
+                throw new Exception("No se puede eliminar el tipo porque está en uso");
+            }
             Contexto.Tipos.Remove(aBorrar);
             Contexto.SaveChanges();
         }
 
+        //------------------------------------------------------------------------------------------
+        //ACTUALIZAR------------------------------------------------------------------------------------
         public void Update(Tipo obj)
         {
             obj.Validar();

@@ -56,13 +56,19 @@
                 <input type="submit" value="Crear" class="btn btn-primary" />
             </div>
         </form>
-        <div class="text-danger">@ViewBag.ErrorInfo</div>
-        <div class="text-danger">@ViewBag.ErrorUnique</div>
+        @if (ViewBag.ErrorInfo!=null)
+        {
+               <div class="alert alert-danger">@ViewBag.ErrorInfo</div>     
+        }
+        @if(ViewBag.ErrorUnique!=null)
+        {
+            <div class="alert alert-danger">@ViewBag.ErrorUnique</div>
+        }       
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Volver</a>
+<div class="btn btn-outline-secondary mt-3">
+    <a asp-action="Index" class="text-white">Volver</a>
 </div>
 
 @section Scripts {

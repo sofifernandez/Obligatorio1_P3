@@ -28,6 +28,10 @@ namespace MVC.Controllers
             IEnumerable<Mantenimiento> mantenimientos= RepositorioMant.FindMantenimientosCabana(CabanaId);
             Cabana cabana=RepositorioCabana.FindById(CabanaId);
             ViewBag.Cabana = cabana;
+            if (mantenimientos.Count() == 0) 
+            {
+                ViewBag.NotFound = "No hay existencias";
+            }
             return View(mantenimientos);
         }
 

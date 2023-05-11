@@ -37,7 +37,10 @@
             </div>
         </form>
     </div>
-    <div>@ViewBag.ErrorInfo</div>
+    @if (ViewBag.ErrorInfo!=null)
+    {
+        <div class="alert alert-danger">@ViewBag.ErrorInfo</div>
+    }
 </div>
 
 <div>

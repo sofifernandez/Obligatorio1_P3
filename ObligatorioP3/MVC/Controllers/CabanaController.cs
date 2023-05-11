@@ -53,7 +53,7 @@ namespace MVC.Controllers
             IEnumerable<Cabana> cabanas=RepositorioCabana.FindCabanaNombre(nombre);
             if (cabanas.Count()==0) 
             {
-                ViewBag.NotFound = "No existen resultados";
+                ViewBag.NotFound = "No hay existencias";
             } 
             return View("ResultadoBusqueda", cabanas); 
             
@@ -70,7 +70,7 @@ namespace MVC.Controllers
             IEnumerable<Cabana> cabanas = RepositorioCabana.FindCabanasHabilitadas();
             if (cabanas.Count() == 0)
             {
-                ViewBag.NotFound = "No existen resultados";
+                ViewBag.NotFound = "No hay existencias";
             }
             return View("ResultadoBusqueda", cabanas);
         }
@@ -86,7 +86,7 @@ namespace MVC.Controllers
             IEnumerable<Cabana> cabanas = RepositorioCabana.FindCabanaMax(maxHuespedes);
             if (cabanas.Count() == 0)
             {
-                ViewBag.NotFound = "No existen resultados";
+                ViewBag.NotFound = "No hay existencias";
             }
             return View("ResultadoBusqueda", cabanas);
         }
@@ -102,7 +102,7 @@ namespace MVC.Controllers
             IEnumerable<Cabana> cabanas = RepositorioCabana.FindCabanaTipo(idTipo);
             if (cabanas.Count() == 0)
             {
-                ViewBag.NotFound = "No existen resultados";
+                ViewBag.NotFound = "No hay existencias";
             }
             return View("ResultadoBusqueda", cabanas);
         }

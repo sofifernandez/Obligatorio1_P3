@@ -17,6 +17,21 @@ namespace Datos.Repositorios
         {
             Contexto = contexto;
         }
+
+        //---------------------------------------------------------------------------------------------------------------------
+        //BÚSQUEDAS-----------------------------------------------------------------------------------------------------------
+        public string ValorParametro(string nombre)
+        {
+
+            return Contexto.Parametros
+                .Where(par => par.Nombre == nombre)
+                .Select(par => par.Valor)
+                .SingleOrDefault();
+
+        }
+
+        //---------------------------------------------------------------------------------------------------------------------
+        //NO IMPLEMENTADO-----------------------------------------------------------------------------------------------------------
         public void Add(Parametro obj)
         {
             throw new NotImplementedException();
@@ -42,14 +57,6 @@ namespace Datos.Repositorios
             throw new NotImplementedException();
         }
 
-        public string ValorParametro(string nombre)
-        {
-            
-            return Contexto.Parametros
-                .Where(par => par.Nombre == nombre)
-                .Select(par => par.Valor)
-                .SingleOrDefault();
-            
-        }
+
     }
 }

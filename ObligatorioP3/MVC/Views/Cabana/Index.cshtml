@@ -10,54 +10,62 @@
     <a asp-action="Create">Agregar nueva</a>
 </p>
 
-<div class="border-2 border-dark mt-4">
-    <h4>Buscar cabaña por nombre</h4>
-    <form asp-action="BuscarPorNombre">
-        <div class="form-group">
-            <input type="text" name="nombre" placeholder="Nombre" />
-        </div>
-        <div class="form-group mt-2">
-            <input type="submit" value="Buscar" class="btn btn-primary" />
-        </div>
-    </form>
+<hr />
+
+<div class="container d-flex mb-4">
+
+    <div class="col-3 border border-1 border-dark rounded mt-4 p-2 m-1">
+        <h5>Buscar cabaña por nombre</h5>
+        <form asp-action="BuscarPorNombre">
+            <div class="form-group">
+                <input type="text" name="nombre" placeholder="Nombre" />
+            </div>
+            <div class="form-group mt-2">
+                <input type="submit" value="Buscar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+    <div class="col-3 border border-1 border-dark rounded mt-4 p-2 m-1">
+        <h5>Buscar cabañas habilitadas</h5>
+        <button class="btn btn-primary">
+            <a asp-action="BuscarHabilitadas" class="text-white text-decoration-none">Buscar</a>
+        </button>
+    </div>
+
+    <div class="col-3 border border-1 border-dark rounded mt-4 p-2 m-1">
+        <h5>Buscar cabaña por núm. máximo de huéspedes</h5>
+        <form asp-action="BuscarPorMaxHuespedes">
+            <div class="form-group">
+                <input type="number" name="maxHuespedes" placeholder="Huéspedes" />
+            </div>
+            <div class="form-group mt-2">
+                <input type="submit" value="Buscar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+    <div class="col-3 border border-1 border-dark rounded mt-4 p-2 m-1">
+        <h5>Buscar cabaña por tipo</h5>
+        <form asp-action="BuscarPorTipo">
+            <div class="form-group">
+                <label for="idTipo" class="control-label">Seleccione un tipo</label>
+                <select name="idTipo" id="tipo">
+                    @foreach (var tipo in ViewBag.Tipos)
+                    {
+                        <option value="@tipo.Id">@tipo.Nombre</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group mt-2">
+                <input type="submit" value="Buscar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
 </div>
 
-<div class="border-dark border-2 mt-4">
-    <h4>Buscar cabañas habilitadas</h4>
-    <button class="btn btn-primary">
-        <a asp-action="BuscarHabilitadas" class="text-white text-decoration-none">Buscar</a>
-    </button>
-</div>
 
-<div class="border-dark border-2 mt-4">
-    <h4>Buscar cabaña por núm. máximo de huéspedes</h4>
-    <form asp-action="BuscarPorMaxHuespedes">
-        <div class="form-group">
-            <input type="number" name="maxHuespedes" placeholder="Huéspedes" />
-        </div>
-        <div class="form-group mt-2">
-            <input type="submit" value="Buscar" class="btn btn-primary" />
-        </div>
-    </form>
-</div>
-
-<div class="border-dark border-2 mt-4">
-    <h4>Buscar cabaña por tipo</h4>
-    <form asp-action="BuscarPorTipo">
-        <div class="form-group">
-            <label for="idTipo" class="control-label">Seleccione un tipo</label>
-            <select name="idTipo" id="tipo">
-                @foreach (var tipo in ViewBag.Tipos)
-                {
-                    <option value="@tipo.Id">@tipo.Nombre</option>
-                }
-            </select>
-        </div>
-        <div class="form-group mt-2">
-            <input type="submit" value="Buscar" class="btn btn-primary" />
-        </div>
-    </form>
-</div>
 
 
 <table class="table">

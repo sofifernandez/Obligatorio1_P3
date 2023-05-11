@@ -41,4 +41,9 @@
         <input type="submit" value="Borrar" class="btn btn-danger" /> |
         <a asp-action="Index">Volver</a>
     </form>
+
+    @if (ViewBag.ErrorInfo!=null)
+    {
+        <div class="alert alert-danger">@ViewBag.ErrorInfo</div>
+    }
 </div>

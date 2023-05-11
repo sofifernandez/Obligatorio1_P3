@@ -7,7 +7,7 @@
 <h1>Resultado búsqueda para la cabaña @ViewBag.Cabana.NombreCabana</h1>
 
 
-<div>@ViewBag.NotFound</div>
+
 
 <table class="table">
     <thead>
@@ -53,6 +53,11 @@
 }
     </tbody>
 </table>
+
+@if (ViewBag.NotFound != null)
+{
+    <div class="alert alert-danger">@ViewBag.NotFound</div>
+}
 
 <div>
     @Html.ActionLink("Volver", "Index", new {  CabanaId=ViewBag.Cabana.Id })
