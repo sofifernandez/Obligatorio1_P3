@@ -137,7 +137,7 @@ namespace MVC.Controllers
                 FileInfo fi = new FileInfo(vm.Foto.FileName);
                 string extension = fi.Extension; //me quedo solo con la extension del archivo
 
-                if (extension != ".png" || extension != ".jpg")
+                if (extension != ".png" && extension != ".jpg")
                 {
                     throw new Exception("El archivo debe ser .png o .jpg");
                 }
