@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Dominio.EntidadesDominio.Tipo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Tipos</h1>
+
+<div>@ViewBag.NotFound</div>
+
+<form asp-action="Index">
+    <div class="form-group">
+        <input type="text" name="nombre" placeholder="Nombre"/>
+    </div>
+    <div class="form-group mt-2">
+        <input type="submit" value="Buscar" class="btn btn-primary" />
+    </div>
+</form>
+
+<p class="mt-2">
+    <a asp-action="Create">Agregar nuevo</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescTipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CostoTipo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescTipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CostoTipo)
+            </td>
+            <td>
+                    @Html.ActionLink("Editar", "Edit",  new { id = item.Id }) |
+                    @Html.ActionLink("Detalle", "Details",  new { id = item.Id }) |
+                    @Html.ActionLink("Borrar", "Delete",  new { id = item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
