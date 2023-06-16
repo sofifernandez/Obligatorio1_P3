@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VGtwXsvz7CLZveZPuTnflgz0anVwTHWc9yQJB07PlZQNuOSdKqqtGjPMJ3m7bFu/te6ZEDAWbSbbOmXktl1zPQ==",
+  "dgSpecHash": "+tfhzSqYvWZzcCCPL/6TelkyuBb+skuu3rrmf3SqyXQ6JzphBiz08N9nq3SPseDMXSmQBoUJblkxK2Iu8+RHCQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\Datos\\Datos.csproj",
+  "projectFilePath": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio\\Obligatorio_2\\ObligatorioP3\\Datos\\Datos.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sofia\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\sofia\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
@@ -59,7 +59,6 @@
     "C:\\Users\\sofia\\.nuget\\packages\\system.resources.resourcemanager\\4.3.0\\system.resources.resourcemanager.4.3.0.nupkg.sha512",
     "C:\\Users\\sofia\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
     "C:\\Users\\sofia\\.nuget\\packages\\system.runtime.caching\\5.0.0\\system.runtime.caching.5.0.0.nupkg.sha512",
-    "C:\\Users\\sofia\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\sofia\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
     "C:\\Users\\sofia\\.nuget\\packages\\system.security.cryptography.cng\\5.0.0\\system.security.cryptography.cng.5.0.0.nupkg.sha512",
     "C:\\Users\\sofia\\.nuget\\packages\\system.security.cryptography.protecteddata\\5.0.0\\system.security.cryptography.protecteddata.5.0.0.nupkg.sha512",

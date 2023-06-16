@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tcmlhwsUHlJ9Wigq7HuwK+Z1F2ghQBVgynG6Dw61B02fW55rlBK2vRkXk4mx7qu+2NXAmFKYwYJ67mw9FSnCDg==",
+  "dgSpecHash": "lAWFqOiQNDZGUX8Jwy8HWNwA+6cm/Lr2WaG60L81q1G1s2x7hBd4+aGdqDeluL7tpjdeLiIEY9HmibGP2cXRuw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio_1\\ObligatorioP3\\MVC\\MVC.csproj",
+  "projectFilePath": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio\\Obligatorio_1\\ObligatorioP3\\MVC\\MVC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sofia\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\sofia\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
