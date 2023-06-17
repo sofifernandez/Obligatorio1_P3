@@ -11620,6 +11620,7 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.7",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.7",
       "Microsoft.Extensions.Configuration >= 7.0.0",
+      "Microsoft.Extensions.Configuration.FileExtensions >= 7.0.0",
       "Microsoft.Extensions.Configuration.Json >= 7.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 7.0.7"
     ]
@@ -11631,11 +11632,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio_2.2\\ExcepcionesPropias\\ExcepcionesPropias.csproj",
+      "projectUniqueName": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre 3\\Programacion 3\\Obligatorio1_P3\\Obligatorio_2\\ExcepcionesPropias\\ExcepcionesPropias.csproj",
       "projectName": "ExcepcionesPropias",
-      "projectPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio_2.2\\ExcepcionesPropias\\ExcepcionesPropias.csproj",
+      "projectPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre 3\\Programacion 3\\Obligatorio1_P3\\Obligatorio_2\\ExcepcionesPropias\\ExcepcionesPropias.csproj",
       "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio_2.2\\ExcepcionesPropias\\obj\\",
+      "outputPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre 3\\Programacion 3\\Obligatorio1_P3\\Obligatorio_2\\ExcepcionesPropias\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -11690,6 +11691,10 @@
             "version": "[7.0.7, )"
           },
           "Microsoft.Extensions.Configuration": {
+            "target": "Package",
+            "version": "[7.0.0, )"
+          },
+          "Microsoft.Extensions.Configuration.FileExtensions": {
             "target": "Package",
             "version": "[7.0.0, )"
           },

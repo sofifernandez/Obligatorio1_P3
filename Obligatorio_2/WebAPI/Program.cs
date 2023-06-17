@@ -22,11 +22,15 @@ builder.Services.AddScoped<IRepositorioMantenimiento, RepositorioMantenimiento>(
 builder.Services.AddScoped<IRepositorioTipo, RepositorioTipo>();
 builder.Services.AddScoped<IRepositorioUsuario, RepositorioUsuario>();
 builder.Services.AddScoped<IRepositorioParametro, RepositorioParametro>();
-builder.Services.AddScoped<IAltaCabana, AltaCabana>();
 
 builder.Services.AddScoped<IAltaTipo, AltaTipo>();
 builder.Services.AddScoped<IEditarTipo, EditarTipo>();
+
 builder.Services.AddScoped<IListadoCabana, ListadoCabana>();
+builder.Services.AddScoped<IBuscarPorTexto, BuscarPorTexto>();
+builder.Services.AddScoped<IBuscarPorID, BuscarPorID>();
+builder.Services.AddScoped<IAltaCabana, AltaCabana>();
+
 
 
 var configurationBuilder = new ConfigurationBuilder();

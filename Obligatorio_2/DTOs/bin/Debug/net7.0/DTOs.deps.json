@@ -14,6 +14,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.7",
           "Microsoft.EntityFrameworkCore.Tools": "7.0.7",
           "Microsoft.Extensions.Configuration": "7.0.0",
+          "Microsoft.Extensions.Configuration.FileExtensions": "7.0.0",
           "Microsoft.Extensions.Configuration.Json": "7.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "7.0.7"
         },
@@ -2652,6 +2653,7 @@
           "Microsoft.EntityFrameworkCore": "7.0.7",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.7",
           "Microsoft.Extensions.Configuration": "7.0.0",
+          "Microsoft.Extensions.Configuration.FileExtensions": "7.0.0",
           "Microsoft.Extensions.Configuration.Json": "7.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "7.0.7"
         },
@@ -2664,6 +2666,7 @@
           "Microsoft.EntityFrameworkCore": "7.0.7",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.7",
           "Microsoft.Extensions.Configuration": "7.0.0",
+          "Microsoft.Extensions.Configuration.FileExtensions": "7.0.0",
           "Microsoft.Extensions.Configuration.Json": "7.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "7.0.7"
         },

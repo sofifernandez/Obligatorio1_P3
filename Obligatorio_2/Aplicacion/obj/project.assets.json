@@ -4029,6 +4029,7 @@
           "Microsoft.EntityFrameworkCore": "7.0.7",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.7",
           "Microsoft.Extensions.Configuration": "7.0.0",
+          "Microsoft.Extensions.Configuration.FileExtensions": "7.0.0",
           "Microsoft.Extensions.Configuration.Json": "7.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "7.0.7"
         },
@@ -4047,6 +4048,7 @@
           "Microsoft.EntityFrameworkCore": "7.0.7",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.7",
           "Microsoft.Extensions.Configuration": "7.0.0",
+          "Microsoft.Extensions.Configuration.FileExtensions": "7.0.0",
           "Microsoft.Extensions.Configuration.Json": "7.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "7.0.7"
         },
@@ -4064,6 +4066,7 @@
           "Microsoft.EntityFrameworkCore": "7.0.7",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.7",
           "Microsoft.Extensions.Configuration": "7.0.0",
+          "Microsoft.Extensions.Configuration.FileExtensions": "7.0.0",
           "Microsoft.Extensions.Configuration.Json": "7.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "7.0.7"
         },
@@ -11690,6 +11693,7 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.7",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.7",
       "Microsoft.Extensions.Configuration >= 7.0.0",
+      "Microsoft.Extensions.Configuration.FileExtensions >= 7.0.0",
       "Microsoft.Extensions.Configuration.Json >= 7.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 7.0.7"
     ]
@@ -11701,11 +11705,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio_2.2\\Aplicacion\\Aplicacion.csproj",
+      "projectUniqueName": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre 3\\Programacion 3\\Obligatorio1_P3\\Obligatorio_2\\Aplicacion\\Aplicacion.csproj",
       "projectName": "Aplicacion",
-      "projectPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio_2.2\\Aplicacion\\Aplicacion.csproj",
+      "projectPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre 3\\Programacion 3\\Obligatorio1_P3\\Obligatorio_2\\Aplicacion\\Aplicacion.csproj",
       "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio_2.2\\Aplicacion\\obj\\",
+      "outputPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre 3\\Programacion 3\\Obligatorio1_P3\\Obligatorio_2\\Aplicacion\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -11727,11 +11731,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio_2.2\\Dominio\\Dominio.csproj": {
-              "projectPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio_2.2\\Dominio\\Dominio.csproj"
+            "C:\\Users\\lucas\\Desktop\\ORT\\Semestre 3\\Programacion 3\\Obligatorio1_P3\\Obligatorio_2\\Dominio\\Dominio.csproj": {
+              "projectPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre 3\\Programacion 3\\Obligatorio1_P3\\Obligatorio_2\\Dominio\\Dominio.csproj"
             },
-            "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio_2.2\\DTOs\\DTOs.csproj": {
-              "projectPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio_2.2\\DTOs\\DTOs.csproj"
+            "C:\\Users\\lucas\\Desktop\\ORT\\Semestre 3\\Programacion 3\\Obligatorio1_P3\\Obligatorio_2\\DTOs\\DTOs.csproj": {
+              "projectPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre 3\\Programacion 3\\Obligatorio1_P3\\Obligatorio_2\\DTOs\\DTOs.csproj"
             }
           }
         }
@@ -11767,6 +11771,10 @@
             "version": "[7.0.7, )"
           },
           "Microsoft.Extensions.Configuration": {
+            "target": "Package",
+            "version": "[7.0.0, )"
+          },
+          "Microsoft.Extensions.Configuration.FileExtensions": {
             "target": "Package",
             "version": "[7.0.0, )"
           },

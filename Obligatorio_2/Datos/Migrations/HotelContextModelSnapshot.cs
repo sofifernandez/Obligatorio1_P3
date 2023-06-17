@@ -17,7 +17,7 @@ namespace Datos.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.5")
+                .HasAnnotation("ProductVersion", "7.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -40,7 +40,7 @@ namespace Datos.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Parametros", (string)null);
+                    b.ToTable("Parametros");
                 });
 
             modelBuilder.Entity("Dominio.EntidadesDominio.Cabana", b =>
@@ -81,7 +81,7 @@ namespace Datos.Migrations
 
                     b.HasIndex("TipoId");
 
-                    b.ToTable("Cabanas", (string)null);
+                    b.ToTable("Cabanas");
                 });
 
             modelBuilder.Entity("Dominio.EntidadesDominio.Mantenimiento", b =>
@@ -112,7 +112,7 @@ namespace Datos.Migrations
 
                     b.HasIndex("CabanaId");
 
-                    b.ToTable("Mantenimientos", (string)null);
+                    b.ToTable("Mantenimientos");
                 });
 
             modelBuilder.Entity("Dominio.EntidadesDominio.Tipo", b =>
@@ -138,7 +138,7 @@ namespace Datos.Migrations
                     b.HasIndex("Nombre")
                         .IsUnique();
 
-                    b.ToTable("Tipos", (string)null);
+                    b.ToTable("Tipos");
                 });
 
             modelBuilder.Entity("Dominio.EntidadesDominio.Usuario", b =>
@@ -162,7 +162,7 @@ namespace Datos.Migrations
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.ToTable("Usuarios", (string)null);
+                    b.ToTable("Usuarios");
                 });
 
             modelBuilder.Entity("Dominio.EntidadesDominio.Cabana", b =>

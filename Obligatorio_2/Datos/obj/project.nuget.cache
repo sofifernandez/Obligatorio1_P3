@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pWkOdl/Z4BZU+1CG9imxhwPrUWPrY2d/3eJ+IPTlFrHVG5o5eIlCGvn/xIe7fpUn62Yq1Y2QbdtkggWwatIM8Q==",
+  "dgSpecHash": "r761bLpp10nXW0OOomXYU0+E/Bhpi9VtZGAh1FiIIq7/xUcq8NzawBwP2tqhOQPwznsWFPYcKADwakunjV4mwA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio_2.2\\Datos\\Datos.csproj",
+  "projectFilePath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre 3\\Programacion 3\\Obligatorio1_P3\\Obligatorio_2\\Datos\\Datos.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lucas\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\lucas\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

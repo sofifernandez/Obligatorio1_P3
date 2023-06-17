@@ -12,11 +12,15 @@ namespace WebAPI.Controllers
     {
         IAltaCabana CUAltaCabana { get; set; }
         IListadoCabana CUListadoCabana { get; set; }
+        IBuscarPorID CUBuscarPorID { get; set; }
+        IBuscarPorTexto CUBuscarPorTexto { get; set; }
 
-        public CabanaController(IListadoCabana cabanas, IAltaCabana altaCabana)
+        public CabanaController(IListadoCabana cabanas, IAltaCabana altaCabana, IBuscarPorID buscarPorID, IBuscarPorTexto cUBuscarPorTexto)
         {
             CUAltaCabana = altaCabana;
             CUListadoCabana = cabanas;
+            CUBuscarPorID = buscarPorID;
+            CUBuscarPorTexto = cUBuscarPorTexto;
         }
 
         // GET: api/<CabanaController>
@@ -31,8 +35,32 @@ namespace WebAPI.Controllers
         [HttpGet("{id}" ,Name = "Get")]
         public IActionResult Get(int id)
         {
-            return Ok();
+            if (id <= 0) return BadRequest("El id del tema debe ser un entero positivo");
+            CabanaDTO buscado = CUBuscarPorID.Buscar(id);
+            if (buscado == null) return NotFound();
+            return Ok(buscado);
+     
         }
+
+        // GET api/<CabanaController>/BuscarEnNombre/asd
+        [HttpGet("BuscarEnNombre/{texto}")]
+        public IActionResult Get(string texto)
+        {
+            if (string.IsNullOrEmpty(texto))
+                return BadRequest("Debe proporcionar un texto");
+
+            try
+            {
+                IEnumerable<CabanaDTO> cabanas = CUBuscarPorTexto.BuscarCabanaPorTexto(texto);
+                if (cabanas.Count() == 0) return NotFound("No hay Cabañas para esta busqueda");
+                return Ok(cabanas);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Ocurrió un error inesperado");
+            }
+        }
+
 
         // POST api/<CabanaController>
         [HttpPost]

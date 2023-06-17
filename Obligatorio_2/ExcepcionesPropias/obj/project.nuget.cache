@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uAZR+K25ZhCI42oh28JBRSorpmp7Uat/rSNTJzvH4n9wcv9cKaF2Gf6pKbJQk8Q+j3D1/LIYRnh9k5aO+LQRYg==",
+  "dgSpecHash": "VAkx3d/3sBOWMQ+5b7NbOsxP7Q0XNqopqihshZ0EiN659AWuS503TvGiMhlQdxc2FswwGQZfO8yP4OOLSBrhWA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre3\\Programacion3\\Obligatorio1_P3\\Obligatorio_2.2\\ExcepcionesPropias\\ExcepcionesPropias.csproj",
+  "projectFilePath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre 3\\Programacion 3\\Obligatorio1_P3\\Obligatorio_2\\ExcepcionesPropias\\ExcepcionesPropias.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lucas\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\lucas\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
