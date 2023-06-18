@@ -30,6 +30,7 @@ builder.Services.AddScoped<IListadoCabana, ListadoCabana>();
 builder.Services.AddScoped<IBuscarPorTexto, BuscarPorTexto>();
 builder.Services.AddScoped<IBuscarPorID, BuscarPorID>();
 builder.Services.AddScoped<IAltaCabana, AltaCabana>();
+builder.Services.AddScoped<IBuscarCabanaMax, BuscarCabanaMax>();
 
 
 

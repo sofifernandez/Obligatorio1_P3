@@ -33,6 +33,6 @@ namespace Aplicacion.CU.CabanaCU
                                             Tipo = c.Tipo,
                                             TipoId = c.TipoId
                                         });
-    }
+        }
     }
 }

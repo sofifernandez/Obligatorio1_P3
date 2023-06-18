@@ -4,6 +4,7 @@ using DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 
+
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
@@ -14,13 +15,17 @@ namespace WebAPI.Controllers
         IListadoCabana CUListadoCabana { get; set; }
         IBuscarPorID CUBuscarPorID { get; set; }
         IBuscarPorTexto CUBuscarPorTexto { get; set; }
+        IBuscarCabanaMax CUBuscarCabanaMax { get; set; }
 
-        public CabanaController(IListadoCabana cabanas, IAltaCabana altaCabana, IBuscarPorID buscarPorID, IBuscarPorTexto cUBuscarPorTexto)
+
+
+        public CabanaController(IListadoCabana cabanas, IAltaCabana altaCabana, IBuscarPorID buscarPorID, IBuscarPorTexto cuBuscarPorTexto, IBuscarCabanaMax cubuscarCabanaMax)
         {
             CUAltaCabana = altaCabana;
             CUListadoCabana = cabanas;
             CUBuscarPorID = buscarPorID;
-            CUBuscarPorTexto = cUBuscarPorTexto;
+            CUBuscarPorTexto = cuBuscarPorTexto;
+            CUBuscarCabanaMax = cubuscarCabanaMax;
         }
 
         // GET: api/<CabanaController>
@@ -33,14 +38,14 @@ namespace WebAPI.Controllers
 
         // GET api/<CabanaController>/5
         [HttpGet("{id}" ,Name = "Get")]
-        public IActionResult Get(int id)
+       /* public IActionResult Get(int id)
         {
             if (id <= 0) return BadRequest("El id del tema debe ser un entero positivo");
             CabanaDTO buscado = CUBuscarPorID.Buscar(id);
             if (buscado == null) return NotFound();
             return Ok(buscado);
      
-        }
+        }*/
 
         // GET api/<CabanaController>/BuscarEnNombre/asd
         [HttpGet("BuscarEnNombre/{texto}")]
@@ -52,6 +57,25 @@ namespace WebAPI.Controllers
             try
             {
                 IEnumerable<CabanaDTO> cabanas = CUBuscarPorTexto.BuscarCabanaPorTexto(texto);
+                if (cabanas.Count() == 0) return NotFound("No hay Cabañas para esta busqueda");
+                return Ok(cabanas);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Ocurrió un error inesperado");
+            }
+        }
+
+        // GET api/<CabanaController>/BuscarCantidadPersonas/5
+        [HttpGet("BuscarCantidadPersonas/{cantidad}", Name = "Buscar")]
+        public IActionResult Get(int cantidad)
+        {
+            if (cantidad == null)
+                return BadRequest("Debe proporcionar un numero");
+
+            try
+            {
+                IEnumerable<CabanaDTO> cabanas = CUBuscarCabanaMax.BuscarCabanaPorPersonas(cantidad);
                 if (cabanas.Count() == 0) return NotFound("No hay Cabañas para esta busqueda");
                 return Ok(cabanas);
             }
