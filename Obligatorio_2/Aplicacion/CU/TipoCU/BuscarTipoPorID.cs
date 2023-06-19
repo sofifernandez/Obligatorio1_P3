@@ -26,8 +26,8 @@ namespace Aplicacion.CU.TipoCU
                 dto = new TipoDTO()
                 {
                     Id = t.Id,
-                    Nombre = t.Nombre,
-                    DescTipo = t.DescTipo,
+                    NombreTipo = t.NombreTipo.Value,
+                    DescTipo = t.DescTipo.Value,
                     CostoTipo = t.CostoTipo
                 };
             }

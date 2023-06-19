@@ -55,10 +55,18 @@ namespace WebAPI.Controllers
         [HttpGet("{id}", Name = "FindById")]
         public IActionResult Get(int id)
         {
-            if (id <= 0) return BadRequest("El id del tema debe ser un entero positivo");
-            CabanaDTO buscado = CUBuscarPorID.Buscar(id);
-            if (buscado == null) return NotFound("No se encontró una cabaña con ese ID");
-            return Ok(buscado);
+            try
+            {
+                if (id <= 0) return BadRequest("El id del tema debe ser un entero positivo");
+                CabanaDTO buscado = CUBuscarPorID.Buscar(id);
+                if (buscado == null) return NotFound("No se encontró una cabaña con ese ID");
+                return Ok(buscado);
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(500, "Ocurrió un error inesperado");
+            }
 
         }
 

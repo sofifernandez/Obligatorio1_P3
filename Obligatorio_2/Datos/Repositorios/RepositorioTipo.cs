@@ -23,7 +23,7 @@ namespace Datos.Repositorios
         //CREATE------------------------------------------------------------------------------------
         public void Add(Tipo obj)
         {
-            obj.Validar();
+            //obj.Validar();
             Contexto.Tipos.Add(obj);
             Contexto.SaveChanges();
         }
@@ -45,7 +45,7 @@ namespace Datos.Repositorios
         {
 
             return Contexto.Tipos
-                           .Where(tipo => tipo.Nombre.ToLower() == nombreTipo.ToLower())
+                           .Where(tipo => tipo.NombreTipo.Value.ToLower() == nombreTipo.ToLower())
                            .SingleOrDefault();
         }
 
@@ -69,7 +69,7 @@ namespace Datos.Repositorios
         //ACTUALIZAR------------------------------------------------------------------------------------
         public void Update(Tipo obj)
         {
-            obj.Validar();
+            //obj.Validar();
             Contexto.Tipos.Update(obj);
             Contexto.SaveChanges();
         }

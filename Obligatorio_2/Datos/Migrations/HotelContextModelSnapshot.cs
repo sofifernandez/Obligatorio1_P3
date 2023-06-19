@@ -51,9 +51,6 @@ namespace Datos.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("DescripCabana")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("FotoCabana")
                         .HasColumnType("nvarchar(max)");
 
@@ -66,18 +63,10 @@ namespace Datos.Migrations
                     b.Property<int?>("MaxPersonas")
                         .HasColumnType("int");
 
-                    b.Property<string>("NombreCabana")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
                     b.Property<int>("TipoId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("NombreCabana")
-                        .IsUnique();
 
                     b.HasIndex("TipoId");
 
@@ -126,17 +115,7 @@ namespace Datos.Migrations
                     b.Property<int?>("CostoTipo")
                         .HasColumnType("int");
 
-                    b.Property<string>("DescTipo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("Nombre")
-                        .IsUnique();
 
                     b.ToTable("Tipos");
                 });
@@ -173,6 +152,48 @@ namespace Datos.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.OwnsOne("Dominio.ValueObjects.DescripCabana", "DescripCabana", b1 =>
+                        {
+                            b1.Property<int>("CabanaId")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("CabanaId");
+
+                            b1.ToTable("Cabanas");
+
+                            b1.WithOwner()
+                                .HasForeignKey("CabanaId");
+                        });
+
+                    b.OwnsOne("Dominio.ValueObjects.NombreCabana", "NombreCabana", b1 =>
+                        {
+                            b1.Property<int>("CabanaId")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(450)");
+
+                            b1.HasKey("CabanaId");
+
+                            b1.HasIndex("Value")
+                                .IsUnique();
+
+                            b1.ToTable("Cabanas");
+
+                            b1.WithOwner()
+                                .HasForeignKey("CabanaId");
+                        });
+
+                    b.Navigation("DescripCabana");
+
+                    b.Navigation("NombreCabana")
+                        .IsRequired();
+
                     b.Navigation("Tipo");
                 });
 
@@ -185,6 +206,51 @@ namespace Datos.Migrations
                         .IsRequired();
 
                     b.Navigation("Cabana");
+                });
+
+            modelBuilder.Entity("Dominio.EntidadesDominio.Tipo", b =>
+                {
+                    b.OwnsOne("Dominio.ValueObjects.DescripTipo", "DescTipo", b1 =>
+                        {
+                            b1.Property<int>("TipoId")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("TipoId");
+
+                            b1.ToTable("Tipos");
+
+                            b1.WithOwner()
+                                .HasForeignKey("TipoId");
+                        });
+
+                    b.OwnsOne("Dominio.ValueObjects.NombreTipo", "NombreTipo", b1 =>
+                        {
+                            b1.Property<int>("TipoId")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(450)");
+
+                            b1.HasKey("TipoId");
+
+                            b1.HasIndex("Value")
+                                .IsUnique();
+
+                            b1.ToTable("Tipos");
+
+                            b1.WithOwner()
+                                .HasForeignKey("TipoId");
+                        });
+
+                    b.Navigation("DescTipo");
+
+                    b.Navigation("NombreTipo")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

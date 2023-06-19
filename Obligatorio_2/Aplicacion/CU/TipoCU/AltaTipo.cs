@@ -1,6 +1,7 @@
 ﻿using Aplicacion.InterfacesCU.ITipo;
 using Dominio.EntidadesDominio;
 using Dominio.InterfacesRepositorios;
+using Dominio.ValueObjects;
 using DTOs;
 using System;
 using System.Collections.Generic;
@@ -23,21 +24,18 @@ namespace Aplicacion.CU.TipoCU
         }
         public void Alta(TipoDTO t)
         {
+            DescripTipo.MinDescripTipo = int.Parse(RepoParametro.ValorParametro("MinDescripTipo"));
+            DescripTipo.MaxDescripTipo = int.Parse(RepoParametro.ValorParametro("MaxDescripTipo"));
+            
             Tipo tipo = new Tipo()
             {
-                Nombre = t.Nombre,
-                DescTipo = t.DescTipo,
+                NombreTipo = new NombreTipo(t.NombreTipo),
+                DescTipo = new DescripTipo(t.DescTipo),
                 CostoTipo = t.CostoTipo
                 
             };
 
-            //tipo.MinDescripTipo = int.Parse(RepoParametro.ValorParametro("MinDescripTipo"));
-            //tipo.MaxDescripTipo = int.Parse(RepoParametro.ValorParametro("MaxDescripTipo"));
 
-
-            //OBTENER VALORES FRESCOS DE PARÁMETROS Y SETEARLOS
-            //Tipo.MinDescripTipo = int.Parse(RepoParametro.ValorParametro("MinDescripTipo"));
-            //Tipo.MaxDescripTipo = int.Parse(RepoParametro.ValorParametro("MaxDescripTipo"));
             RepoTipo.Add(tipo);
         }
     }

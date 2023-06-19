@@ -55,12 +55,12 @@ namespace Datos.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Cabanas",
+                name: "Cabana",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NombreCabana = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    NombreCabana_Value = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     DescripCabana = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Jacuzzi = table.Column<bool>(type: "bit", nullable: false),
                     Habilitado = table.Column<bool>(type: "bit", nullable: false),
@@ -70,9 +70,9 @@ namespace Datos.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cabanas", x => x.Id);
+                    table.PrimaryKey("PK_Cabana", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Cabanas_Tipos_TipoId",
+                        name: "FK_Cabana_Tipos_TipoId",
                         column: x => x.TipoId,
                         principalTable: "Tipos",
                         principalColumn: "Id",
@@ -95,22 +95,22 @@ namespace Datos.Migrations
                 {
                     table.PrimaryKey("PK_Mantenimientos", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Mantenimientos_Cabanas_CabanaId",
+                        name: "FK_Mantenimientos_Cabana_CabanaId",
                         column: x => x.CabanaId,
-                        principalTable: "Cabanas",
+                        principalTable: "Cabana",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cabanas_NombreCabana",
-                table: "Cabanas",
-                column: "NombreCabana",
+                name: "IX_Cabana_NombreCabana_Value",
+                table: "Cabana",
+                column: "NombreCabana_Value",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cabanas_TipoId",
-                table: "Cabanas",
+                name: "IX_Cabana_TipoId",
+                table: "Cabana",
                 column: "TipoId");
 
             migrationBuilder.CreateIndex(
@@ -144,7 +144,7 @@ namespace Datos.Migrations
                 name: "Usuarios");
 
             migrationBuilder.DropTable(
-                name: "Cabanas");
+                name: "Cabana");
 
             migrationBuilder.DropTable(
                 name: "Tipos");

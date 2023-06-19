@@ -36,7 +36,7 @@ namespace WebAPI.Controllers
 
         //-------------------------------------------------------------------------------------
         //LISTADO-----------------------------------------------------------------------------
-        // GET: TipoController
+
         [HttpGet]
         public ActionResult Get()
         {
@@ -45,7 +45,6 @@ namespace WebAPI.Controllers
         }
 
 
-        // GET: TipoController/Details/5
         [HttpGet("{id}")]
         public ActionResult Get(int id)
         {
@@ -79,7 +78,6 @@ namespace WebAPI.Controllers
         //-------------------------------------------------------------------------------------------------------
         //CREATE-------------------------------------------------------------------------------------------------
 
-        // POST api/<TipoController>
         [HttpPost]
         public IActionResult Post([FromBody] TipoDTO? tipo)
         {

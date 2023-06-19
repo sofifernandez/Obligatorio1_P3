@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Datos.Migrations
 {
     [DbContext(typeof(HotelContext))]
-    [Migration("20230510202618_init")]
+    [Migration("20230619145451_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -20,7 +20,7 @@ namespace Datos.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.5")
+                .HasAnnotation("ProductVersion", "7.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -69,22 +69,14 @@ namespace Datos.Migrations
                     b.Property<int?>("MaxPersonas")
                         .HasColumnType("int");
 
-                    b.Property<string>("NombreCabana")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
                     b.Property<int>("TipoId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("NombreCabana")
-                        .IsUnique();
-
                     b.HasIndex("TipoId");
 
-                    b.ToTable("Cabanas");
+                    b.ToTable("Cabana", (string)null);
                 });
 
             modelBuilder.Entity("Dominio.EntidadesDominio.Mantenimiento", b =>
@@ -174,6 +166,29 @@ namespace Datos.Migrations
                         .WithMany()
                         .HasForeignKey("TipoId")
                         .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.OwnsOne("Dominio.ValueObjects.NombreCabana", "NombreCabana", b1 =>
+                        {
+                            b1.Property<int>("CabanaId")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(450)");
+
+                            b1.HasKey("CabanaId");
+
+                            b1.HasIndex("Value")
+                                .IsUnique();
+
+                            b1.ToTable("Cabana");
+
+                            b1.WithOwner()
+                                .HasForeignKey("CabanaId");
+                        });
+
+                    b.Navigation("NombreCabana")
                         .IsRequired();
 
                     b.Navigation("Tipo");

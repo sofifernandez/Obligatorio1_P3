@@ -19,5 +19,21 @@ namespace Datos.ContextoEF
         public DbSet<Parametro> Parametros { get; set; }
 
         public HotelContext(DbContextOptions<HotelContext> options):base(options) { }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+
+            modelBuilder.Entity<Cabana>().OwnsOne(c => c.NombreCabana)
+                .HasIndex(nc => nc.Value).IsUnique();
+
+            modelBuilder.Entity<Cabana>().OwnsOne(c => c.DescripCabana);
+
+            modelBuilder.Entity<Tipo>().OwnsOne(t => t.NombreTipo)
+               .HasIndex(nt => nt.Value).IsUnique();
+
+            modelBuilder.Entity<Tipo>().OwnsOne(t => t.DescTipo);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

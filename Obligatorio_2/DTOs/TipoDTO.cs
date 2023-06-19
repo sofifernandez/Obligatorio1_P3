@@ -11,7 +11,7 @@ namespace DTOs
     {
         public int Id { get; set; }
        
-        public string Nombre { get; set; }
+        public string NombreTipo { get; set; }
        
         public string? DescTipo { get; set; }
        

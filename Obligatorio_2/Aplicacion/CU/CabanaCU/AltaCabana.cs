@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dominio.ExcepcionesPropias;
+using Dominio.ValueObjects;
 
 namespace Aplicacion.CU.CabanaCU
 {
@@ -24,10 +25,14 @@ namespace Aplicacion.CU.CabanaCU
 
         public void Alta(CabanaDTO c)
         {
+            //OBTENER VALORES FRESCOS DE PARÁMETROS Y SETEARLOS
+            DescripCabana.MinDescripCabana = int.Parse(RepoParametro.ValorParametro("MinDescripCabana"));
+            DescripCabana.MaxDescripCabana = int.Parse(RepoParametro.ValorParametro("MaxDescripCabana"));
+
             Cabana nueva = new Cabana()
             {
-                NombreCabana = c.NombreCabana,
-                DescripCabana = c.DescripCabana,
+                NombreCabana = new NombreCabana(c.NombreCabana),
+                DescripCabana = new DescripCabana(c.DescripCabana),
                 Jacuzzi = c.Jacuzzi,
                 Habilitado = c.Habilitado,
                 MaxPersonas = c.MaxPersonas,
@@ -37,10 +42,6 @@ namespace Aplicacion.CU.CabanaCU
 
             };
 
-            //OBTENER VALORES FRESCOS DE PARÁMETROS Y SETEARLOS
-            //Cabana.MinDescripCabana = int.Parse(RepoParametro.ValorParametro("MinDescripCabana"));
-            //Cabana.MaxDescripCabana = int.Parse(RepoParametro.ValorParametro("MaxDescripCabana"));
-            
             RepoCabana.Add(nueva);
             c.Id = nueva.Id;
         }

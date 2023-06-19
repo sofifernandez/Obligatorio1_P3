@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aplicacion.CU.MantenimientoCU
+namespace Aplicacion.InterfacesCU.IParametros
 {
-    public class ListadoMantenimiento
+    public interface IObtenerParametros
     {
+        string ObtenerParametro(string nomPar);
     }
 }

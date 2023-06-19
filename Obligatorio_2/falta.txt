@@ -1,8 +1,21 @@
-_Alta/Editar tipo
-_Alta cabaña 
-Ambos por los parámetros dinámicos
+- Cabana:
+Probar alta (ojo parámetros dinámicos)
 
-_Delete de tipo, no funciona
+- Tipo:
+Probar alta/editar (ojo parámetros dinámicos)
+Delete no funciona
 
-Value Objects
-JWT
+-Mantenimiento
+Probar alta (fechas en string?)
+
+- Value Objects (ya está, probar las altas)
+
+- Nuevas busquedas (punto 6a y 6b)
+
+- JWT (dejar para lo ultimo cuando funcione todo)
+
+- Documentar
+
+
+PREGUNTAS:
+- En el controlador de la webAPI, para devolver algo de un catch, cómo diferenciamos un 500 de un 400? Por ejemplo en alta mantenimiento, podría haber un error de servidor o uno de la logica, como que no se puede agregar mas de 3 en la misma fecha 

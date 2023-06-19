@@ -6,6 +6,8 @@ using Aplicacion.InterfacesCU.ICabana;
 using Microsoft.EntityFrameworkCore;
 using Aplicacion.CU.TipoCU;
 using Aplicacion.InterfacesCU.ITipo;
+using Aplicacion.CU.MantenimientoCU;
+using Aplicacion.InterfacesCU.IMantenimiento;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,8 +43,11 @@ builder.Services.AddScoped<IAltaCabana, AltaCabana>();
 builder.Services.AddScoped<IBuscarCabanaMax, BuscarCabanaMax>();
 builder.Services.AddScoped<IBuscarCabanasHabilitadas, BuscarCabanasHabilitadas>();
 builder.Services.AddScoped<IBuscarCabanaPorTipo, BuscarCabanaPorTipo>();
-//IBuscarCabanaPorTipo
 
+//MANTENIMIENTOS
+builder.Services.AddScoped<IListadoMantenimientoDeCabana, ListadoMantenimientoDeCabana>();
+builder.Services.AddScoped<IBuscarMantenPorFechas, BuscarMantenPorFechas>();
+//
 
 
 var configurationBuilder = new ConfigurationBuilder();

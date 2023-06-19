@@ -24,7 +24,7 @@ namespace Datos.Repositorios
         //CREATE------------------------------------------------------------------------------------
         public void Add(Cabana obj)
         {
-            obj.Validar();
+            //obj.Validar();
             Contexto.Add(obj);
             Contexto.SaveChanges();
         }
@@ -40,7 +40,7 @@ namespace Datos.Repositorios
         public IEnumerable<Cabana> FindCabanaNombre(string nombre) 
         {
             return Contexto.Cabanas
-                           .Where(cabana => cabana.NombreCabana.ToLower().Contains(nombre.ToLower()))
+                           .Where(cabana => cabana.NombreCabana.Value.ToLower().Contains(nombre.ToLower()))
                            .Include(cabana=>cabana.Tipo)
                            .ToList();
         }

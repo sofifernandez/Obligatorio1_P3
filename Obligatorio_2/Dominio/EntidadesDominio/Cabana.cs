@@ -9,20 +9,21 @@ using Microsoft.EntityFrameworkCore;
 using Dominio.InterfacesDominio;
 using System.Text.RegularExpressions;
 using Dominio.ExcepcionesPropias;
+using Dominio.ValueObjects;
 
 namespace Dominio.EntidadesDominio
 {
-    [Index(nameof(NombreCabana), IsUnique = true)]
+    //[Index(nameof(NombreCabana), IsUnique = true)]
 
-    public class Cabana: IValidable
+    public class Cabana
     {
         public int Id { get; set; }
-        [MaxLength(50,ErrorMessage ="El nombre no puede tener más 50 caracteres")] //-->ESTO ES PORQUE QUEREMOS QUE SEA UNIQUE Y NOS VA A TIRAR ERROR LA BASE DE DATOS, PORQUE POR DEFECTO ES NVARMAX
+        //[MaxLength(50,ErrorMessage ="El nombre no puede tener más 50 caracteres")] //-->ESTO ES PORQUE QUEREMOS QUE SEA UNIQUE Y NOS VA A TIRAR ERROR LA BASE DE DATOS, PORQUE POR DEFECTO ES NVARMAX
         [Display(Name = "Nombre")]
         [Required(ErrorMessage = "El nombre es un campo obligatorio")]
-        public string NombreCabana { get; set; }
+        public NombreCabana? NombreCabana { get; set; } //Value Object
         [Display(Name = "Descripción")]
-        public string? DescripCabana { get; set;}
+        public DescripCabana? DescripCabana { get; set;}
         public bool Jacuzzi { get; set; }
         public bool Habilitado { get; set; }
         [Display(Name = "Cant. de huéspedes")]
@@ -33,40 +34,13 @@ namespace Dominio.EntidadesDominio
         public Tipo? Tipo { get; set; }
         public int TipoId { get; set; }
 
-        //Constraints variables de la descripción: Min=10 y Max=500
-        public static int MinDescripCabana { get; set; }
-        public static int MaxDescripCabana { get; set; }
+        
+        //public static int MinDescripCabana { get; set; }
+        //public static int MaxDescripCabana { get; set; }
 
-        private static Regex alphabetRegex = new ("^[a-zA-Z áéíóúÁÉÍÓÚ]+$");
-
-
-        public void Validar()
-        {
-            ValidarNombre();
-            ValidarDescripcion();
-
-        }
-
-        private void ValidarNombre() 
-        {
-
-            if (!alphabetRegex.IsMatch(NombreCabana)){throw new NombreCabanaException("El nombre puede contener solo letras y espacios");}
-            if (NombreCabana[0].ToString()==" ") {throw new NombreCabanaException("No puede haber un espacio al comienzo del nombre");}
-            if (NombreCabana[NombreCabana.Length - 1].ToString() == " ") { throw new NombreCabanaException("No puede haber un espacio al final del nombre"); }
-        }
-
-        private void ValidarDescripcion()
-        {
-            if (DescripCabana.Length < MinDescripCabana){throw new Exception("La descripción de la cabaña no puede tener menos de " + MinDescripCabana);}
-            if (DescripCabana.Length > MaxDescripCabana){throw new Exception("La descripción de la cabaña no puede tener más de " + MaxDescripCabana);}
-        }
+        //private static Regex alphabetRegex = new ("^[a-zA-Z áéíóúÁÉÍÓÚ]+$");
 
        
-        //LA FOTO
-        
-
-
-
-
+       
     }
 }

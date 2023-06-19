@@ -23,8 +23,8 @@ namespace Aplicacion.CU.CabanaCU
                                                         Select(c => new CabanaDTO()
                                                         {
                                                             Id = c.Id,
-                                                            NombreCabana = c.NombreCabana,
-                                                            DescripCabana = c.DescripCabana,
+                                                            NombreCabana = c.NombreCabana.Value,
+                                                            DescripCabana = c.DescripCabana.Value,
                                                             Jacuzzi = c.Jacuzzi,
                                                             Habilitado = c.Habilitado,
                                                             MaxPersonas = c.MaxPersonas,
