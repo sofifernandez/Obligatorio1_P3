@@ -11,6 +11,7 @@ namespace Dominio.InterfacesRepositorios
     {
         IEnumerable<Mantenimiento> FindMantenimientosCabana(int idCabana);
         IEnumerable<Mantenimiento> FindMantenimientosFechas(DateTime startDate, DateTime endDate, int CabanaId);
+        public IEnumerable<Mantenimiento> FindMantenimientosPorCapacidad(int desde, int hasta);
 
     }
 }

@@ -13,6 +13,7 @@ namespace Dominio.InterfacesRepositorios
         IEnumerable<Cabana> FindCabanaMax(int maxPersonas);
         IEnumerable<Cabana> FindCabanaTipo(int idTipo);
         IEnumerable<Cabana> FindCabanasHabilitadas();
+        IEnumerable<Cabana> FindCabanasPorMonto(int monto);
 
     }
 }

@@ -46,6 +46,28 @@ namespace Datos.Repositorios
         }
 
 
+
+        //Dados dos valores, obtener los mantenimientos realizados a las cabañas con una capacidad
+        //que esté comprendida (topes inclusive) entre ambos valores. El resultado se agrupará por
+        //nombre de la persona que realizó el mantenimiento, e incluirá el nombre de la persona y el
+        //monto total de los mantenimientos que realizó
+        public IEnumerable<Mantenimiento> FindMantenimientosPorCapacidad(int desde, int hasta)
+        {
+            var resultado = Contexto.Mantenimientos
+                //.Where(manten => manten.Cabana.Any(c => c.MaxPersonas >= desde)) //--> por qu''e no me deja esto???
+                .GroupBy(mant => mant.Personal)
+                .Select(grupo => new {Personal=grupo.Key ,
+                                        Total=grupo.Sum(grupo=>grupo.CostoMant)})
+                
+
+                .ToList();
+            return resultado; //Esto no devuelve Lista de mantenimientos porque es otra cosa,
+                              //un objeto con el nombre de la persona y la suma de mantenimientos
+        }
+
+
+
+
         //------------------------------------------------------------------------------------------
         //CREATE------------------------------------------------------------------------------------
         public void Add(Mantenimiento obj)
