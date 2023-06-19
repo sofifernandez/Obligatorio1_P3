@@ -24,6 +24,7 @@ namespace Aplicacion.CU.CabanaCU
         {
             return RepoCabana.FindAll().Select(c => new CabanaDTO()
                                         {
+                                            Id= c.Id,
                                             NombreCabana = c.NombreCabana,
                                             DescripCabana = c.DescripCabana,
                                             Jacuzzi = c.Jacuzzi,

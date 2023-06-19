@@ -34,7 +34,7 @@ namespace Datos.Repositorios
         public Cabana FindById(int id)
         {
             Cabana buscada = Contexto.Cabanas.Find(id);
-            return buscada == null ? throw new Exception("La cabana ingresada no existe") : buscada;
+            return buscada;
         }
 
         public IEnumerable<Cabana> FindCabanaNombre(string nombre) 

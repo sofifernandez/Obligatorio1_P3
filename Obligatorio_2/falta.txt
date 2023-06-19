@@ -1,0 +1,8 @@
+_Alta/Editar tipo
+_Alta cabaña 
+Ambos por los parámetros dinámicos
+
+_Delete de tipo, no funciona
+
+Value Objects
+JWT

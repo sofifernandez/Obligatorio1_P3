@@ -38,7 +38,7 @@ namespace Datos.Repositorios
         public Tipo FindById(int id)
         {
             Tipo buscado = Contexto.Tipos.Find(id);
-            return buscado == null ? throw new Exception("El tipo ingresado no existe") : buscado;
+            return buscado;
         }
 
         public Tipo FindTipoByNombre(string nombreTipo)

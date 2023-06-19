@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Dominio.EntidadesDominio.Cabana>
+
+@{
+    ViewData["Title"] = "BuscarPorNombre";
+}
+
+<h1>Resultados de la búsqueda</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreCabana)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescripCabana)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Jacuzzi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Habilitado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxPersonas)
+            </th>
+            <th>
+                Foto
+            </th>
+            <th>
+                Tipo
+            </th>
+            <th>
+                Mantenimientos
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCabana)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescripCabana)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Jacuzzi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Habilitado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxPersonas)
+            </td>
+            <td>
+                <img src="/Imagenes/@item.FotoCabana" height="100">
+                
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo.Nombre)
+            </td>
+            <td>
+                @Html.ActionLink("Ver", "Index", "Mantenimiento", new { CabanaId=item.Id }) 
+                   
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@if (ViewBag.NotFound != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.NotFound
+    </div>
+}
+
+<div>
+    <a asp-action="Index">Volver</a>
+</div>
