@@ -17,14 +17,17 @@ namespace WebAPI.Controllers
         IListadoMantenimientoDeCabana CUListadoMantCabana { get; set; }
         IBuscarMantenPorFechas CUBuscarMantenPorFechas { get; set; }
         IAltaMantenimiento CUAltaMantenimiento { get; set; }
+        IMontoPorCapacidad CUMontoPorCapacidad { get; set; }
 
         public MantenimientoController(IListadoMantenimientoDeCabana cUListadoMantCabana, 
             IBuscarMantenPorFechas cuBuscarMantenPorFechas,
-            IAltaMantenimiento cuAltaMantenimiento)
+            IAltaMantenimiento cuAltaMantenimiento,
+            IMontoPorCapacidad cUMontoPorCapacidad)
         {
             CUListadoMantCabana = cUListadoMantCabana;
             CUBuscarMantenPorFechas = cuBuscarMantenPorFechas;
             CUAltaMantenimiento = cuAltaMantenimiento;
+            CUMontoPorCapacidad = cUMontoPorCapacidad;
         }
 
 
@@ -50,7 +53,7 @@ namespace WebAPI.Controllers
         //------------------------------------------------------------------------------------------
         //BÚSQUEDAS------------------------------------------------------------------------------------
 
-        [HttpGet("star/{startDate}/end/{endDate}/Cabana/{CabanaId}", Name = "FindMantDeCabana")]
+        [HttpGet("start/{startDate}/end/{endDate}/Cabana/{CabanaId}", Name = "FindMantDeCabana")]
         public ActionResult GetMantenimientoFechas(DateTime startDate, DateTime endDate, int CabanaId) 
         {
             try
@@ -64,6 +67,21 @@ namespace WebAPI.Controllers
                 return StatusCode(500, "Ocurrió un error inesperado");
             }
 
+        }
+
+        [HttpGet("TotalPorCapacidad/{desde}/{hasta}")]
+        public IActionResult ShowMontoPorCapacidad(int desde, int hasta) {
+            try
+            {
+                IEnumerable<object> mantemonto = CUMontoPorCapacidad.MontoTotalPorCapacidad(desde, hasta);
+                if (mantemonto.Count() == 0) return NotFound("No hay mantenimientos para esos parámetros de búsqueda");
+                return Ok(mantemonto);
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(500, "Ocurrió un error inesperado");
+            }
         }
 
         //------------------------------------------------------------------------------------------

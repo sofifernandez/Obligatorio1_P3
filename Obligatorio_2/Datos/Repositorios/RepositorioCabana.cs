@@ -86,7 +86,7 @@ namespace Datos.Repositorios
                 .Where(cab => cab.Habilitado == true)
                 .Where(cab => cab.Jacuzzi == true)
                 .Where(cab=>cab.Tipo.CostoTipo<monto)
-                .Select(cab => new {NombreCabana=cab.NombreCabana.Value, CantPersonas=cab.MaxPersonas}) //-->Me parece que es mejor filtrar lo que se muestra en el front
+                .Select(cab => new {NombreCabana=cab.NombreCabana.Value, CantPersonas=cab.MaxPersonas}) 
                 .ToList();
             return cabanas;
         }

@@ -19,6 +19,7 @@ namespace WebAPI.Controllers
         IBuscarCabanaMax CUBuscarCabanaMax { get; set; }
         IBuscarCabanasHabilitadas CUBuscarHabilitadas { get; set; }
         IBuscarCabanaPorTipo CUBuscarPorTipo { get; set; }
+        IBuscarCabanaPorMonto CUBuscarCabanaPorMonto { get; set; }
 
 
 
@@ -28,7 +29,8 @@ namespace WebAPI.Controllers
             IBuscarCabanaPorNombre cuBuscarPorTexto,
             IBuscarCabanaMax cubuscarCabanaMax,
             IBuscarCabanasHabilitadas cuBuscarHabilitadas,
-            IBuscarCabanaPorTipo cuBuscarCabanaPorTipo)
+            IBuscarCabanaPorTipo cuBuscarCabanaPorTipo,
+            IBuscarCabanaPorMonto cuBuscarCabanaPorMonto)
         {
             CUAltaCabana = altaCabana;
             CUListadoCabana = cabanas;
@@ -37,6 +39,7 @@ namespace WebAPI.Controllers
             CUBuscarCabanaMax = cubuscarCabanaMax;
             CUBuscarHabilitadas = cuBuscarHabilitadas;
             CUBuscarPorTipo = cuBuscarCabanaPorTipo;
+            CUBuscarCabanaPorMonto = cuBuscarCabanaPorMonto;
         }
 
 
@@ -145,6 +148,20 @@ namespace WebAPI.Controllers
 
         }
 
+        [HttpGet("FindByMonto/{monto}")]
+        public IActionResult FindByMonto(int monto) {
+            try
+            {
+                IEnumerable<Object> cabanas= CUBuscarCabanaPorMonto.FindCabanaPorMonto(monto);
+                if (cabanas.Count() == 0) return NotFound("No hay Cabañas para esta busqueda");
+                return Ok(cabanas);
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(500, "Ocurrió un error inesperado");
+            }
+        }
 
 
 

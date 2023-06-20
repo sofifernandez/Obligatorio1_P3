@@ -22,7 +22,7 @@ namespace Aplicacion.CU.CabanaCU
 
         public IEnumerable<CabanaDTO> ObtenerListado()
         {
-            return RepoCabana.FindAll().Select(c => new CabanaDTO()
+            IEnumerable<CabanaDTO> cabanas = RepoCabana.FindAll().Select(c => new CabanaDTO()
                                         {
                                             Id= c.Id,
                                             NombreCabana = c.NombreCabana.Value,
@@ -34,6 +34,7 @@ namespace Aplicacion.CU.CabanaCU
                                             Tipo = c.Tipo,
                                             TipoId = c.TipoId
                                         });
+            return cabanas;
         }
     }
 }

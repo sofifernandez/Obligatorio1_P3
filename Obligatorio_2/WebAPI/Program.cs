@@ -43,11 +43,15 @@ builder.Services.AddScoped<IAltaCabana, AltaCabana>();
 builder.Services.AddScoped<IBuscarCabanaMax, BuscarCabanaMax>();
 builder.Services.AddScoped<IBuscarCabanasHabilitadas, BuscarCabanasHabilitadas>();
 builder.Services.AddScoped<IBuscarCabanaPorTipo, BuscarCabanaPorTipo>();
+builder.Services.AddScoped<IBuscarCabanaPorMonto, BuscarCabanaPorMonto>();
+
 
 //MANTENIMIENTOS
 builder.Services.AddScoped<IListadoMantenimientoDeCabana, ListadoMantenimientoDeCabana>();
 builder.Services.AddScoped<IBuscarMantenPorFechas, BuscarMantenPorFechas>();
 builder.Services.AddScoped<IAltaMantenimiento, AltaMantenimiento>();
+builder.Services.AddScoped<IMontoPorCapacidad, MontoPorCapacidad>();
+//
 
 
 
