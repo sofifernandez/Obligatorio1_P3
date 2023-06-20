@@ -3,6 +3,7 @@ using Aplicacion.InterfacesCU.IMantenimiento;
 using Dominio.EntidadesDominio;
 using Dominio.ExcepcionesPropias;
 using DTOs;
+using ExcepcionesPropias;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -76,13 +77,14 @@ namespace WebAPI.Controllers
                 CUAltaMantenimiento.Alta(mantenimiento);
                 return CreatedAtRoute("GetMantenimientoCabana", new { mantenimiento.CabanaId }, mantenimiento);
             }
-            
-            catch (Exception ex)
-            {
-                //Acá cómo devolvemos el error de que no se pueden agregar más de 3 por día??
-                //Tendría que ser con un bad request
 
-                return StatusCode(500, ex.Message);
+            catch (AltaMantenimientoException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch
+            {
+                return StatusCode(500, "Ocurrió un error inesperado");
             }
 
         }

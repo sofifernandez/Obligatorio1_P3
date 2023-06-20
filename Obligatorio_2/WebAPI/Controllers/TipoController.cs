@@ -24,13 +24,15 @@ namespace WebAPI.Controllers
             IListadoTipo cuListadoTipo,
             IBuscarTipoPorID cUBuscarTipoPorID,
             IBuscarTipoPorNombre cUBuscarTipoPorNombre,
-            IEditarTipo cUEditarTipo)
+            IEditarTipo cUEditarTipo,
+            IBorrarTipo cuBorrarTipo)
         {
             CUAltaTipo = cUAltaTipo;
             CUListadoTipo = cuListadoTipo;
             CUBuscarTipoPorID = cUBuscarTipoPorID;
             CUBuscarTipoPorNombre = cUBuscarTipoPorNombre;
             CUEditarTipo = cUEditarTipo;
+            CUBorrarTipo = cuBorrarTipo;
         }
 
 
@@ -45,7 +47,7 @@ namespace WebAPI.Controllers
         }
 
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetById")]
         public ActionResult Get(int id)
         {
             if (id <= 0) return BadRequest("El id del tema debe ser un entero positivo");
@@ -85,17 +87,14 @@ namespace WebAPI.Controllers
             try
             {
                 CUAltaTipo.Alta(tipo);
-                return CreatedAtRoute("Get", new { id = tipo.Id }, tipo);
-            }
-            catch (NombreCabanaException ex)
-            {
-                return BadRequest(ex.Message);
+                return CreatedAtRoute("GetById", new { id = tipo.Id }, tipo);
             }
             catch (Exception ex)
             {
-                //return StatusCode(500, "Ocurrió un error inesperado");
                 return StatusCode(500, ex.Message);
+                //return StatusCode(500, "Ocurrió un error inesperado");
             }
+            
         }
 
         // PUT api/<TemasController>/5
@@ -108,9 +107,9 @@ namespace WebAPI.Controllers
                 CUEditarTipo.Editar(tipo);
             }
             
-            catch
+            catch (Exception ex)
             {
-                return StatusCode(500, "Ocurrió un error inesperado");
+                return StatusCode(500, ex.Message);
             }
 
             return Ok(tipo);

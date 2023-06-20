@@ -54,15 +54,22 @@ namespace Datos.Repositorios
         public void Remove(int id)
         {
             Tipo aBorrar = FindById(id);
-            int enUso= Contexto.Cabanas 
-                .Where(cab=>cab.TipoId==id)
-                .Count();
-            if (enUso > 0) 
+            if (aBorrar != null)
             {
-                throw new Exception("No se puede eliminar el tipo porque está en uso");
+                int enUso = Contexto.Cabanas
+                .Where(cab => cab.TipoId == id)
+                .Count();
+                if (enUso > 0)
+                {
+                    throw new Exception("No se puede eliminar el tipo porque está en uso");
+                }
+                Contexto.Tipos.Remove(aBorrar);
+                Contexto.SaveChanges();
+
             }
-            Contexto.Tipos.Remove(aBorrar);
-            Contexto.SaveChanges();
+            else 
+            { throw new Exception("Es null idiota"); }
+            
         }
 
         //------------------------------------------------------------------------------------------

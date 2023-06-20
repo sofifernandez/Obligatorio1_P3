@@ -80,13 +80,13 @@ namespace Datos.Repositorios
         //Dado un monto, obtener el nombre y capacidad (cantidad de huéspedes que puede alojar)
         //de las cabañas que tengan un costo diario menor a ese
         //monto, que tengan jacuzzi y estén habilitadas para reserva
-        public IEnumerable<Cabana> FindCabanasPorMonto(int monto) 
+        public IEnumerable<object> FindCabanasPorMonto(int monto) 
         {
-            IEnumerable<Cabana> cabanas = Contexto.Cabanas
+           var cabanas = Contexto.Cabanas
                 .Where(cab => cab.Habilitado == true)
                 .Where(cab => cab.Jacuzzi == true)
                 .Where(cab=>cab.Tipo.CostoTipo<monto)
-               // .Select(cab => new {NombreCabana=cab.NombreCabana.Value,CantMax=...}) -->Me parece que es mejor filtrar lo que se muestra en el front
+                .Select(cab => new {NombreCabana=cab.NombreCabana.Value, CantPersonas=cab.MaxPersonas}) //-->Me parece que es mejor filtrar lo que se muestra en el front
                 .ToList();
             return cabanas;
         }

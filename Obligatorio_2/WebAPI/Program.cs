@@ -47,7 +47,8 @@ builder.Services.AddScoped<IBuscarCabanaPorTipo, BuscarCabanaPorTipo>();
 //MANTENIMIENTOS
 builder.Services.AddScoped<IListadoMantenimientoDeCabana, ListadoMantenimientoDeCabana>();
 builder.Services.AddScoped<IBuscarMantenPorFechas, BuscarMantenPorFechas>();
-//
+builder.Services.AddScoped<IAltaMantenimiento, AltaMantenimiento>();
+
 
 
 var configurationBuilder = new ConfigurationBuilder();

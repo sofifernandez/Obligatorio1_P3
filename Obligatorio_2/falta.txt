@@ -1,16 +1,15 @@
 - Cabana:
-Probar alta (ojo parámetros dinámicos)
+Probar alta (ojo parámetros dinámicos) 
+dan error los value objects del tipo
 
-- Tipo:
-Probar alta/editar (ojo parámetros dinámicos)
-Delete no funciona
 
 -Mantenimiento
 Probar alta (fechas en string?)
 
-- Value Objects (ya está, probar las altas)
 
-- Nuevas busquedas (punto 6a y 6b)
+- Nuevas busquedas (punto 6a y 6b) -->agregar las rutas
+
+- CLIENTE-MVC
 
 - JWT (dejar para lo ultimo cuando funcione todo)
 
@@ -18,4 +17,5 @@ Probar alta (fechas en string?)
 
 
 PREGUNTAS:
-- En el controlador de la webAPI, para devolver algo de un catch, cómo diferenciamos un 500 de un 400? Por ejemplo en alta mantenimiento, podría haber un error de servidor o uno de la logica, como que no se puede agregar mas de 3 en la misma fecha 
+- En el controlador de la webAPI, para devolver algo de un catch, cómo diferenciamos un 500 de un 400? Por ejemplo en alta mantenimiento, podría haber un error de servidor o uno de la logica, como que no se puede agregar mas de 3 en la misma fecha (ya esta?)
+Ver create tipo, cuando hay un error por ejemplo en la cantidad de caracteres de la descripcion, muestra el mensaje pero con un server error

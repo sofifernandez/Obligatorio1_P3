@@ -30,6 +30,7 @@ namespace Aplicacion.CU.TipoCU
 
             Tipo aModificar = new Tipo()
             {
+                Id=t.Id,
                 NombreTipo = new NombreTipo(t.NombreTipo),
                 DescTipo = new DescripTipo(t.DescTipo),
                 CostoTipo = t.CostoTipo

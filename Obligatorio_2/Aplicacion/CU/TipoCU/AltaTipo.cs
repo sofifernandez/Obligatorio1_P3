@@ -37,6 +37,7 @@ namespace Aplicacion.CU.TipoCU
 
 
             RepoTipo.Add(tipo);
+            t.Id = tipo.Id;
         }
     }
 }

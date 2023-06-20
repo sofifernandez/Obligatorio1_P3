@@ -175,6 +175,8 @@ namespace WebAPI.Controllers
         //-------------------------------------------------------------------------------------------------------
         //NO IMPLEMENTADOS-----------------------------------------------------------------------------------------
 
+        /*
+
         // PUT api/<CabanaController>/5
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] string value)
@@ -188,5 +190,6 @@ namespace WebAPI.Controllers
         {
             return NoContent();
         }
+        */
     }
 }
