@@ -1,13 +1,12 @@
-﻿using Aplicacion.InterfacesCU;
-using Dominio.EntidadesDominio;
-using Dominio.InterfacesRepositorios;
+﻿
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MVC.Controllers
+namespace ClienteMVC.Controllers
 {
     public class MantenimientoController : Controller
     {
+        /*
         IRepositorioMantenimiento RepositorioMant { get; set; }
         IRepositorioCabana RepositorioCabana { get; set; }
        
@@ -148,5 +147,6 @@ namespace MVC.Controllers
         {
             return View();
         }
+        */
     }
 }

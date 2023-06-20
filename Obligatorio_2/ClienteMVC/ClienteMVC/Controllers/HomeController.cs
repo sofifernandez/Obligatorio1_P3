@@ -1,13 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MVC.Models;
+using ClienteMVC.Models;
 using System.Diagnostics;
-using Aplicacion.InterfacesCU;
-using Dominio.EntidadesDominio;
-using Dominio.InterfacesRepositorios;
-using Aplicacion.CU;
 using System.ComponentModel.DataAnnotations;
 
-namespace MVC.Controllers
+namespace ClienteMVC.Controllers
 {
     public class HomeController : Controller
     {

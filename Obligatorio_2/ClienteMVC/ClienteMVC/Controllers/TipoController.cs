@@ -1,52 +1,63 @@
-﻿using Aplicacion.CU;
-using Aplicacion.InterfacesCU;
-using Datos.Repositorios;
-using Dominio.EntidadesDominio;
-using Dominio.InterfacesRepositorios;
+﻿
+using ClienteMVC.DTOs;
+using ClienteMVC.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
-namespace MVC.Controllers
+namespace ClienteMVC.Controllers
 {
     public class TipoController : Controller
     {
+        public IConfiguration Conf { get; set; }
         public string URLBaseApiTipos { get; set; }
 
         public TipoController(IConfiguration conf)
         {
-            URLBaseApiTipos = conf.GetValue<string>("ApiTipos");
+            Conf = conf;
+            URLBaseApiTipos = Conf.GetValue<string>("ApiTipos");
         }
 
+        private string LeerContenido(HttpResponseMessage respuesta)
+        {
+            HttpContent contenido = respuesta.Content;
+            Task<string> tarea2 = contenido.ReadAsStringAsync();
+            tarea2.Wait();
+            return tarea2.Result;
+        }
 
         //-------------------------------------------------------------------------------------
         //LISTADO-----------------------------------------------------------------------------
         public ActionResult Index()
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
-            {
-                return Redirect("/Usuario/Login");
-            }
+            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            //{
+            //    return Redirect("/Usuario/Login");
+            //}
 
 
             HttpClient cliente = new HttpClient();
-            string url = URLBaseApiCabanas;
+            string url = URLBaseApiTipos;
             Task<HttpResponseMessage> tarea1 = cliente.GetAsync(url);
             tarea1.Wait();
             HttpResponseMessage respuesta = tarea1.Result;
             string body = LeerContenido(respuesta);
 
 
-            IEnumerable<Tipo> tipos = RepositorioTipo.FindAll();
-            if (tipos.Count() == 0) 
+            if (respuesta.IsSuccessStatusCode)
             {
-                ViewBag.NotFound = "No hay tipos de cabañas ingresados";
+                List<TipoViewModel> cabanas = JsonConvert.DeserializeObject<List<TipoViewModel>>(body);
+                return View(cabanas);
             }
-            return View(tipos);
+            else
+            {
+                ViewBag.Error = body;
+                return View(new List<TipoViewModel>());
+            }
         }
 
-
+        /*
         //-------------------------------------------------------------------------------------
         //BÚSQUEDA-----------------------------------------------------------------------------
         [HttpPost]
@@ -181,5 +192,6 @@ namespace MVC.Controllers
                 return View(tipo);
             }
         }
+        */
     }
 }

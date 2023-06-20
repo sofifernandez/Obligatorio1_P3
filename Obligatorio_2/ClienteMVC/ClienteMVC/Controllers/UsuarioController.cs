@@ -1,13 +1,13 @@
-﻿using Dominio.EntidadesDominio;
-using Dominio.InterfacesRepositorios;
+﻿
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-namespace MVC.Controllers
+namespace ClienteMVC.Controllers
 {
     public class UsuarioController : Controller
     {
+        /*
         IRepositorioUsuario RepoUsuario { get; set; }
 
         public UsuarioController(IRepositorioUsuario repo)
@@ -56,6 +56,7 @@ namespace MVC.Controllers
             return RedirectToAction("Login");
 
         }
+        */
 
     }
 }

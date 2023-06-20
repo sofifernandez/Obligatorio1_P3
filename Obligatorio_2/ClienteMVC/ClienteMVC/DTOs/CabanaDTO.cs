@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ClienteMVC.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace ClienteMVC.DTOs
 {
@@ -11,6 +12,7 @@ namespace ClienteMVC.DTOs
         public bool Habilitado { get; set; }
         public int? MaxPersonas { get; set; }
         public string? FotoCabana { get; set; }
+        public TipoViewModel Tipo { get; set; }
         public int TipoId { get; set; }
 
     }

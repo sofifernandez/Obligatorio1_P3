@@ -1,4 +1,4 @@
-﻿@model Dominio.EntidadesDominio.Tipo
+﻿@*@model Dominio.EntidadesDominio.Tipo
 
 @{
     ViewData["Title"] = "Edit";
@@ -12,11 +12,7 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*<div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>*@
+
             <div class="form-group">
                 <label asp-for="Nombre" class="control-label"></label>
                 <input asp-for="Nombre" class="form-control" readonly />
@@ -50,3 +46,4 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+*@

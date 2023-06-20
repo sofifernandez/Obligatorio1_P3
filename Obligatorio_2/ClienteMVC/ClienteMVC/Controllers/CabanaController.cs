@@ -6,11 +6,14 @@ using Newtonsoft.Json;
 using ClienteMVC.Models;
 using ClienteMVC.DTOs;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Threading;
+using System.Collections.Generic;
 
-namespace MVC.Controllers
+namespace ClienteMVC.Controllers
 {
     public class CabanaController : Controller 
     {
+        public IConfiguration Conf { get; set; }
         public IWebHostEnvironment WHE { set; get; }
 
         public string URLBaseApiCabanas { get; set; }
@@ -18,8 +21,9 @@ namespace MVC.Controllers
 
         public CabanaController(IConfiguration conf, IWebHostEnvironment whe)
         {
-            URLBaseApiCabanas = conf.GetValue<string>("ApiCabanas");
-            URLBaseApiTipos = conf.GetValue<string>("ApiTipos");
+            Conf = conf;
+            URLBaseApiCabanas = Conf.GetValue<string>("ApiCabanas");
+            URLBaseApiTipos = Conf.GetValue<string>("ApiTipos");
             WHE = whe;
         }
 
@@ -67,9 +71,24 @@ namespace MVC.Controllers
 
             string body = LeerContenido(tarea.Result); //aca viene como json la cabañana o como string el error
 
+            //List<TipoViewModel> tiposCabana = JsonConvert.DeserializeObject<List<TipoViewModel>>(tarea2.Result);
+            //CabanaViewModel cabanaVM = new CabanaViewModel()
+            //{
+            //    Cabana = new CabanaDTO(),
+            //    Tipos = tiposCabana
+            //};
+            //return View(cabanaVM);
+
+
+
             if (tarea.Result.IsSuccessStatusCode)
             {
-                cabana = JsonConvert.DeserializeObject<CabanaViewModel>(body);
+                List<TipoViewModel> tiposCabana = JsonConvert.DeserializeObject<List<TipoViewModel>>(body);
+                CabanaViewModel cabanaVM = new CabanaViewModel()
+                {
+                    Cabana = new CabanaDTO(),
+                    Tipos = tiposCabana
+                };
             }
             else
             {
@@ -78,6 +97,7 @@ namespace MVC.Controllers
 
             return error;
         }
+
 
         private string LeerContenido(HttpResponseMessage respuesta)
         {
@@ -105,7 +125,8 @@ namespace MVC.Controllers
 
             if (respuesta.IsSuccessStatusCode)
             {
-                List<CabanaViewModel> cabanas = JsonConvert.DeserializeObject<List<CabanaViewModel>>(body);
+                List<CabanaDTO> cabanas = JsonConvert.DeserializeObject<List<CabanaDTO>>(body);
+                //ACA HAY QUE TRAER LOS TIPOS, Y EN LA VISTA PONER CabanaDTO
                 return View(cabanas);
             }
             else
@@ -254,10 +275,10 @@ namespace MVC.Controllers
         //CREATE-------------------------------------------------------------------------------------------------
         public ActionResult Create()
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
-            {
-                return Redirect("/Usuario/Login");
-            }
+            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            //{
+            //    return Redirect("/Usuario/Login");
+            //}
 
             //Traer los tipos:
             HttpClient client = new HttpClient();
@@ -268,13 +289,13 @@ namespace MVC.Controllers
 
             if (tarea.Result.IsSuccessStatusCode)
             {
-                List<TipoViewModel> tipos = JsonConvert.DeserializeObject<List<TipoViewModel>>(tarea2.Result);
-                CabanaViewModel vm = new CabanaViewModel();
+                List<TipoViewModel> tiposCabana = JsonConvert.DeserializeObject<List<TipoViewModel>>(tarea2.Result);
+                CabanaViewModel cabanaVM = new CabanaViewModel()
                 {
                     Cabana = new CabanaDTO(),
-                    Tipos = tipos
+                    Tipos = tiposCabana
                 };
-                return View(librovm);
+                return View(cabanaVM);
             }
             else
             {
@@ -282,56 +303,61 @@ namespace MVC.Controllers
                 return View();
             }
 
-
-
-            IEnumerable<Tipo> tipos= RepositorioTipo.FindAll();
-            ViewBag.Tipos = tipos;
-            CabanaViewModel vm = new CabanaViewModel();
-            return View(vm);
         }
 
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CabanaViewModel vm, int idTipo)
+        public ActionResult Create(CabanaViewModel vm)
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
-            {
-                return Redirect("/Usuario/Login");
-            }
+            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            //{
+            //    return Redirect("/Usuario/Login");
+            //}
 
             try
             {
+                string rutaWwwRoot = WHE.WebRootPath;
+                string rutaCarpeta = Path.Combine(rutaWwwRoot, "Imagenes"); //Genero la ruta hasta la carpeta
                 FileInfo fi = new FileInfo(vm.Foto.FileName);
                 string extension = fi.Extension; //me quedo solo con la extension del archivo
-
                 if (extension != ".png" && extension != ".jpg")
                 {
                     throw new Exception("El archivo debe ser .png o .jpg");
                 }
-                string nomArchivoFoto = vm.Cabana.NombreCabana +"_001" + extension;
-
-                Tipo tipo = RepositorioTipo.FindById(idTipo);
-                vm.Cabana.Tipo = tipo;
-                vm.Cabana.FotoCabana = nomArchivoFoto;
-                CUAltaCabana.Alta(vm.Cabana);
-
-                string rutaWwwRoot = WHE.WebRootPath;
-                string rutaCarpeta = Path.Combine(rutaWwwRoot, "Imagenes"); //Genero la ruta hasta la carpeta
+                string nomArchivoFoto = vm.Cabana.NombreCabana + "_001" + extension;
                 string rutaArchivo = Path.Combine(rutaCarpeta, nomArchivoFoto); //Genero la ruta hasta la foto
 
-                FileStream fs = new FileStream(rutaArchivo, FileMode.Create); //conecto el IFromFile (mi foto) a FileSystem de la maquina
-                
-                vm.Foto.CopyTo(fs);
+                vm.Cabana.TipoId = vm.IdTipoSeleccionado;
+                vm.Cabana.FotoCabana = nomArchivoFoto;
 
-                return RedirectToAction(nameof(Index));
+                HttpClient cliente = new HttpClient();
+                var tarea = cliente.PostAsJsonAsync(URLBaseApiCabanas, vm.Cabana);
+                tarea.Wait();
 
+                if (tarea.Result.IsSuccessStatusCode)
+                {
+                    FileStream fs = new FileStream(rutaArchivo, FileMode.Create);
+                    vm.Foto.CopyTo(fs);
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    var tarea2 = tarea.Result.Content.ReadAsStringAsync();
+                    tarea2.Wait();
+
+
+                    //PENDIENTE TRAER DE NUEVO LOS TIPO PARA LA SELECT
+                    ViewBag.Mensaje = tarea2.Result;
+                    List<TipoViewModel> tiposCabana = JsonConvert.DeserializeObject<List<TipoViewModel>>(tarea2.Result);
+                    vm.Tipos = tiposCabana;
+                    return View(vm);
+                }
 
             }
             catch (Exception ex)
             {
-                IEnumerable<Tipo> tipos = RepositorioTipo.FindAll();
-                ViewBag.Tipos = tipos;
+                
                 ViewBag.ErrorInfo=ex.Message;
                 // Este if es para mostrar el error de unique
                 if (ex.InnerException != null && ex.InnerException.Message.Contains("Cannot insert duplicate key row in object")) 
@@ -339,19 +365,13 @@ namespace MVC.Controllers
                     //ViewBag.ErrorInfo = " ";
                     ViewBag.ErrorUnique = "El nombre de cabaña ya existe";
                 }
-                return View();
+                return View(vm);
             }
         }
 
 
         //-------------------------------------------------------------------------------------------------------
         //NO IMPLEMENTADOS-----------------------------------------------------------------------------------------
-
-        // GET: CabanaController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
 
         // GET: CabanaController/Edit/5
         public ActionResult Edit(int id)
