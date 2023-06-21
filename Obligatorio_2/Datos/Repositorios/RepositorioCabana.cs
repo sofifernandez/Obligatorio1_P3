@@ -73,7 +73,7 @@ namespace Datos.Repositorios
 
         public IEnumerable<Cabana> FindAll()
         {
-            List<Cabana> cabanas = Contexto.Cabanas.ToList();
+            List<Cabana> cabanas = Contexto.Cabanas.Include(c=>c.Tipo).ToList();
             return cabanas;
         }
 

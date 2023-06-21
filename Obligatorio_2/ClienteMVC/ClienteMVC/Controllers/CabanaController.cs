@@ -107,6 +107,15 @@ namespace ClienteMVC.Controllers
             return tarea2.Result;
         }
 
+        private HttpResponseMessage TraerTipos() 
+        {
+            HttpClient cliente = new HttpClient();
+            string url = URLBaseApiTipos;
+            Task<HttpResponseMessage> tarea1 = cliente.GetAsync(url);
+            tarea1.Wait();
+            HttpResponseMessage respuesta = tarea1.Result;
+            return respuesta;
+        }
 
 
 
@@ -114,7 +123,7 @@ namespace ClienteMVC.Controllers
         //LISTADO-----------------------------------------------------------------------------
         public ActionResult Index()
         {
-
+            //Traemos las cabanas
             HttpClient cliente = new HttpClient();
             string url = URLBaseApiCabanas;
             Task<HttpResponseMessage> tarea1 = cliente.GetAsync(url);
@@ -122,37 +131,24 @@ namespace ClienteMVC.Controllers
             HttpResponseMessage respuesta = tarea1.Result;
             string body = LeerContenido(respuesta);
 
+            HttpResponseMessage respuestaTipos = TraerTipos();
 
-            if (respuesta.IsSuccessStatusCode)
+            if (respuesta.IsSuccessStatusCode && respuestaTipos.IsSuccessStatusCode)
             {
                 List<CabanaDTO> cabanas = JsonConvert.DeserializeObject<List<CabanaDTO>>(body);
-                //ACA HAY QUE TRAER LOS TIPOS, Y EN LA VISTA PONER CabanaDTO
+                List<TipoViewModel> tipos = JsonConvert.DeserializeObject<List<TipoViewModel>>(LeerContenido(respuestaTipos));
+                ViewBag.Tipos = tipos;
                 return View(cabanas);
             }
             else
             {
                 ViewBag.Error = body;
-                return View(new List<CabanaViewModel>());
+                return View(new List<CabanaDTO>());
             }
 
         }
 
 
-        public ActionResult Details(int id)
-        {
-            CabanaViewModel c = null;
-            string error = FetchCabana(id, out c);
-
-            if (error == "")
-            {
-                return View(c);
-            }
-            else
-            {
-                ViewBag.Mensaje = error;
-                return View();
-            }
-        }
 
 
         //-------------------------------------------------------------------------------------
@@ -160,10 +156,10 @@ namespace ClienteMVC.Controllers
         [HttpPost]
         public ActionResult BuscarPorNombre(string nombre) 
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
-            {
-                return Redirect("/Usuario/Login");
-            }
+            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            //{
+            //    return Redirect("/Usuario/Login");
+            //}
 
             HttpClient client = new HttpClient();
             string urlBase = URLBaseApiCabanas;
@@ -175,13 +171,13 @@ namespace ClienteMVC.Controllers
 
             if (tarea.Result.IsSuccessStatusCode)
             {
-                List<CabanaViewModel> cabanas = JsonConvert.DeserializeObject<List<CabanaViewModel>>(body);
-                return View(cabanas);
+                List<CabanaDTO> cabanas = JsonConvert.DeserializeObject<List<CabanaDTO>>(body);
+                return View("ResultadoBusqueda",cabanas);
             }
             else
             {
                 ViewBag.NotFound = body;
-                return View("ResultadoBusqueda",new List<CabanaViewModel>());
+                return View("ResultadoBusqueda",new List<CabanaDTO>());
             }
             
         }
@@ -189,14 +185,14 @@ namespace ClienteMVC.Controllers
         [HttpGet]
         public ActionResult BuscarHabilitadas()
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
-            {
-                return Redirect("/Usuario/Login");
-            }
+            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            //{
+            //    return Redirect("/Usuario/Login");
+            //}
 
             HttpClient client = new HttpClient();
             string urlBase = URLBaseApiCabanas;
-            string url = urlBase + "FinByHabilitadas";
+            string url = urlBase + "FindByHabilitadas";
             var tarea = client.GetAsync(url);
             tarea.Wait();
 
@@ -204,23 +200,23 @@ namespace ClienteMVC.Controllers
 
             if (tarea.Result.IsSuccessStatusCode)
             {
-                List<CabanaViewModel> cabanas = JsonConvert.DeserializeObject<List<CabanaViewModel>>(body);
-                return View(cabanas);
+                List<CabanaDTO> cabanas = JsonConvert.DeserializeObject<List<CabanaDTO>>(body);
+                return View("ResultadoBusqueda",cabanas);
             }
             else
             {
                 ViewBag.NotFound = body;
-                return View("ResultadoBusqueda", new List<CabanaViewModel>());
+                return View("ResultadoBusqueda", new List<CabanaDTO>());
             }
         }
 
         [HttpPost]
         public ActionResult BuscarPorMaxHuespedes(int maxHuespedes)
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
-            {
-                return Redirect("/Usuario/Login");
-            }
+            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            //{
+            //    return Redirect("/Usuario/Login");
+            //}
 
             HttpClient client = new HttpClient();
             string urlBase = URLBaseApiCabanas;
@@ -232,23 +228,23 @@ namespace ClienteMVC.Controllers
 
             if (tarea.Result.IsSuccessStatusCode)
             {
-                List<CabanaViewModel> cabanas = JsonConvert.DeserializeObject<List<CabanaViewModel>>(body);
-                return View(cabanas);
+                List<CabanaDTO> cabanas = JsonConvert.DeserializeObject<List<CabanaDTO>>(body);
+                return View("ResultadoBusqueda", cabanas);
             }
             else
             {
                 ViewBag.NotFound = body;
-                return View("ResultadoBusqueda", new List<CabanaViewModel>());
+                return View("ResultadoBusqueda", new List<CabanaDTO>());
             }
         }
 
         [HttpPost]
         public ActionResult BuscarPorTipo(int idTipo)
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
-            {
-                return Redirect("/Usuario/Login");
-            }
+            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            //{
+            //    return Redirect("/Usuario/Login");
+            //}
 
             HttpClient client = new HttpClient();
             string urlBase = URLBaseApiCabanas;
@@ -260,13 +256,13 @@ namespace ClienteMVC.Controllers
 
             if (tarea.Result.IsSuccessStatusCode)
             {
-                List<CabanaViewModel> cabanas = JsonConvert.DeserializeObject<List<CabanaViewModel>>(body);
-                return View(cabanas);
+                List<CabanaDTO> cabanas = JsonConvert.DeserializeObject<List<CabanaDTO>>(body);
+                return View("ResultadoBusqueda", cabanas);
             }
             else
             {
                 ViewBag.NotFound = body;
-                return View("ResultadoBusqueda", new List<CabanaViewModel>());
+                return View("ResultadoBusqueda", new List<CabanaDTO>());
             }
         }
 
@@ -372,6 +368,24 @@ namespace ClienteMVC.Controllers
 
         //-------------------------------------------------------------------------------------------------------
         //NO IMPLEMENTADOS-----------------------------------------------------------------------------------------
+
+
+        public ActionResult Details(int id)
+        {
+            CabanaViewModel c = null;
+            string error = FetchCabana(id, out c);
+
+            if (error == "")
+            {
+                return View(c);
+            }
+            else
+            {
+                ViewBag.Mensaje = error;
+                return View();
+            }
+        }
+
 
         // GET: CabanaController/Edit/5
         public ActionResult Edit(int id)

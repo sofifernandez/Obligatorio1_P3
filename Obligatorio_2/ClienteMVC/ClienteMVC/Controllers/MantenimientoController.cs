@@ -1,37 +1,86 @@
 ﻿
+using ClienteMVC.DTOs;
+using ClienteMVC.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ClienteMVC.Controllers
 {
     public class MantenimientoController : Controller
     {
-        /*
-        IRepositorioMantenimiento RepositorioMant { get; set; }
-        IRepositorioCabana RepositorioCabana { get; set; }
-       
-        public MantenimientoController(IRepositorioMantenimiento repo, IRepositorioCabana repoCabana)
+
+        public IConfiguration Conf { get; set; }
+        public string URLBaseApiMantenimientos { get; set; }
+        public string URLBaseApiCabanas { get; set; }
+
+        public MantenimientoController(IConfiguration conf)
         {
-            RepositorioMant = repo;
-            RepositorioCabana = repoCabana;
+            Conf = conf;
+            URLBaseApiMantenimientos = Conf.GetValue<string>("ApiMantenimientos");
+            URLBaseApiCabanas= Conf.GetValue<string>("ApiCabanas");
+        }
+
+        //-------------------------------------------------------------------------------------
+        //FUNCIONES AUXILIARES-----------------------------------------------------------------------------
+        private string LeerContenido(HttpResponseMessage respuesta)
+        {
+            HttpContent contenido = respuesta.Content;
+            Task<string> tarea2 = contenido.ReadAsStringAsync();
+            tarea2.Wait();
+            return tarea2.Result;
+        }
+
+        private CabanaDTO TraerInfoCabana(int idCabana)
+        {
+            HttpClient cliente = new HttpClient();
+            string url = URLBaseApiCabanas + idCabana;
+            //cliente.DefaultRequestHeaders.Authorization =
+            //    new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("token"));
+            var tarea = cliente.GetAsync(url);
+            tarea.Wait();
+            string cuerpo = LeerContenido(tarea.Result);
+
+            if (tarea.Result.IsSuccessStatusCode)
+            {
+                CabanaDTO cabana = JsonConvert.DeserializeObject<CabanaDTO>(cuerpo);
+                return cabana;
+            }
+            else
+            {
+                throw new Exception(cuerpo);
+            }
         }
 
         //-------------------------------------------------------------------------------------
         //LISTADO-----------------------------------------------------------------------------
         public ActionResult Index(int CabanaId)
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            //{
+            //    return Redirect("/Usuario/Login");
+            //}
+            HttpClient cliente = new HttpClient();
+            string url = URLBaseApiMantenimientos + CabanaId;
+            Task<HttpResponseMessage> tarea1 = cliente.GetAsync(url);
+            tarea1.Wait();
+            HttpResponseMessage respuesta = tarea1.Result;
+            string body = LeerContenido(respuesta);
+
+            CabanaDTO cabana = TraerInfoCabana(CabanaId);
+
+            if (respuesta.IsSuccessStatusCode)
             {
-                return Redirect("/Usuario/Login");
+                List<MantenimientoViewModel> mantenimientos = JsonConvert.DeserializeObject<List<MantenimientoViewModel>>(body);
+                ViewBag.Cabana = cabana;
+                return View(mantenimientos);
             }
-            IEnumerable<Mantenimiento> mantenimientos= RepositorioMant.FindMantenimientosCabana(CabanaId);
-            Cabana cabana=RepositorioCabana.FindById(CabanaId);
-            ViewBag.Cabana = cabana;
-            if (mantenimientos.Count() == 0) 
+            else
             {
-                ViewBag.NotFound = "No hay existencias";
+                ViewBag.NotFound = body;
+                return View();
             }
-            return View(mantenimientos);
         }
 
 
@@ -40,18 +89,26 @@ namespace ClienteMVC.Controllers
         [HttpPost]
         public ActionResult MantEntreFechas(DateTime fechaIni, DateTime fechaFin, int CabanaId)
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            //{
+            //    return Redirect("/Usuario/Login");
+            //}
+            HttpClient cliente = new HttpClient();
+            string url = URLBaseApiMantenimientos + $"start/{fechaIni}/end/{fechaFin}/Cabana/{CabanaId}";
+            Task<HttpResponseMessage> tarea1 = cliente.GetAsync(url);
+            tarea1.Wait();
+            HttpResponseMessage respuesta = tarea1.Result;
+            string body = LeerContenido(respuesta);
+            List<MantenimientoViewModel> mantens = JsonConvert.DeserializeObject<List<MantenimientoViewModel>>(body);
+            CabanaDTO cabana = TraerInfoCabana(CabanaId);
+
+            if (!respuesta.IsSuccessStatusCode)
             {
-                return Redirect("/Usuario/Login");
+                ViewBag.NotFound = body;
+
             }
-            IEnumerable<Mantenimiento> mantenimientos = RepositorioMant.FindMantenimientosFechas(fechaIni, fechaFin, CabanaId);
-            Cabana cabana = RepositorioCabana.FindById(CabanaId);
             ViewBag.Cabana = cabana;
-            if (mantenimientos.Count() == 0)
-            {
-                ViewBag.NotFound = "No existen resultados";
-            }
-            return View(mantenimientos);
+            return View(mantens);
         }
 
 
@@ -60,37 +117,66 @@ namespace ClienteMVC.Controllers
         //CREAR-----------------------------------------------------------------------------
         public ActionResult Create(int CabanaId)
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
-            {
-                return Redirect("/Usuario/Login");
-            }
-            Cabana cabana = RepositorioCabana.FindById(CabanaId);
+            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            //{
+            //    return Redirect("/Usuario/Login");
+            //}
+            CabanaDTO cabana = TraerInfoCabana(CabanaId);
             ViewBag.Cabana=cabana;
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Mantenimiento mantenimiento)
+        public ActionResult Create(MantenimientoViewModel mantenimiento)
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
-            {
-                return Redirect("/Usuario/Login");
-            }
+            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            //{
+            //    return Redirect("/Usuario/Login");
+            //}
+
+
+
             try
             {
-                Cabana cabana = RepositorioCabana.FindById(mantenimiento.CabanaId);
-                mantenimiento.Cabana = cabana;
-                RepositorioMant.Add(mantenimiento);
-                return RedirectToAction(nameof(Index), new { CabanaId = cabana.Id});
+                if (ModelState.IsValid)
+                {
+                    HttpClient cliente = new HttpClient();
+                    //    cliente.DefaultRequestHeaders.Authorization =
+                    //new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("token"));
+                    Task<HttpResponseMessage> tarea = cliente.PostAsJsonAsync(URLBaseApiMantenimientos, mantenimiento);
+                    tarea.Wait();
+                    HttpResponseMessage respuesta = tarea.Result;
+
+                    if (respuesta.IsSuccessStatusCode)
+                    {
+                        CabanaDTO cabana = TraerInfoCabana(mantenimiento.CabanaId);
+                        ViewBag.Cabana=cabana;
+                        return RedirectToAction(nameof(Index));
+                    }
+                    else
+                    {
+
+                        ViewBag.Mensaje = LeerContenido(respuesta);
+                    }
+                }
+                else
+                {
+                    ViewBag.Mensaje = "Los datos ingresados no son válidos";
+                }
+
+                return View(mantenimiento);
+
             }
             catch (Exception ex)
             {
-                ViewBag.Error = ex.Message;
-                Cabana cabana = RepositorioCabana.FindById(mantenimiento.CabanaId);
-                ViewBag.Cabana = cabana;
-                return View();
+                ViewBag.Mensaje = "Oops! Ocurrió un error inesperado:" + ex.Message;
+                return View(mantenimiento);
             }
+
+
+
+
         }
 
 
@@ -147,6 +233,6 @@ namespace ClienteMVC.Controllers
         {
             return View();
         }
-        */
+        
     }
 }

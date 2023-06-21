@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ClienteMVC.Models.CabanaViewModel>
+﻿@model IEnumerable<ClienteMVC.DTOs.CabanaDTO>
 
 @{
     ViewData["Title"] = "Index";
@@ -45,15 +45,15 @@
         </form>
     </div>
 
-@*    <div class="col-3 border border-1 border-dark rounded mt-4 p-2 m-1">
+    <div class="col-3 border border-1 border-dark rounded mt-4 p-2 m-1">
         <h5>Buscar cabaña por tipo</h5>
         <form asp-action="BuscarPorTipo">
             <div class="form-group">
                 <label for="idTipo" class="control-label">Seleccione un tipo</label>
                 <select name="idTipo" id="tipo">
-                    @foreach (var tipo in Model.Tipos)
+                    @foreach (var tipo in ViewBag.Tipos)
                     {
-                        <option value="@tipo.Id">@tipo.Nombre</option>
+                        <option value="@tipo.Id">@tipo.NombreTipo</option>
                     }
                 </select>
             </div>
@@ -61,7 +61,7 @@
                 <input type="submit" value="Buscar" class="btn btn-primary" />
             </div>
         </form>
-    </div>*@
+    </div>
 
 </div>
 
@@ -72,22 +72,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Cabana.Id)
+                @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Cabana.NombreCabana)
+                @Html.DisplayNameFor(model => model.NombreCabana)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Cabana.DescripCabana)
+                @Html.DisplayNameFor(model => model.DescripCabana)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Cabana.Jacuzzi)
+                @Html.DisplayNameFor(model => model.Jacuzzi)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Cabana.Habilitado)
+                @Html.DisplayNameFor(model => model.Habilitado)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Cabana.MaxPersonas)
+                @Html.DisplayNameFor(model => model.MaxPersonas)
             </th>
             <th>
                 Foto
@@ -104,32 +104,32 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                    @Html.DisplayFor(modelItem => item.Cabana.Id)
+                    @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Cabana.NombreCabana)
+                @Html.DisplayFor(modelItem => item.NombreCabana)
             </td>
             <td>
-                    @Html.DisplayFor(modelItem => item.Cabana.DescripCabana)
+                    @Html.DisplayFor(modelItem => item.DescripCabana)
             </td>
             <td>
-                    @Html.DisplayFor(modelItem => item.Cabana.Jacuzzi)
+                    @Html.DisplayFor(modelItem => item.Jacuzzi)
             </td>
             <td>
-                    @Html.DisplayFor(modelItem => item.Cabana.Habilitado)
+                    @Html.DisplayFor(modelItem => item.Habilitado)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Cabana.MaxPersonas)
+                @Html.DisplayFor(modelItem => item.MaxPersonas)
             </td>
-            @*<td>
-                <img src="/Imagenes/@item.Cabana.FotoCabana" height="100">
+            <td>
+                <img src="/Imagenes/@item.FotoCabana" height="100">
                 
-            </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.Cabana.Tipo.Nombre)
             </td>
             <td>
-                @Html.ActionLink("Ver", "Index", "Mantenimiento", new { CabanaId=item.Cabana.Id }) 
+                @Html.DisplayFor(modelItem => item.Tipo.NombreTipo)
+            </td>
+            <td>
+                @Html.ActionLink("Ver", "Index", "Mantenimiento", new { CabanaId=item.Id }) 
                    
             </td>
         </tr>

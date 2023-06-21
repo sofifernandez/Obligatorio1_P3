@@ -30,8 +30,25 @@ namespace Aplicacion.CU.MantenimientoCU
                 DescMant=m.DescMant,
                 CostoMant=m.CostoMant,
                 Personal=m.Personal,
-                Cabana=m.Cabana,
-                CabanaId=m.CabanaId
+                Cabana = new CabanaDTO()
+                {
+                    Id = m.Cabana.Id,
+                    NombreCabana = m.Cabana.NombreCabana.Value,
+                    DescripCabana = m.Cabana.DescripCabana.Value,
+                    Jacuzzi = m.Cabana.Jacuzzi,
+                    Habilitado = m.Cabana.Habilitado,
+                    MaxPersonas = m.Cabana.MaxPersonas,
+                    FotoCabana = m.Cabana.FotoCabana,
+                    Tipo = new TipoDTO()
+                    {
+                        Id = m.Cabana.Tipo.Id,
+                        NombreTipo = m.Cabana.Tipo.NombreTipo.Value,
+                        DescTipo = m.Cabana.Tipo.DescTipo.Value,
+                        CostoTipo = m.Cabana.Tipo.CostoTipo
+                    },
+                    TipoId = m.Cabana.TipoId
+                },
+                CabanaId =m.CabanaId
             });
         }
     }

@@ -35,7 +35,7 @@ namespace WebAPI.Controllers
         //LISTADO-----------------------------------------------------------------------------
 
         // GET: MantenimientoController/idCabana/3
-        [HttpGet("{idCabana}")]
+        [HttpGet("{idCabana}", Name = "GetMantenimientoCabana")]
         public ActionResult GetMantenimientoCabana(int idCabana)
         {
             try
@@ -93,7 +93,8 @@ namespace WebAPI.Controllers
             try
             {
                 CUAltaMantenimiento.Alta(mantenimiento);
-                return CreatedAtRoute("GetMantenimientoCabana", new { mantenimiento.CabanaId }, mantenimiento);
+                // return CreatedAtRoute("GetMantenimientoCabana", new { mantenimiento.CabanaId }, mantenimiento);
+                return Ok(mantenimiento);
             }
 
             catch (AltaMantenimientoException ex)

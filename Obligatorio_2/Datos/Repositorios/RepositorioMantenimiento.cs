@@ -28,6 +28,7 @@ namespace Datos.Repositorios
             var resultado = Contexto.Mantenimientos
                 .Where(mant => mant.CabanaId == idCabana)
                 .Include(mant => mant.Cabana)
+                .Include(m=>m.Cabana.Tipo)
                 .ToList();
             return resultado;
         }
@@ -42,6 +43,8 @@ namespace Datos.Repositorios
                  .Where(mant => mant.FechaMant.Date.CompareTo(startDate.Date) >= 0) //no funcionan los operadores = < > para comparar directamente
                  .Where(mant => mant.FechaMant.Date.CompareTo(endDate.Date) <= 0)
                  .OrderByDescending(mant => mant.CostoMant)
+                 .Include(mant => mant.Cabana)
+                 .Include(m => m.Cabana.Tipo)
                  .ToList();
             return resultado;
         }

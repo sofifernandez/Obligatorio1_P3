@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
+using System.Net.Http.Headers;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ClienteMVC.Controllers
 {
@@ -17,6 +19,30 @@ namespace ClienteMVC.Controllers
         {
             Conf = conf;
             URLBaseApiTipos = Conf.GetValue<string>("ApiTipos");
+        }
+
+        //-------------------------------------------------------------------------------------
+        //FUNCIONES AUXILIARES-----------------------------------------------------------------------------
+
+        private TipoViewModel FindTipoById(int id)
+        {
+            HttpClient cliente = new HttpClient();
+            string url = URLBaseApiTipos + id;
+            //cliente.DefaultRequestHeaders.Authorization =
+            //    new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("token"));
+            var tarea = cliente.GetAsync(url);
+            tarea.Wait();
+            string cuerpo = LeerContenido(tarea.Result);
+
+            if (tarea.Result.IsSuccessStatusCode)
+            {
+                TipoViewModel tema = JsonConvert.DeserializeObject<TipoViewModel>(cuerpo);
+                return tema;
+            }
+            else
+            {
+                throw new Exception(cuerpo);
+            }
         }
 
         private string LeerContenido(HttpResponseMessage respuesta)
@@ -47,8 +73,8 @@ namespace ClienteMVC.Controllers
 
             if (respuesta.IsSuccessStatusCode)
             {
-                List<TipoViewModel> cabanas = JsonConvert.DeserializeObject<List<TipoViewModel>>(body);
-                return View(cabanas);
+                List<TipoViewModel> tipos = JsonConvert.DeserializeObject<List<TipoViewModel>>(body);
+                return View(tipos);
             }
             else
             {
@@ -57,26 +83,32 @@ namespace ClienteMVC.Controllers
             }
         }
 
-        /*
+        
         //-------------------------------------------------------------------------------------
         //BÚSQUEDA-----------------------------------------------------------------------------
         [HttpPost]
         public ActionResult Index(string nombre)
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            //{
+            //    return Redirect("/Usuario/Login");
+            //}
+            HttpClient cliente = new HttpClient();
+            string url = URLBaseApiTipos +"/FindBYNombre/" + nombre;
+            Task<HttpResponseMessage> tarea1 = cliente.GetAsync(url);
+            tarea1.Wait();
+            HttpResponseMessage respuesta = tarea1.Result;
+            string body = LeerContenido(respuesta);
+
+            if (respuesta.IsSuccessStatusCode)
             {
-                return Redirect("/Usuario/Login");
-            }
-            Tipo tipo = RepositorioTipo.FindTipoByNombre(nombre);
-           
-            if (tipo == null)
-            {
-                ViewBag.Error = "No existe un tipo de cabaña con ese nombre";
-                return View("ResultadoBusqueda");
+                TipoViewModel tipo = JsonConvert.DeserializeObject<TipoViewModel>(body);
+                return View("ResultadoBusqueda", tipo);
             }
             else 
             {
-                return View("ResultadoBusqueda", tipo);
+                ViewBag.NotFound = body;
+                return View("ResultadoBusqueda", new TipoViewModel());
             }
             
         }
@@ -87,12 +119,16 @@ namespace ClienteMVC.Controllers
         //DETALLES-----------------------------------------------------------------------------
         public ActionResult Details(int id)
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            try
             {
-                return Redirect("/Usuario/Login");
+                TipoViewModel vm = FindTipoById(id);
+                return View(vm);
             }
-            Tipo tipo= RepositorioTipo.FindById(id);
-            return View(tipo);
+            catch (Exception ex)
+            {
+                ViewBag.Mensaje = ex.Message;
+                return View();
+            }
         }
 
         //-------------------------------------------------------------------------------------
@@ -108,21 +144,45 @@ namespace ClienteMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Tipo tipo)
+        public ActionResult Create(TipoViewModel tipo)
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
-            {
-                return Redirect("/Usuario/Login");
-            }
+            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            //{
+            //    return Redirect("/Usuario/Login");
+            //}
             try
             {
-                AltaTipo.Alta(tipo);
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    HttpClient cliente = new HttpClient();
+                //    cliente.DefaultRequestHeaders.Authorization =
+                //new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("token"));
+                    Task<HttpResponseMessage> tarea = cliente.PostAsJsonAsync(URLBaseApiTipos, tipo);
+                    tarea.Wait();
+                    HttpResponseMessage respuesta = tarea.Result;
+
+                    if (respuesta.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction(nameof(Index));
+                    }
+                    else
+                    {
+
+                        ViewBag.Mensaje = LeerContenido(respuesta);
+                    }
+                }
+                else
+                {
+                    ViewBag.Mensaje = "Los datos ingresados no son válidos";
+                }
+
+                return View(tipo);
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                ViewBag.ErrorInfo = ex.Message;
-                return View();
+                ViewBag.Mensaje = "Oops! Ocurrió un error inesperado:" + ex.Message;
+                return View(tipo);
             }
         }
 
@@ -130,45 +190,87 @@ namespace ClienteMVC.Controllers
         //EDITAR-----------------------------------------------------------------------------
         public ActionResult Edit(int id)
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            //{
+            //    return Redirect("/Usuario/Login");
+            //}
+            try
             {
-                return Redirect("/Usuario/Login");
+                TipoViewModel vm = FindTipoById(id);
+                return View(vm);
             }
-            Tipo tipo = RepositorioTipo.FindById(id);
-            return View(tipo);
+            catch (Exception ex)
+            {
+                ViewBag.Mensaje = ex.Message;
+                return View();
+            }
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Tipo tipo)
+        public ActionResult Edit(int id, TipoViewModel tipo)
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
-            {
-                return Redirect("/Usuario/Login");
-            }
             try
             {
+                if (ModelState.IsValid)
+                {
+                    string url = URLBaseApiTipos + tipo.Id;
+                    HttpClient cliente = new HttpClient();
+                    cliente.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("token"));
+                    Task<HttpResponseMessage> tarea = cliente.PutAsJsonAsync(url, tipo);
+                    tarea.Wait();
+                    HttpResponseMessage respuesta = tarea.Result;
 
-                EditarTipo.Editar(tipo);
-                return RedirectToAction(nameof(Index));
+                    if (respuesta.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction(nameof(Index));
+                    }
+                    //else
+                    //{
+                    //    if (respuesta.StatusCode == System.Net.HttpStatusCode.Unauthorized ||
+                    //        respuesta.StatusCode == System.Net.HttpStatusCode.Forbidden)
+                    //    {
+                    //        return RedirectToAction("Login", "Usuarios");
+                    //    }
+                    //    else
+                    //    {
+                    //        ViewBag.Mensaje = LeerContenido(respuesta);
+                    //    }
+                    //}
+                }
+                else
+                {
+                    ViewBag.Mensaje = "Los datos ingresados no son válidos";
+                }
             }
             catch (Exception ex)
             {
-                ViewBag.ErrorInfo = ex.Message;
-                return View();
+                ViewBag.Mensaje = ex.Message;
+                return View(tipo);
             }
+
+            return View(tipo);
         }
 
         //-------------------------------------------------------------------------------------
         //DELETE-----------------------------------------------------------------------------
         public ActionResult Delete(int id)
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            //{
+            //    return Redirect("/Usuario/Login");
+            //}
+            try
             {
-                return Redirect("/Usuario/Login");
+                TipoViewModel vm = FindTipoById(id);
+                return View(vm);
             }
-            Tipo tipo=RepositorioTipo.FindById(id);
-            return View(tipo);
+            catch (Exception ex)
+            {
+                ViewBag.Mensaje = ex.Message;
+                return View();
+            }
         }
 
         
@@ -176,22 +278,37 @@ namespace ClienteMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
-            {
-                return Redirect("/Usuario/Login");
-            }
+            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
+            //{
+            //    return Redirect("/Usuario/Login");
+            //}
             try
             {
-                RepositorioTipo.Remove(id);
-                return RedirectToAction(nameof(Index));
+                HttpClient cliente = new HttpClient();
+                string url = URLBaseApiTipos + id;
+                //cliente.DefaultRequestHeaders.Authorization =
+                //new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("token"));
+                var tarea = cliente.DeleteAsync(url);
+                tarea.Wait();
+
+                HttpResponseMessage respuesta = tarea.Result;
+
+                if (respuesta.IsSuccessStatusCode)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    ViewBag.Mensaje = LeerContenido(respuesta);
+                    return View();
+                }
             }
-            catch  (Exception ex)
+            catch
             {
-                Tipo tipo = RepositorioTipo.FindById(id);
-                ViewBag.ErrorInfo = ex.Message;
-                return View(tipo);
+                ViewBag.Mensaje = "No se pudo eliminar el tema";
+                return View();
             }
         }
-        */
+        
     }
 }

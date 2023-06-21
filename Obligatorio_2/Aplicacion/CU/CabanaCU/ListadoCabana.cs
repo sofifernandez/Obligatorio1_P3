@@ -1,5 +1,6 @@
 ﻿using Aplicacion.InterfacesCU.ICabana;
 using Dominio.InterfacesRepositorios;
+using Dominio.EntidadesDominio;
 using DTOs;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,8 @@ namespace Aplicacion.CU.CabanaCU
 
         public IEnumerable<CabanaDTO> ObtenerListado()
         {
-            IEnumerable<CabanaDTO> cabanas = RepoCabana.FindAll().Select(c => new CabanaDTO()
+            IEnumerable<Cabana> cabanas = RepoCabana.FindAll().OfType<Cabana>();
+            return cabanas.Select(c => new CabanaDTO()
                                         {
                                             Id= c.Id,
                                             NombreCabana = c.NombreCabana.Value,
@@ -31,10 +33,14 @@ namespace Aplicacion.CU.CabanaCU
                                             Habilitado = c.Habilitado,
                                             MaxPersonas = c.MaxPersonas,
                                             FotoCabana = c.FotoCabana,
-                                            Tipo = c.Tipo,
+                                            Tipo = new TipoDTO() 
+                                            {   Id=c.Tipo.Id,
+                                                NombreTipo=c.Tipo.NombreTipo.Value,
+                                                DescTipo=c.Tipo.DescTipo.Value,
+                                                CostoTipo=c.Tipo.CostoTipo
+                                            },
                                             TipoId = c.TipoId
                                         });
-            return cabanas;
         }
     }
 }

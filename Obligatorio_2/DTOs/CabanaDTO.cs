@@ -18,7 +18,7 @@ namespace DTOs
         public bool Habilitado { get; set; }      
         public int? MaxPersonas { get; set; }
         public string? FotoCabana { get; set; }
-        public Tipo? Tipo { get; set; }
+        public TipoDTO? Tipo { get; set; }
         public int TipoId { get; set; }
     }
 }

@@ -2,13 +2,24 @@
 Cabana --> da error el alta por los value object, el json de prueba que manda es correcto?
 Mantenimiento --> idem cabana
 
+Las nuevas concsultas que devulven otro object, como se mandan a la vista?
+
+
+
+
+
 - CLIENTE-MVC
 
 - JWT (dejar para lo ultimo cuando funcione todo)
 
 - Documentar
 
+-UML
 
 PREGUNTAS:
 - En el controlador de la webAPI, para devolver algo de un catch, cómo diferenciamos un 500 de un 400? Por ejemplo en alta mantenimiento, podría haber un error de servidor o uno de la logica, como que no se puede agregar mas de 3 en la misma fecha
 Ver create tipo, cuando hay un error por ejemplo en la cantidad de caracteres de la descripcion, muestra el mensaje pero con un server error
+
+excepciones propias--> no se puede elminar tipo en uso
+mantenimiento --> 3 en un día
+409 conflict

@@ -29,7 +29,7 @@ namespace Aplicacion.CU.MantenimientoCU
                 DescMant = m.DescMant,
                 CostoMant = m.CostoMant,
                 Personal = m.Personal,
-                Cabana = m.Cabana,
+                //Cabana = m.Cabana,
                 CabanaId = m.CabanaId
 
             };

@@ -176,13 +176,13 @@ namespace WebAPI.Controllers
             try
             {
                 CUAltaCabana.Alta(cabana);
-                return CreatedAtRoute("Get", new { id = cabana.Id }, cabana);
+                return Ok(cabana);
             }
             catch (NombreCabanaException ex)
             {
                 return BadRequest(ex.Message);
             }
-            catch 
+            catch (Exception ex)
             {
                 return StatusCode(500, "Ocurrió un error inesperado");
             }    

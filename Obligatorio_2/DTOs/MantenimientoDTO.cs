@@ -1,4 +1,4 @@
-﻿using Dominio.EntidadesDominio;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -15,7 +15,7 @@ namespace DTOs
         public string? DescMant { get; set; }
         public int? CostoMant { get; set; }
         public string? Personal { get; set; }
-        public Cabana? Cabana { get; set; }
+        public CabanaDTO? Cabana { get; set; }
         public int CabanaId { get; set; }
     }
 }

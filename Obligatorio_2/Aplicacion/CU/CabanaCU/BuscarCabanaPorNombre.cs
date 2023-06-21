@@ -30,7 +30,13 @@ namespace Aplicacion.CU.CabanaCU
                                                             Habilitado = c.Habilitado,
                                                             MaxPersonas = c.MaxPersonas,
                                                             FotoCabana = c.FotoCabana,
-                                                            Tipo = c.Tipo,
+                                                            Tipo = new TipoDTO()
+                                                            {
+                                                                Id = c.Tipo.Id,
+                                                                NombreTipo = c.Tipo.NombreTipo.Value,
+                                                                DescTipo = c.Tipo.DescTipo.Value,
+                                                                CostoTipo = c.Tipo.CostoTipo
+                                                            },
                                                             TipoId = c.TipoId
                                                         });
 
