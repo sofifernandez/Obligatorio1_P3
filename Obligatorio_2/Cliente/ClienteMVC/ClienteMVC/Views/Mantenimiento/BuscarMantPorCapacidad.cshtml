@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ClienteMVC.Models.MantenimientoCapacidadViewModel>
+
+@{
+    ViewData["Title"] = "BuscarMantPorCapacidad";
+}
+
+<div>
+    <div class="col-2 border border-1 border-dark rounded mt-4 p-2 m-1">
+        <h5>Mantenimientos del personal según capacidad</h5>
+        <form asp-action="BuscarMantPorCapacidad">
+            <div class="form-group">
+                <input type="number" name="desde" placeholder="Cap. mínima" />
+            </div>
+            <div class="form-group">
+                <input type="number" name="hasta" placeholder="Cap. máxima" />
+            </div>
+            <div class="form-group mt-2">
+                <input type="submit" value="Buscar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<h1>Resultado</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Personal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Personal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@if (ViewBag.NotFound != null)
+{
+    <div class="alert alert-danger">@ViewBag.NotFound</div>
+}
+

@@ -1,0 +1,48 @@
+﻿@model ClienteMVC.Models.TipoViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editar</h1>
+
+<h4>Tipo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="NombreTipo" class="control-label"></label>
+                <input asp-for="NombreTipo" class="form-control" readonly />
+                <span asp-validation-for="NombreTipo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DescTipo" class="control-label"></label>
+                <input asp-for="DescTipo" class="form-control" />
+                <span asp-validation-for="DescTipo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CostoTipo" class="control-label"></label>
+                <input asp-for="CostoTipo" class="form-control" />
+                <span asp-validation-for="CostoTipo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+        @if (ViewBag.ErrorInfo!=null)
+        {
+            <div class="mt-3 alert alert-danger">@ViewBag.ErrorInfo</div>
+        }
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

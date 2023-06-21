@@ -1,0 +1,97 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Cliente
+build_property.RootNamespace = Cliente
+build_property.ProjectDir = C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\Cliente2\Cliente\Cliente\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\Cliente2\Cliente\Cliente
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente2/Cliente/Cliente/Views/Cabana/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FiYW5hXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente2/Cliente/Cliente/Views/Cabana/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FiYW5hXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente2/Cliente/Cliente/Views/Cabana/ResultadoBusqueda.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FiYW5hXFJlc3VsdGFkb0J1c3F1ZWRhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente2/Cliente/Cliente/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente2/Cliente/Cliente/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente2/Cliente/Cliente/Views/Mantenimiento/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudGVuaW1pZW50b1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente2/Cliente/Cliente/Views/Mantenimiento/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudGVuaW1pZW50b1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente2/Cliente/Cliente/Views/Mantenimiento/MantEntreFechas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudGVuaW1pZW50b1xNYW50RW50cmVGZWNoYXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente2/Cliente/Cliente/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente2/Cliente/Cliente/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente2/Cliente/Cliente/Views/Tipo/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente2/Cliente/Cliente/Views/Tipo/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente2/Cliente/Cliente/Views/Tipo/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente2/Cliente/Cliente/Views/Tipo/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente2/Cliente/Cliente/Views/Tipo/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente2/Cliente/Cliente/Views/Tipo/ResultadoBusqueda.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb1xSZXN1bHRhZG9CdXNxdWVkYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente2/Cliente/Cliente/Views/Usuario/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente2/Cliente/Cliente/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente2/Cliente/Cliente/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente2/Cliente/Cliente/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-ggjxy2wphj

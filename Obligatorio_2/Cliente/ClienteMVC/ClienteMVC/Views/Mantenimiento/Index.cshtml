@@ -1,0 +1,83 @@
+﻿@model IEnumerable<ClienteMVC.Models.MantenimientoViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Mantenimientos para la cabaña @ViewBag.Cabana.NombreCabana</h1>
+
+<div class="container d-flex">
+    <div class="col-3 border border-1 border-dark rounded mt-4 p-2 m-1">
+        <h5>Buscar entre fechas</h5>
+        <form asp-action="MantEntreFechas">
+            <div class="form-group">
+                <input type="date" name="fechaIni" placeholder="Desde" required />
+            </div>
+            <div class="form-group">
+                <input type="date" name="fechaFin" placeholder="Hasta" required />
+            </div>
+            <div class="form-group" hidden>
+                <input type="number" name="CabanaId" value="@ViewBag.Cabana.Id" readonly />
+            </div>
+            <div class="form-group mt-2">
+                <input type="submit" value="Buscar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    
+</div>
+
+
+<p class="mt-2">
+    @Html.ActionLink("Agregar nuevo", "Create", new {  CabanaId=ViewBag.Cabana.Id })
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaMant)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescMant)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CostoMant)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Personal)
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaMant)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescMant)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CostoMant)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Personal)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@if (ViewBag.NotFound != null)
+{
+    <div class="alert alert-danger">@ViewBag.NotFound</div>
+}
+
+@Html.ActionLink("Volver", "Index", "Cabana")

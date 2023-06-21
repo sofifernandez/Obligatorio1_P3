@@ -1,0 +1,65 @@
+﻿@model IEnumerable<ClienteMVC.Models.CabanaViewModelByMonto>
+
+@{
+    ViewData["Title"] = "BuscarMonto";
+}
+
+<h1>Resultado de búsqueda</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreCabana)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxPersonas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Jacuzzi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Habilitado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Monto)
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCabana)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxPersonas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Jacuzzi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Habilitado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Monto)
+            </td>
+            
+        </tr>
+}
+    </tbody>
+</table>
+
+@if (ViewBag.NotFound != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.NotFound
+    </div>
+}
+
+<div>
+    <a asp-action="Index">Volver</a>
+</div>
+
