@@ -5,7 +5,7 @@ namespace ClienteMVC {
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            //builder.Services.AddSession();
+            builder.Services.AddSession();
             builder.Services.AddHttpContextAccessor();
 
             var app = builder.Build();
@@ -21,11 +21,11 @@ namespace ClienteMVC {
 
            // app.UseAuthorization();
 
-            //app.UseSession();
+            app.UseSession();
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Tipo}/{action=Index}/{id?}");
+                pattern: "{controller=Usuario}/{action=Login}/{id?}");
 
             app.Run();
 

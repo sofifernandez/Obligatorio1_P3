@@ -57,12 +57,6 @@ namespace ClienteMVC.Controllers
         //LISTADO-----------------------------------------------------------------------------
         public ActionResult Index()
         {
-            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
-            //{
-            //    return Redirect("/Usuario/Login");
-            //}
-
-
             HttpClient cliente = new HttpClient();
             string url = URLBaseApiTipos;
             Task<HttpResponseMessage> tarea1 = cliente.GetAsync(url);
@@ -93,8 +87,8 @@ namespace ClienteMVC.Controllers
             //{
             //    return Redirect("/Usuario/Login");
             //}
-            HttpClient cliente = new HttpClient();
-            string url = URLBaseApiTipos +"/FindBYNombre/" + nombre;
+            HttpClient cliente = new HttpClient(); 
+            string url = URLBaseApiTipos + "FindByNombre/" + nombre;
             Task<HttpResponseMessage> tarea1 = cliente.GetAsync(url);
             tarea1.Wait();
             HttpResponseMessage respuesta = tarea1.Result;
@@ -119,6 +113,7 @@ namespace ClienteMVC.Controllers
         //DETALLES-----------------------------------------------------------------------------
         public ActionResult Details(int id)
         {
+
             try
             {
                 TipoViewModel vm = FindTipoById(id);
@@ -135,10 +130,8 @@ namespace ClienteMVC.Controllers
         //CREAR-----------------------------------------------------------------------------
         public ActionResult Create()
         {
-            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
-            //{
-            //    return Redirect("/Usuario/Login");
-            //}
+            if (HttpContext.Session.GetString("logeado") != "registrado") return RedirectToAction("login", "usuario");
+
             return View();
         }
 
@@ -146,17 +139,14 @@ namespace ClienteMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(TipoViewModel tipo)
         {
-            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
-            //{
-            //    return Redirect("/Usuario/Login");
-            //}
+          
             try
             {
                 if (ModelState.IsValid)
                 {
                     HttpClient cliente = new HttpClient();
-                //    cliente.DefaultRequestHeaders.Authorization =
-                //new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("token"));
+                    cliente.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("token"));
                     Task<HttpResponseMessage> tarea = cliente.PostAsJsonAsync(URLBaseApiTipos, tipo);
                     tarea.Wait();
                     HttpResponseMessage respuesta = tarea.Result;
@@ -190,10 +180,12 @@ namespace ClienteMVC.Controllers
         //EDITAR-----------------------------------------------------------------------------
         public ActionResult Edit(int id)
         {
-            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
-            //{
-            //    return Redirect("/Usuario/Login");
-            //}
+            if (HttpContext.Session.GetString("logeado") != "registrado")
+            {
+                return RedirectToAction("login", "usuario");
+            }
+                
+
             try
             {
                 TipoViewModel vm = FindTipoById(id);
@@ -216,8 +208,8 @@ namespace ClienteMVC.Controllers
                 {
                     string url = URLBaseApiTipos + tipo.Id;
                     HttpClient cliente = new HttpClient();
-                //    cliente.DefaultRequestHeaders.Authorization =
-                //new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("token"));
+                    cliente.DefaultRequestHeaders.Authorization =
+                        new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("token"));
                     Task<HttpResponseMessage> tarea = cliente.PutAsJsonAsync(url, tipo);
                     tarea.Wait();
                     HttpResponseMessage respuesta = tarea.Result;
@@ -257,10 +249,7 @@ namespace ClienteMVC.Controllers
         //DELETE-----------------------------------------------------------------------------
         public ActionResult Delete(int id)
         {
-            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
-            //{
-            //    return Redirect("/Usuario/Login");
-            //}
+            if (HttpContext.Session.GetString("logeado") != "registrado") return RedirectToAction("login", "usuario");
             try
             {
                 TipoViewModel vm = FindTipoById(id);
@@ -278,17 +267,14 @@ namespace ClienteMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
         {
-            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
-            //{
-            //    return Redirect("/Usuario/Login");
-            //}
+         
             try
             {
                 HttpClient cliente = new HttpClient();
                 string url = URLBaseApiTipos + id;
                 TipoViewModel vm = FindTipoById(id);
-                //cliente.DefaultRequestHeaders.Authorization =
-                //new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("token"));
+                cliente.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("token"));
                 var tarea = cliente.DeleteAsync(url);
                 tarea.Wait();
 

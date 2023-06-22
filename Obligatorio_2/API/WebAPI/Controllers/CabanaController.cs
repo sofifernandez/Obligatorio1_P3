@@ -2,6 +2,7 @@
 using Aplicacion.InterfacesCU.ICabana;
 using Dominio.ExcepcionesPropias;
 using DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 
@@ -152,7 +153,7 @@ namespace WebAPI.Controllers
         public IActionResult FindByMonto(int monto) {
             try
             {
-                IEnumerable<Object> cabanas= CUBuscarCabanaPorMonto.FindCabanaPorMonto(monto);
+                IEnumerable<Object> cabanas = CUBuscarCabanaPorMonto.FindCabanaPorMonto(monto);
                 if (cabanas.Count() == 0) return NotFound("No hay Cabañas para esta busqueda");
                 return Ok(cabanas);
             }
@@ -170,6 +171,7 @@ namespace WebAPI.Controllers
 
         // POST api/<CabanaController>
         [HttpPost]
+        [Authorize]
         public IActionResult Post([FromBody] CabanaDTO? cabana)
         {
             if (cabana == null) return BadRequest("No se ingreso informacion sobre la Cabaña");

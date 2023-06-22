@@ -1,15 +1,15 @@
--- CREATE DATABASE ObligatorioP3_V2
--- Consola Nugget --> add-migration inicial, update-database
+ CREATE DATABASE ObligatorioP3_V2
+Consola Nugget --> add-migration inicial, update-database
 
 
 
 
 USE ObligatorioP3_V2
 
-/*
+
 INSERT INTO ObligatorioP3_V2.dbo.Tipos (Nombre, DescTipo, CostoTipo)
 SELECT Nombre, DescTipo, CostoTipo FROM ObligatorioP3.dbo.Tipos;
-*/
+
 
 /*
 INSERT INTO ObligatorioP3_V2.dbo.Usuarios (Email, Password)
@@ -33,7 +33,7 @@ SELECT FechaMant, DescMant,CostoMant,Personal,CabanaId FROM ObligatorioP3.dbo.Ma
 
 
 
-/*
+
 
 USE [ObligatorioP3_V2]
 GO
@@ -131,4 +131,4 @@ INSERT [dbo].[Usuarios] ([Id], [Email], [Password]) VALUES (3, N'admin@gmail.com
 GO
 SET IDENTITY_INSERT [dbo].[Usuarios] OFF
 GO
-*/
+

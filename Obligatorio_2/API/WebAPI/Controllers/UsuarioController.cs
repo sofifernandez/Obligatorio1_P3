@@ -5,8 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class UsuarioController : ControllerBase
     {
+       
         public ILogin CULogin { get; set; }
 
         public UsuarioController(ILogin cuLogin)

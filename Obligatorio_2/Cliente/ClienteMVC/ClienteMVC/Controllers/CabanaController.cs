@@ -8,6 +8,8 @@ using ClienteMVC.DTOs;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Threading;
 using System.Collections.Generic;
+using NuGet.Common;
+using System.Net.Http.Headers;
 
 namespace ClienteMVC.Controllers
 {
@@ -132,12 +134,13 @@ namespace ClienteMVC.Controllers
             string body = LeerContenido(respuesta);
 
             HttpResponseMessage respuestaTipos = TraerTipos();
+            List<TipoViewModel> tipos = JsonConvert.DeserializeObject<List<TipoViewModel>>(LeerContenido(respuestaTipos));
 
             if (respuesta.IsSuccessStatusCode && respuestaTipos.IsSuccessStatusCode)
             {
                 List<CabanaDTO> cabanas = JsonConvert.DeserializeObject<List<CabanaDTO>>(body);
-                List<TipoViewModel> tipos = JsonConvert.DeserializeObject<List<TipoViewModel>>(LeerContenido(respuestaTipos));
-                ViewBag.Tipos = tipos;
+                List<TipoViewModel> tipos1 = JsonConvert.DeserializeObject<List<TipoViewModel>>(LeerContenido(respuestaTipos));
+                ViewBag.Tipos = tipos1;
                 return View(cabanas);
             }
             else
@@ -293,10 +296,7 @@ namespace ClienteMVC.Controllers
         //CREATE-------------------------------------------------------------------------------------------------
         public ActionResult Create()
         {
-            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
-            //{
-            //    return Redirect("/Usuario/Login");
-            //}
+            if (HttpContext.Session.GetString("logeado") != "registrado") return RedirectToAction("login", "usuario");
 
             //Traer los tipos:
             HttpClient client = new HttpClient();
@@ -328,21 +328,16 @@ namespace ClienteMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CabanaViewModel vm)
         {
-            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
-            //{
-            //    return Redirect("/Usuario/Login");
-            //}
-
+            HttpResponseMessage respuestaTipos = TraerTipos();
+            List<TipoViewModel> tipos = JsonConvert.DeserializeObject<List<TipoViewModel>>(LeerContenido(respuestaTipos));
+            vm.Tipos = tipos;
             try
             {
                 string rutaWwwRoot = WHE.WebRootPath;
                 string rutaCarpeta = Path.Combine(rutaWwwRoot, "Imagenes"); //Genero la ruta hasta la carpeta
                 FileInfo fi = new FileInfo(vm.Foto.FileName);
                 string extension = fi.Extension; //me quedo solo con la extension del archivo
-                if (extension != ".png" && extension != ".jpg")
-                {
-                    throw new Exception("El archivo debe ser .png o .jpg");
-                }
+                
                 string nomArchivoFoto = vm.Cabana.NombreCabana + "_001" + extension;
                 string rutaArchivo = Path.Combine(rutaCarpeta, nomArchivoFoto); //Genero la ruta hasta la foto
 
@@ -350,8 +345,20 @@ namespace ClienteMVC.Controllers
                 vm.Cabana.FotoCabana = nomArchivoFoto;
 
                 HttpClient cliente = new HttpClient();
+
+                cliente.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("token"));
+
                 var tarea = cliente.PostAsJsonAsync(URLBaseApiCabanas, vm.Cabana);
                 tarea.Wait();
+                
+
+                
+
+                if (extension != ".png" && extension != ".jpg")
+                {
+                    throw new Exception("El archivo debe ser .png o .jpg");
+                }
 
                 if (tarea.Result.IsSuccessStatusCode)
                 {
@@ -363,12 +370,7 @@ namespace ClienteMVC.Controllers
                 {
                     var tarea2 = tarea.Result.Content.ReadAsStringAsync();
                     tarea2.Wait();
-
-
-                    //PENDIENTE TRAER DE NUEVO LOS TIPO PARA LA SELECT
-                    ViewBag.Mensaje = tarea2.Result;
-                    List<TipoViewModel> tiposCabana = JsonConvert.DeserializeObject<List<TipoViewModel>>(tarea2.Result);
-                    vm.Tipos = tiposCabana;
+                    ViewBag.ErrorInfo = tarea2.Result; //Cuando Da error por la descripcion<10 pero larga OCURRIO ERROR INESPERADO
                     return View(vm);
                 }
 

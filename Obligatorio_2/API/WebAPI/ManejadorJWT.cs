@@ -24,7 +24,6 @@ namespace WebAPI
                 {
                     new Claim(ClaimTypes.Email, usu.Email),
                     new Claim("ID", usu.Id.ToString()),
-                    //new Claim(ClaimTypes.Role, usu.Rol)
                 }),
                 Expires = DateTime.UtcNow.AddMinutes(10),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(clave),

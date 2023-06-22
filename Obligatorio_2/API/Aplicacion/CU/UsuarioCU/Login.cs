@@ -30,8 +30,7 @@ namespace Aplicacion.CU.UsuarioCU
                 {
                     Id = usu.Id,
                     Email = usu.Email,
-                    Password = usu.Password,
-                    //Rol = usu.Rol
+                    Password = usu.Password
                 };
             }
 

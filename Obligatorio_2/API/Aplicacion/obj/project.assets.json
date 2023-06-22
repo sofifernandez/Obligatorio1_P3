@@ -640,6 +640,25 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Authentication.JwtBearer/7.0.7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "6.15.1"
+        },
+        "compile": {
+          "lib/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Microsoft.AspNetCore.Razor.Language/6.0.11": {
         "type": "package",
         "compile": {
@@ -4026,6 +4045,7 @@
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "ExcepcionesPropias": "1.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.7",
           "Microsoft.EntityFrameworkCore": "7.0.7",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.7",
           "Microsoft.Extensions.Configuration": "7.0.0",
@@ -4045,6 +4065,7 @@
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "Dominio": "1.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.7",
           "Microsoft.EntityFrameworkCore": "7.0.7",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.7",
           "Microsoft.Extensions.Configuration": "7.0.0",
@@ -4063,6 +4084,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.7",
           "Microsoft.EntityFrameworkCore": "7.0.7",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.7",
           "Microsoft.Extensions.Configuration": "7.0.0",
@@ -4862,6 +4884,21 @@
         "lib/netstandard1.0/zh-Hant/Humanizer.resources.dll",
         "lib/netstandard2.0/zh-Hant/Humanizer.resources.dll",
         "logo.png"
+      ]
+    },
+    "Microsoft.AspNetCore.Authentication.JwtBearer/7.0.7": {
+      "sha512": "V3ftCQYDWxHogvrZ3XEr3TNCACqoxMuBwnCI5kq+GeuFGh6u0VYDMrRwvXvFKxdFHgFwS9CFxq4/p1csSVPI8g==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.authentication.jwtbearer/7.0.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll",
+        "lib/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.xml",
+        "microsoft.aspnetcore.authentication.jwtbearer.7.0.7.nupkg.sha512",
+        "microsoft.aspnetcore.authentication.jwtbearer.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Razor.Language/6.0.11": {
@@ -11688,6 +11725,7 @@
     "net7.0": [
       "DTOs >= 1.0.0",
       "Dominio >= 1.0.0",
+      "Microsoft.AspNetCore.Authentication.JwtBearer >= 7.0.7",
       "Microsoft.EntityFrameworkCore >= 7.0.7",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.7",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.7",
@@ -11699,23 +11737,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\sofia\\.nuget\\packages\\": {},
+    "C:\\Users\\lucas\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio\\Obligatorio_2\\API\\Aplicacion\\Aplicacion.csproj",
+      "projectUniqueName": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre 3\\Programacion 3\\Obligatorio1_P3\\Obligatorio1_P3\\Obligatorio_2\\API\\Aplicacion\\Aplicacion.csproj",
       "projectName": "Aplicacion",
-      "projectPath": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio\\Obligatorio_2\\API\\Aplicacion\\Aplicacion.csproj",
-      "packagesPath": "C:\\Users\\sofia\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio\\Obligatorio_2\\API\\Aplicacion\\obj\\",
+      "projectPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre 3\\Programacion 3\\Obligatorio1_P3\\Obligatorio1_P3\\Obligatorio_2\\API\\Aplicacion\\Aplicacion.csproj",
+      "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre 3\\Programacion 3\\Obligatorio1_P3\\Obligatorio1_P3\\Obligatorio_2\\API\\Aplicacion\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\sofia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -11724,17 +11762,18 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio\\Obligatorio_2\\API\\Dominio\\Dominio.csproj": {
-              "projectPath": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio\\Obligatorio_2\\API\\Dominio\\Dominio.csproj"
+            "C:\\Users\\lucas\\Desktop\\ORT\\Semestre 3\\Programacion 3\\Obligatorio1_P3\\Obligatorio1_P3\\Obligatorio_2\\API\\Dominio\\Dominio.csproj": {
+              "projectPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre 3\\Programacion 3\\Obligatorio1_P3\\Obligatorio1_P3\\Obligatorio_2\\API\\Dominio\\Dominio.csproj"
             },
-            "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio\\Obligatorio_2\\API\\DTOs\\DTOs.csproj": {
-              "projectPath": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio\\Obligatorio_2\\API\\DTOs\\DTOs.csproj"
+            "C:\\Users\\lucas\\Desktop\\ORT\\Semestre 3\\Programacion 3\\Obligatorio1_P3\\Obligatorio1_P3\\Obligatorio_2\\API\\DTOs\\DTOs.csproj": {
+              "projectPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre 3\\Programacion 3\\Obligatorio1_P3\\Obligatorio1_P3\\Obligatorio_2\\API\\DTOs\\DTOs.csproj"
             }
           }
         }
@@ -11749,6 +11788,10 @@
       "net7.0": {
         "targetAlias": "net7.0",
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.JwtBearer": {
+            "target": "Package",
+            "version": "[7.0.7, )"
+          },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
             "version": "[7.0.7, )"

@@ -82,6 +82,7 @@ namespace WebAPI.Controllers
         //CREATE-------------------------------------------------------------------------------------------------
 
         [HttpPost]
+        [Authorize]
         public IActionResult Post([FromBody] TipoDTO? tipo)
         {
             if (tipo == null) return BadRequest("No se ingreso informacion sobre el tipo");
@@ -100,6 +101,7 @@ namespace WebAPI.Controllers
 
         // PUT api/<TemasController>/5
         [HttpPut("{id}")]
+        [Authorize]
         public IActionResult Put(int id, [FromBody] TipoDTO? tipo) //UPDATE
         {
             if (id <= 0 || tipo == null || tipo.Id != id) return BadRequest("Los datos proporcionados no son válidos");
@@ -119,6 +121,7 @@ namespace WebAPI.Controllers
 
         // DELETE api/<TipoController>/5
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete(int id) //DELETE
         {
             if (id <= 0) return BadRequest("El id proporcionado no es válido");

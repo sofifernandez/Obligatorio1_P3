@@ -11655,23 +11655,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\sofia\\.nuget\\packages\\": {},
+    "C:\\Users\\lucas\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio\\Obligatorio_2\\Cliente\\ClienteMVC\\ClienteMVC\\ClienteMVC.csproj",
+      "projectUniqueName": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre 3\\Programacion 3\\Obligatorio1_P3\\Obligatorio1_P3\\Obligatorio_2\\Cliente\\ClienteMVC\\ClienteMVC\\ClienteMVC.csproj",
       "projectName": "ClienteMVC",
-      "projectPath": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio\\Obligatorio_2\\Cliente\\ClienteMVC\\ClienteMVC\\ClienteMVC.csproj",
-      "packagesPath": "C:\\Users\\sofia\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sofia\\OneDrive\\ORT\\Semestre3\\P3\\Obligatorio\\Obligatorio_2\\Cliente\\ClienteMVC\\ClienteMVC\\obj\\",
+      "projectPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre 3\\Programacion 3\\Obligatorio1_P3\\Obligatorio1_P3\\Obligatorio_2\\Cliente\\ClienteMVC\\ClienteMVC\\ClienteMVC.csproj",
+      "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\lucas\\Desktop\\ORT\\Semestre 3\\Programacion 3\\Obligatorio1_P3\\Obligatorio1_P3\\Obligatorio_2\\Cliente\\ClienteMVC\\ClienteMVC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\sofia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -11680,6 +11680,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

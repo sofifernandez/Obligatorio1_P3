@@ -4,6 +4,7 @@ using Dominio.EntidadesDominio;
 using Dominio.ExcepcionesPropias;
 using DTOs;
 using ExcepcionesPropias;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -52,7 +53,7 @@ namespace WebAPI.Controllers
 
         //------------------------------------------------------------------------------------------
         //BÚSQUEDAS------------------------------------------------------------------------------------
-
+      
         [HttpGet("start/{startDate}/end/{endDate}/Cabana/{CabanaId}", Name = "FindMantDeCabana")]
         public ActionResult GetMantenimientoFechas(DateTime startDate, DateTime endDate, int CabanaId) 
         {
@@ -69,6 +70,8 @@ namespace WebAPI.Controllers
             }
 
         }
+
+
 
         [HttpGet("TotalPorCapacidad/{desde}/{hasta}")]
         public IActionResult ShowMontoPorCapacidad(int desde, int hasta) {
@@ -88,6 +91,7 @@ namespace WebAPI.Controllers
         //------------------------------------------------------------------------------------------
         //CREATE------------------------------------------------------------------------------------
         [HttpPost]
+        [Authorize]
         public IActionResult Post([FromBody] MantenimientoDTO? mantenimiento) 
         {
             if (mantenimiento == null) return BadRequest("No se ingreso informacion sobre el mantenimiento");

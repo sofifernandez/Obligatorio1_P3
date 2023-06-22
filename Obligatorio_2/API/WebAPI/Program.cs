@@ -8,6 +8,11 @@ using Aplicacion.CU.TipoCU;
 using Aplicacion.InterfacesCU.ITipo;
 using Aplicacion.CU.MantenimientoCU;
 using Aplicacion.InterfacesCU.IMantenimiento;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Aplicacion.InterfacesCU.IUsuario;
+using Aplicacion.CU.UsuarioCU;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +22,28 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
+//CONFIGURAMOS JWT
+var claveSecreta = "ZWRpw6fDo28gZW0gY29tcHV0YWRvcmE=";
+
+builder.Services.AddAuthentication(aut =>
+{
+    aut.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    aut.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(aut =>
+{
+    aut.RequireHttpsMetadata = false;
+    aut.SaveToken = true;
+    aut.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(claveSecreta)),
+        ValidateIssuer = false,
+        ValidateAudience = false
+    };
+});
 
 //CONFIGURAMOS LAS INYECCIONES DE DEPENDENCIAS
 //Repositorios
@@ -51,7 +78,10 @@ builder.Services.AddScoped<IListadoMantenimientoDeCabana, ListadoMantenimientoDe
 builder.Services.AddScoped<IBuscarMantenPorFechas, BuscarMantenPorFechas>();
 builder.Services.AddScoped<IAltaMantenimiento, AltaMantenimiento>();
 builder.Services.AddScoped<IMontoPorCapacidad, MontoPorCapacidad>();
-//
+
+
+//USUARIO
+builder.Services.AddScoped<ILogin, Login>();
 
 
 

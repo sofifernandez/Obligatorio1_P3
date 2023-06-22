@@ -1,19 +1,21 @@
 ﻿
+using ClienteMVC.DTOs;
+using ClienteMVC.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Net;
 
 namespace ClienteMVC.Controllers
 {
     public class UsuarioController : Controller
     {
-        /*
-        IRepositorioUsuario RepoUsuario { get; set; }
+        public IConfiguration Conf { get; set; }
 
-        public UsuarioController(IRepositorioUsuario repo)
-            {
-            RepoUsuario = repo;
-            }
+        public UsuarioController(IConfiguration conf)
+        {
+            Conf = conf;
+        }
 
         // GET: UsuarioController
         public ActionResult Login()
@@ -24,30 +26,36 @@ namespace ClienteMVC.Controllers
        
 
         [HttpPost]
-        public ActionResult Login(Usuario unUsuario)
+        public ActionResult Login(UsuarioViewModel usu)
         {
-            try
+            string url = Conf.GetValue<string>("ApiUsuarios") + "login";
+            HttpClient client = new HttpClient();
+            var tarea = client.PostAsJsonAsync(url, usu);
+            tarea.Wait();
+
+            if (tarea.Result.IsSuccessStatusCode)
             {
-                string email = unUsuario.Email;
-                string password = unUsuario.Password;
-                Usuario usuario = RepoUsuario.Login(email, password);
-                if (usuario != null)
+                var tarea2 = tarea.Result.Content.ReadAsStringAsync();
+                tarea2.Wait();
+
+                LoginDTO login = JsonConvert.DeserializeObject<LoginDTO>(tarea2.Result);
+                HttpContext.Session.SetString("token", login.TokenJWT);
+                HttpContext.Session.SetString("logeado", "registrado");
+
+                return RedirectToAction("Index", "Cabana");
+            }
+            else
+            {
+                if (tarea.Result.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    HttpContext.Session.SetString("email", email);
-                    return Redirect("/Home/Index");
+                    ViewBag.Error = "Las credenciales no son válidas";
                 }
-                else 
+                else
                 {
-                    ViewBag.Error = "El usuario o la contraseña son incorrectos";
-                    return View();
+                    ViewBag.Error = "Ocurrió un error";
                 }
 
-                
-            }
-            catch (Exception e)
-            {
-                ViewBag.Error = e.Message;
-                return View();
+                return View(usu);
             }
         }
         public ActionResult Logout()
@@ -56,7 +64,7 @@ namespace ClienteMVC.Controllers
             return RedirectToAction("Login");
 
         }
-        */
+        
 
     }
 }

@@ -11,6 +11,7 @@
           "Aplicacion": "1.0.0",
           "DTOs": "1.0.0",
           "Datos": "1.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.7",
           "Microsoft.AspNetCore.OpenApi": "7.0.3",
           "Microsoft.EntityFrameworkCore": "7.0.7",
           "Microsoft.EntityFrameworkCore.Design": "7.0.7",
@@ -597,6 +598,17 @@
         "resources": {
           "lib/net6.0/zh-Hant/Humanizer.resources.dll": {
             "locale": "zh-Hant"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.JwtBearer/7.0.7": {
+        "dependencies": {
+          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "6.21.0"
+        },
+        "runtime": {
+          "lib/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
+            "assemblyVersion": "7.0.7.0",
+            "fileVersion": "7.0.723.27408"
           }
         }
       },
@@ -2598,6 +2610,7 @@
         "dependencies": {
           "DTOs": "1.0.0",
           "Dominio": "1.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.7",
           "Microsoft.EntityFrameworkCore": "7.0.7",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.7",
           "Microsoft.Extensions.Configuration": "7.0.0",
@@ -2612,6 +2625,7 @@
       "Datos/1.0.0": {
         "dependencies": {
           "Dominio": "1.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.7",
           "Microsoft.EntityFrameworkCore": "7.0.7",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.7",
           "Microsoft.Extensions.Configuration": "7.0.0",
@@ -2626,6 +2640,7 @@
       "Dominio/1.0.0": {
         "dependencies": {
           "ExcepcionesPropias": "1.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.7",
           "Microsoft.EntityFrameworkCore": "7.0.7",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.7",
           "Microsoft.Extensions.Configuration": "7.0.0",
@@ -2640,6 +2655,7 @@
       "DTOs/1.0.0": {
         "dependencies": {
           "Dominio": "1.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.7",
           "Microsoft.EntityFrameworkCore": "7.0.7",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.7",
           "Microsoft.Extensions.Configuration": "7.0.0",
@@ -2653,6 +2669,7 @@
       },
       "ExcepcionesPropias/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.7",
           "Microsoft.EntityFrameworkCore": "7.0.7",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.7",
           "Microsoft.Extensions.Configuration": "7.0.0",
@@ -3035,6 +3052,13 @@
       "sha512": "sha512-VIXB7HCUC34OoaGnO3HJVtSv2/wljPhjV7eKH4+TFPgQdJj2lvHNKY41Dtg0Bphu7X5UaXFR4zrYYyo+GNOjbA==",
       "path": "humanizer.core.zh-hant/2.14.1",
       "hashPath": "humanizer.core.zh-hant.2.14.1.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.JwtBearer/7.0.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-V3ftCQYDWxHogvrZ3XEr3TNCACqoxMuBwnCI5kq+GeuFGh6u0VYDMrRwvXvFKxdFHgFwS9CFxq4/p1csSVPI8g==",
+      "path": "microsoft.aspnetcore.authentication.jwtbearer/7.0.7",
+      "hashPath": "microsoft.aspnetcore.authentication.jwtbearer.7.0.7.nupkg.sha512"
     },
     "Microsoft.AspNetCore.OpenApi/7.0.3": {
       "type": "package",

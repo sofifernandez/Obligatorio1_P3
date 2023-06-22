@@ -4,6 +4,7 @@ using ClienteMVC.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Net.Http.Headers;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ClienteMVC.Controllers
@@ -57,10 +58,7 @@ namespace ClienteMVC.Controllers
         //LISTADO-----------------------------------------------------------------------------
         public ActionResult Index(int CabanaId)
         {
-            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
-            //{
-            //    return Redirect("/Usuario/Login");
-            //}
+           
             HttpClient cliente = new HttpClient();
             string url = URLBaseApiMantenimientos + CabanaId;
             Task<HttpResponseMessage> tarea1 = cliente.GetAsync(url);
@@ -91,12 +89,9 @@ namespace ClienteMVC.Controllers
         [HttpPost]
         public ActionResult MantEntreFechas(DateTime fechaIni, DateTime fechaFin, int CabanaId)
         {
-            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
-            //{
-            //    return Redirect("/Usuario/Login");
-            //}
+        
             HttpClient cliente = new HttpClient();
-            string url = URLBaseApiMantenimientos + $"start/{fechaIni}/end/{fechaFin}/Cabana/{CabanaId}";
+            string url = URLBaseApiMantenimientos + $"start/{fechaIni.ToShortDateString()}/end/{fechaFin.ToShortDateString()}/Cabana/{CabanaId}";
             Task<HttpResponseMessage> tarea1 = cliente.GetAsync(url);
             tarea1.Wait();
             HttpResponseMessage respuesta = tarea1.Result;
@@ -152,10 +147,7 @@ namespace ClienteMVC.Controllers
         //CREAR-----------------------------------------------------------------------------
         public ActionResult Create(int CabanaId)
         {
-            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
-            //{
-            //    return Redirect("/Usuario/Login");
-            //}
+            if (HttpContext.Session.GetString("logeado") != "registrado") return RedirectToAction("login", "usuario");
             CabanaDTO cabana = TraerInfoCabana(CabanaId);
             ViewBag.Cabana=cabana;
             return View();
@@ -165,20 +157,13 @@ namespace ClienteMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(MantenimientoViewModel mantenimiento)
         {
-            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
-            //{
-            //    return Redirect("/Usuario/Login");
-            //}
-
-
-
             try
             {
                 if (ModelState.IsValid)
                 {
                     HttpClient cliente = new HttpClient();
-                    //    cliente.DefaultRequestHeaders.Authorization =
-                    //new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("token"));
+                    cliente.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("token"));
                     Task<HttpResponseMessage> tarea = cliente.PostAsJsonAsync(URLBaseApiMantenimientos, mantenimiento);
                     tarea.Wait();
                     HttpResponseMessage respuesta = tarea.Result;
