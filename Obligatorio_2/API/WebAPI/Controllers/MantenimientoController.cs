@@ -36,7 +36,15 @@ namespace WebAPI.Controllers
         //LISTADO-----------------------------------------------------------------------------
 
         // GET: MantenimientoController/idCabana/3
+        /// <summary>
+        /// Devuelve la lista de mantenimientos para una cabaña
+        /// </summary>
+        /// <param name="idCabana">El identificador de la cabaña para filtrar todos sus mantenimientos</param>
+        /// <returns>Devuelve el listado de mantenimientos asociados a la cabaña</returns>
         [HttpGet("{idCabana}", Name = "GetMantenimientoCabana")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult GetMantenimientoCabana(int idCabana)
         {
             try
@@ -45,16 +53,25 @@ namespace WebAPI.Controllers
                 if (matenimientos.Count() == 0) return NotFound("No hay mantenimientos para esta cabana");
                 return Ok(matenimientos);
             }
-            catch (Exception)
-            {
-                return StatusCode(500, "Ocurrió un error inesperado");
-            }
+            catch (Exception ex) { return StatusCode(500, "Ocurrió un error inesperado: " + ex.Message); }
         }
 
         //------------------------------------------------------------------------------------------
         //BÚSQUEDAS------------------------------------------------------------------------------------
       
+        /// <summary>
+        /// Permite buscar mantenimientos para una determinadad cabaña que estén comprendidos entre dos fechas
+        /// </summary>
+        /// <param name="startDate">Fecha inicial</param>
+        /// <param name="endDate">Fecha final</param>
+        /// <param name="CabanaId">Identificador de la cabaña de interés</param>
+        /// <returns>Lista de mantenimientos que cumplen con los filtros</returns>
         [HttpGet("start/{startDate}/end/{endDate}/Cabana/{CabanaId}", Name = "FindMantDeCabana")]
+        [Authorize]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult GetMantenimientoFechas(DateTime startDate, DateTime endDate, int CabanaId) 
         {
             try
@@ -64,16 +81,21 @@ namespace WebAPI.Controllers
                 if (matenimientos.Count() == 0) return NotFound("No hay mantenimientos para esta cabana en estas fechas");
                 return Ok(matenimientos);
             }
-            catch (Exception)
-            {
-                return StatusCode(500, "Ocurrió un error inesperado");
-            }
+            catch (Exception ex) { return StatusCode(500, "Ocurrió un error inesperado: " + ex.Message); }
 
         }
 
 
-
+        /// <summary>
+        /// Permite ingresar un rango de capacidad de huéspedes de la cabañas y devolver el total del costo del mantenimiento  agrupado por el personal que lo realizó
+        /// </summary>
+        /// <param name="desde">Capacidad mínima para la búsqueda</param>
+        /// <param name="hasta">Capacidad máxima para la búsqueda</param>
+        /// <returns>Devulve el personal encargado de mantenimientos y el total del costo asociado a cada uno</returns>
         [HttpGet("TotalPorCapacidad/{desde}/{hasta}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult ShowMontoPorCapacidad(int desde, int hasta) {
             try
             {
@@ -81,17 +103,24 @@ namespace WebAPI.Controllers
                 if (mantemonto.Count() == 0) return NotFound("No hay mantenimientos para esos parámetros de búsqueda");
                 return Ok(mantemonto);
             }
-            catch (Exception)
-            {
-
-                return StatusCode(500, "Ocurrió un error inesperado");
-            }
+            catch (Exception ex) { return StatusCode(500, "Ocurrió un error inesperado: " + ex.Message); }
         }
 
         //------------------------------------------------------------------------------------------
         //CREATE------------------------------------------------------------------------------------
+
+        /// <summary>
+        /// Permite agregar un nuevo mantenimiento a una cabaña
+        /// </summary>
+        /// <param name="mantenimiento">Información del mantenimiento</param>
+        /// <returns>Devuelve el mantenimiento creado al cliente</returns>
+        /// <remarks>No permite crear mantenimientos anteriores a la fecha de hoy, ni agregar más de 3 mantenimientos para un mismo día en una cabaña</remarks>
         [HttpPost]
         [Authorize]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status409Conflict)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult Post([FromBody] MantenimientoDTO? mantenimiento) 
         {
             if (mantenimiento == null) return BadRequest("No se ingreso informacion sobre el mantenimiento");
@@ -106,9 +135,9 @@ namespace WebAPI.Controllers
             {
                 return Conflict(ex.Message);
             }
-            catch
+            catch (Exception ex)
             {
-                return StatusCode(500, "Ocurrió un error inesperado");
+                return StatusCode(500, "Ocurrió un error inesperado: " + ex.Message);
             }
 
         }

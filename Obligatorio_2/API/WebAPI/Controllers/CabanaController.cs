@@ -48,15 +48,37 @@ namespace WebAPI.Controllers
         //LISTADO-----------------------------------------------------------------------------
 
         // GET: api/<CabanaController>
+        /// <summary>
+        /// Permite obtener el listado de cabañas
+        /// </summary>
+        /// <returns>Retorna el listado de cabañas</returns>
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult Get()
         {
-            IEnumerable<CabanaDTO> cabanas = CUListadoCabana.ObtenerListado();
-            return Ok(cabanas);
+            try
+            {
+                IEnumerable<CabanaDTO> cabanas = CUListadoCabana.ObtenerListado();
+                return Ok(cabanas);
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Ocurrió un error inesperado: " +ex.Message);
+            }
         }
 
-        // GET api/<CabanaController>/5
+        /// <summary>
+        /// Busca las cabañas por el id
+        /// </summary>
+        /// <param name="id">El identificador de la cabaña</param>
+        /// <returns>Retorna un cabaña</returns>
         [HttpGet("{id}", Name = "FindById")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult Get(int id)
         {
             try
@@ -78,8 +100,19 @@ namespace WebAPI.Controllers
         //-------------------------------------------------------------------------------------
         //BÚSQUEDAS-----------------------------------------------------------------------------
 
-        // GET api/<CabanaController>/FindByNombre/asd
+        /// <summary>
+        /// Permite buscar cabañas según su nombre
+        /// </summary>
+        /// <param name="texto">El string que será buscado en los nombres</param>
+        /// <returns>Retorna un listado de cabañas que contiene ese string en el nombre</returns>
+        
+
+        
         [HttpGet("FindByNombre/{texto}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult BuscarPorNombre(string texto)
         {
             if (string.IsNullOrEmpty(texto))
@@ -91,14 +124,22 @@ namespace WebAPI.Controllers
                 if (cabanas.Count() == 0) return NotFound("No hay Cabañas para esta busqueda");
                 return Ok(cabanas);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return StatusCode(500, "Ocurrió un error inesperado");
+                return StatusCode(500, "Ocurrió un error inesperado: " + ex.Message);
             }
         }
 
-        // GET api/<CabanaController>/FindByMaxHuespedes/5
+        /// <summary>
+        /// Permite buscar cabañas según su capacidad
+        /// </summary>
+        /// <param name="cantidad">El integer que será utilizado como parámetro de búsqueda</param>
+        /// <returns>Retorna un listado de cabañas que tiene como máximo dicha capacidad</returns>
         [HttpGet("FindByMaxHuespedes/{cantidad}", Name = "Buscar")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult BuscarPorMaxHuespedes(int cantidad)
         {
             if (cantidad == null)
@@ -112,12 +153,19 @@ namespace WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, "Ocurrió un error inesperado");
+                return StatusCode(500, "Ocurrió un error inesperado: " + ex.Message);
             }
         }
 
-        // GET api/<CabanaController>/FindByHabilitadas
+        /// <summary>
+        /// Permite buscar cabañas habilitadas
+        /// </summary>
+        /// <returns>Retorna un listado de cabañas habilitadas</returns>
         [HttpGet("FindByHabilitadas")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult BuscarHabilitadas()
         {
 
@@ -127,13 +175,22 @@ namespace WebAPI.Controllers
                 if (cabanas.Count() == 0) return NotFound("No hay Cabañas para esta busqueda");
                 return Ok(cabanas);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return StatusCode(500, "Ocurrió un error inesperado");
+                return StatusCode(500, "Ocurrió un error inesperado: " + ex.Message);
             }
         }
 
+        /// <summary>
+        /// Permite buscar cabañas según su Tipo
+        /// </summary>
+        /// <param name="idTipo">El identificador del Tipo para buscar todas las cabañas bajo esa clasificación</param>
+        /// <returns>Retorna un listado de cabañas que son de ese tipo</returns>
         [HttpGet("FindByTipo/{idTipo}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult BuscarPorTipo(int idTipo) {
 
             try
@@ -142,14 +199,19 @@ namespace WebAPI.Controllers
                 if (cabanas.Count() == 0) return NotFound("No hay Cabañas para esta busqueda");
                 return Ok(cabanas);
             }
-            catch (Exception)
-            {
-                return StatusCode(500, "Ocurrió un error inesperado");
-            }
+            catch (Exception ex) { return StatusCode(500, "Ocurrió un error inesperado: " + ex.Message); }
 
         }
-
+        /// <summary>
+        /// Permite buscar cabañas que tengan un precio/monto diario menor al ingresado, que está asociado al tipo de cabaña
+        /// </summary>
+        /// <param name="monto">El integer que será utilizado para filtrar las cabañas </param>
+        /// <returns>Retorna un listado de cabañas que tienen un monto menor al ingresado</returns>
         [HttpGet("FindByMonto/{monto}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult FindByMonto(int monto) {
             try
             {
@@ -157,11 +219,7 @@ namespace WebAPI.Controllers
                 if (cabanas.Count() == 0) return NotFound("No hay Cabañas para esta busqueda");
                 return Ok(cabanas);
             }
-            catch (Exception)
-            {
-
-                return StatusCode(500, "Ocurrió un error inesperado");
-            }
+            catch (Exception ex) { return StatusCode(500, "Ocurrió un error inesperado: " + ex.Message); }
         }
 
 
@@ -169,9 +227,16 @@ namespace WebAPI.Controllers
         //-------------------------------------------------------------------------------------------------------
         //CREATE-------------------------------------------------------------------------------------------------
 
-        // POST api/<CabanaController>
+        /// <summary>
+        /// Permite agregar cabañas al sistema
+        /// </summary>
+        /// <param name="cabana">La información de cabaña</param>
+        /// <returns>Devuelve la cabaña creada al cliente</returns>
         [HttpPost]
         [Authorize]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status409Conflict)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult Post([FromBody] CabanaDTO? cabana)
         {
             if (cabana == null) return BadRequest("No se ingreso informacion sobre la Cabaña");
@@ -180,13 +245,13 @@ namespace WebAPI.Controllers
                 CUAltaCabana.Alta(cabana);
                 return Ok(cabana);
             }
-            catch (NombreCabanaException ex)
+            catch (AltaCabanaException ex)
             {
-                return BadRequest(ex.Message);
+                return Conflict(ex.Message);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, "Ocurrió un error inesperado");
+                return StatusCode(500, "Ocurrió un error inesperado: " + ex.Message);
             }    
         }
 

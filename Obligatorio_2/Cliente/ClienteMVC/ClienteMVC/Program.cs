@@ -19,7 +19,7 @@ namespace ClienteMVC {
 
             app.UseRouting();
 
-           // app.UseAuthorization();
+           app.UseAuthorization();
 
             app.UseSession();
 

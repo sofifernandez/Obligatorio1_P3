@@ -25,9 +25,9 @@ namespace Dominio.ValueObjects
 
         public void Validar()
         {
-            if (!alphabetRegex.IsMatch(Value)) { throw new NombreCabanaException("El nombre puede contener solo letras y espacios"); }
-            if (Value[0].ToString() == " ") { throw new NombreCabanaException("No puede haber un espacio al comienzo del nombre"); }
-            if (Value[Value.Length - 1].ToString() == " ") { throw new NombreCabanaException("No puede haber un espacio al final del nombre"); }
+            if (!alphabetRegex.IsMatch(Value)) { throw new AltaCabanaException("El nombre puede contener solo letras y espacios"); }
+            if (Value[0].ToString() == " ") { throw new AltaCabanaException("No puede haber un espacio al comienzo del nombre"); }
+            if (Value[Value.Length - 1].ToString() == " ") { throw new AltaCabanaException("No puede haber un espacio al final del nombre"); }
 
         }
     }

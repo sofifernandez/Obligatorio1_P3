@@ -18,7 +18,14 @@ namespace WebAPI.Controllers
         }
 
         //api/usuarios/login POST
+        /// <summary>
+        /// Ingreso al sistema mediante usuario y contraseña
+        /// </summary>
+        /// <param name="usuario">Información del usuario</param>
+        /// <returns>Devuelve un OK.200 y genera un Token asociado</returns>
         [HttpPost("login")]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult Login([FromBody] UsuarioDTO usuario)
         {
             UsuarioDTO logueado = CULogin.Login(usuario.Email, usuario.Password);

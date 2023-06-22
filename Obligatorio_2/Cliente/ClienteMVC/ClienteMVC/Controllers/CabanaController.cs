@@ -325,19 +325,22 @@ namespace ClienteMVC.Controllers
 
         
         [HttpPost]
-        [ValidateAntiForgeryToken]
+       [ValidateAntiForgeryToken]
         public ActionResult Create(CabanaViewModel vm)
         {
-            HttpResponseMessage respuestaTipos = TraerTipos();
-            List<TipoViewModel> tipos = JsonConvert.DeserializeObject<List<TipoViewModel>>(LeerContenido(respuestaTipos));
-            vm.Tipos = tipos;
+            
             try
             {
                 string rutaWwwRoot = WHE.WebRootPath;
                 string rutaCarpeta = Path.Combine(rutaWwwRoot, "Imagenes"); //Genero la ruta hasta la carpeta
                 FileInfo fi = new FileInfo(vm.Foto.FileName);
                 string extension = fi.Extension; //me quedo solo con la extension del archivo
-                
+
+                if (extension != ".png" && extension != ".jpg")
+                {
+                    throw new Exception("El archivo debe ser .png o .jpg");
+                }
+
                 string nomArchivoFoto = vm.Cabana.NombreCabana + "_001" + extension;
                 string rutaArchivo = Path.Combine(rutaCarpeta, nomArchivoFoto); //Genero la ruta hasta la foto
 
@@ -353,12 +356,9 @@ namespace ClienteMVC.Controllers
                 tarea.Wait();
                 
 
-                
-
-                if (extension != ".png" && extension != ".jpg")
-                {
-                    throw new Exception("El archivo debe ser .png o .jpg");
-                }
+                HttpResponseMessage respuestaTipos = TraerTipos();
+                List<TipoViewModel> tipos = JsonConvert.DeserializeObject<List<TipoViewModel>>(LeerContenido(respuestaTipos));
+                vm.Tipos = tipos;
 
                 if (tarea.Result.IsSuccessStatusCode)
                 {

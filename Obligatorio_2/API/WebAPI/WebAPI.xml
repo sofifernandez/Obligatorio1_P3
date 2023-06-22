@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebAPI</name>
+    </assembly>
+    <members>
+        <member name="M:WebAPI.Controllers.CabanaController.Get">
+            <summary>
+            Permite obtener el listado de cabañas
+            </summary>
+            <returns>Retorna el listado de cabañas</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.CabanaController.Get(System.Int32)">
+            <summary>
+            Busca las cabañas por el id
+            </summary>
+            <param name="id">El identificador de la cabaña</param>
+            <returns>Retorna un cabaña</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.CabanaController.BuscarPorNombre(System.String)">
+            <summary>
+            Permite buscar cabañas según su nombre
+            </summary>
+            <param name="texto">El string que será buscado en los nombres</param>
+            <returns>Retorna un listado de cabañas que contiene ese string en el nombre</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.CabanaController.BuscarPorMaxHuespedes(System.Int32)">
+            <summary>
+            Permite buscar cabañas según su capacidad
+            </summary>
+            <param name="cantidad">El integer que será utilizado como parámetro de búsqueda</param>
+            <returns>Retorna un listado de cabañas que tiene como máximo dicha capacidad</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.CabanaController.BuscarHabilitadas">
+            <summary>
+            Permite buscar cabañas habilitadas
+            </summary>
+            <returns>Retorna un listado de cabañas habilitadas</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.CabanaController.BuscarPorTipo(System.Int32)">
+            <summary>
+            Permite buscar cabañas según su Tipo
+            </summary>
+            <param name="idTipo">El identificador del Tipo para buscar todas las cabañas bajo esa clasificación</param>
+            <returns>Retorna un listado de cabañas que son de ese tipo</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.CabanaController.FindByMonto(System.Int32)">
+            <summary>
+            Permite buscar cabañas que tengan un precio/monto diario menor al ingresado, que está asociado al tipo de cabaña
+            </summary>
+            <param name="monto">El integer que será utilizado para filtrar las cabañas </param>
+            <returns>Retorna un listado de cabañas que tienen un monto menor al ingresado</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.CabanaController.Post(DTOs.CabanaDTO)">
+            <summary>
+            Permite agregar cabañas al sistema
+            </summary>
+            <param name="cabana">La información de cabaña</param>
+            <returns>Devuelve la cabaña creada al cliente</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.MantenimientoController.GetMantenimientoCabana(System.Int32)">
+            <summary>
+            Devuelve la lista de mantenimientos para una cabaña
+            </summary>
+            <param name="idCabana">El identificador de la cabaña para filtrar todos sus mantenimientos</param>
+            <returns>Devuelve el listado de mantenimientos asociados a la cabaña</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.MantenimientoController.GetMantenimientoFechas(System.DateTime,System.DateTime,System.Int32)">
+            <summary>
+            Permite buscar mantenimientos para una determinadad cabaña que estén comprendidos entre dos fechas
+            </summary>
+            <param name="startDate">Fecha inicial</param>
+            <param name="endDate">Fecha final</param>
+            <param name="CabanaId">Identificador de la cabaña de interés</param>
+            <returns>Lista de mantenimientos que cumplen con los filtros</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.MantenimientoController.ShowMontoPorCapacidad(System.Int32,System.Int32)">
+            <summary>
+            Permite ingresar un rango de capacidad de huéspedes de la cabañas y devolver el total del costo del mantenimiento  agrupado por el personal que lo realizó
+            </summary>
+            <param name="desde">Capacidad mínima para la búsqueda</param>
+            <param name="hasta">Capacidad máxima para la búsqueda</param>
+            <returns>Devulve el personal encargado de mantenimientos y el total del costo asociado a cada uno</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.MantenimientoController.Post(DTOs.MantenimientoDTO)">
+            <summary>
+            Permite agregar un nuevo mantenimiento a una cabaña
+            </summary>
+            <param name="mantenimiento">Información del mantenimiento</param>
+            <returns>Devuelve el mantenimiento creado al cliente</returns>
+            <remarks>No permite crear mantenimientos anteriores a la fecha de hoy, ni agregar más de 3 mantenimientos para un mismo día en una cabaña</remarks>
+        </member>
+        <member name="M:WebAPI.Controllers.TipoController.Get">
+            <summary>
+            Obtener el listado de tipos
+            </summary>
+            <returns>Devuelve el listado</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.TipoController.Get(System.Int32)">
+            <summary>
+            Obtener un tipo según su identificador
+            </summary>
+            <param name="id">Identificador de tipo</param>
+            <returns>Devuelve el tipo, si es que existe</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.TipoController.BuscarPorNombre(System.String)">
+            <summary>
+            Permite buscar un determinado tipo según su nombre
+            </summary>
+            <param name="texto">Nombre para filtrar el tipo deseado</param>
+            <returns>Devuelve el tipo deseado, si es que lo encuentra</returns>
+            <remarks>El nombre se matchea completo</remarks>
+        </member>
+        <member name="M:WebAPI.Controllers.TipoController.Post(DTOs.TipoDTO)">
+            <summary>
+            Agregar un nuevo tipo al sistema
+            </summary>
+            <param name="tipo">Información de tipo para agregar</param>
+            <returns>Devuelve el tipo creado al cliente</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.TipoController.Put(System.Int32,DTOs.TipoDTO)">
+            <summary>
+            Permite editar tipos en el sistema
+            </summary>
+            <param name="id">Identificador del tipo</param>
+            <param name="tipo">Información del tipo</param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.TipoController.Delete(System.Int32)">
+            <summary>
+            Permite eliminar un tipo del sistema
+            </summary>
+            <param name="id">Identificador del tipo que se quiere eliminar</param>
+            <returns></returns>
+            <remarks>NO se podrá eliminar un tipo en uso</remarks>
+        </member>
+        <member name="M:WebAPI.Controllers.UsuarioController.Login(DTOs.UsuarioDTO)">
+            <summary>
+            Ingreso al sistema mediante usuario y contraseña
+            </summary>
+            <param name="usuario">Información del usuario</param>
+            <returns>Devuelve un OK.200 y genera un Token asociado</returns>
+        </member>
+    </members>
+</doc>

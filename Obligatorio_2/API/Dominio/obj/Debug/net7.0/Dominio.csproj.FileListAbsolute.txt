@@ -49,23 +49,6 @@ C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\Dominio\obj\D
 C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\Dominio\obj\Debug\net7.0\Dominio.pdb
 C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\Dominio\obj\Debug\net7.0\Dominio.genruntimeconfig.cache
 C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\Dominio\obj\Debug\net7.0\ref\Dominio.dll
-C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\bin\Debug\net7.0\Dominio.deps.json
-C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\bin\Debug\net7.0\Dominio.runtimeconfig.json
-C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\bin\Debug\net7.0\Dominio.dll
-C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\bin\Debug\net7.0\Dominio.pdb
-C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\bin\Debug\net7.0\ExcepcionesPropias.dll
-C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\bin\Debug\net7.0\ExcepcionesPropias.pdb
-C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\obj\Debug\net7.0\Dominio.csproj.AssemblyReference.cache
-C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\obj\Debug\net7.0\Dominio.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\obj\Debug\net7.0\Dominio.AssemblyInfoInputs.cache
-C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\obj\Debug\net7.0\Dominio.AssemblyInfo.cs
-C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\obj\Debug\net7.0\Dominio.csproj.CoreCompileInputs.cache
-C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\obj\Debug\net7.0\Dominio.csproj.CopyComplete
-C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\obj\Debug\net7.0\Dominio.dll
-C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\obj\Debug\net7.0\refint\Dominio.dll
-C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\obj\Debug\net7.0\Dominio.pdb
-C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\obj\Debug\net7.0\Dominio.genruntimeconfig.cache
-C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\obj\Debug\net7.0\ref\Dominio.dll
 C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\API\Dominio\bin\Debug\net7.0\Dominio.deps.json
 C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\API\Dominio\bin\Debug\net7.0\Dominio.runtimeconfig.json
 C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\API\Dominio\bin\Debug\net7.0\Dominio.dll
@@ -83,3 +66,20 @@ C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio
 C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\API\Dominio\obj\Debug\net7.0\Dominio.pdb
 C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\API\Dominio\obj\Debug\net7.0\Dominio.genruntimeconfig.cache
 C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\API\Dominio\obj\Debug\net7.0\ref\Dominio.dll
+C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\bin\Debug\net7.0\Dominio.deps.json
+C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\bin\Debug\net7.0\Dominio.runtimeconfig.json
+C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\bin\Debug\net7.0\Dominio.dll
+C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\bin\Debug\net7.0\Dominio.pdb
+C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\bin\Debug\net7.0\ExcepcionesPropias.dll
+C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\bin\Debug\net7.0\ExcepcionesPropias.pdb
+C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\obj\Debug\net7.0\Dominio.csproj.AssemblyReference.cache
+C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\obj\Debug\net7.0\Dominio.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\obj\Debug\net7.0\Dominio.AssemblyInfoInputs.cache
+C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\obj\Debug\net7.0\Dominio.AssemblyInfo.cs
+C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\obj\Debug\net7.0\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\obj\Debug\net7.0\Dominio.csproj.CopyComplete
+C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\obj\Debug\net7.0\Dominio.dll
+C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\obj\Debug\net7.0\refint\Dominio.dll
+C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\obj\Debug\net7.0\Dominio.pdb
+C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\obj\Debug\net7.0\Dominio.genruntimeconfig.cache
+C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Dominio\obj\Debug\net7.0\ref\Dominio.dll
