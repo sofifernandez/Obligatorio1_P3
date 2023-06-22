@@ -28,34 +28,42 @@ namespace ClienteMVC.Controllers
         [HttpPost]
         public ActionResult Login(UsuarioViewModel usu)
         {
-            string url = Conf.GetValue<string>("ApiUsuarios") + "login";
-            HttpClient client = new HttpClient();
-            var tarea = client.PostAsJsonAsync(url, usu);
-            tarea.Wait();
-
-            if (tarea.Result.IsSuccessStatusCode)
+            try
             {
-                var tarea2 = tarea.Result.Content.ReadAsStringAsync();
-                tarea2.Wait();
+                string url = Conf.GetValue<string>("ApiUsuarios") + "login";
+                HttpClient client = new HttpClient();
+                var tarea = client.PostAsJsonAsync(url, usu);
+                tarea.Wait();
 
-                LoginDTO login = JsonConvert.DeserializeObject<LoginDTO>(tarea2.Result);
-                HttpContext.Session.SetString("token", login.TokenJWT);
-                HttpContext.Session.SetString("logeado", "registrado");
-
-                return RedirectToAction("Index", "Cabana");
-            }
-            else
-            {
-                if (tarea.Result.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                if (tarea.Result.IsSuccessStatusCode)
                 {
-                    ViewBag.Error = "Las credenciales no son válidas";
+                    var tarea2 = tarea.Result.Content.ReadAsStringAsync();
+                    tarea2.Wait();
+
+                    LoginDTO login = JsonConvert.DeserializeObject<LoginDTO>(tarea2.Result);
+                    HttpContext.Session.SetString("token", login.TokenJWT);
+                    HttpContext.Session.SetString("logeado", "registrado");
+
+                    return RedirectToAction("Index", "Cabana");
                 }
                 else
                 {
-                    ViewBag.Error = "Ocurrió un error";
-                }
+                    if (tarea.Result.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                    {
+                        ViewBag.Error = "Las credenciales no son válidas";
+                    }
+                    else
+                    {
+                        ViewBag.Error = "Ocurrió un error";
+                    }
 
-                return View(usu);
+                    return View(usu);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("ERROR FATAL");
             }
         }
         public ActionResult Logout()

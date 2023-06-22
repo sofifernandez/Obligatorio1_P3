@@ -102,7 +102,7 @@ namespace ClienteMVC.Controllers
             else 
             {
                 ViewBag.NotFound = body;
-                return View("ResultadoBusqueda", new TipoViewModel());
+                return View("ResultadoBusqueda");
             }
             
         }

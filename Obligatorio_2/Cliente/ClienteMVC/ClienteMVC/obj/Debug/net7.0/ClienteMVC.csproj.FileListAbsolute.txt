@@ -508,6 +508,7 @@ C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio
 C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\Cliente\ClienteMVC\ClienteMVC\obj\Debug\net7.0\ClienteMVC.pdb
 C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\Cliente\ClienteMVC\ClienteMVC\obj\Debug\net7.0\ClienteMVC.genruntimeconfig.cache
 C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\Cliente\ClienteMVC\ClienteMVC\obj\Debug\net7.0\ref\ClienteMVC.dll
+C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\Cliente\ClienteMVC\ClienteMVC\bin\Debug\net7.0\Microsoft.CodeAnalysis.AnalyzerUtilities.dll
 C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\Cliente\ClienteMVC\ClienteMVC\bin\Debug\net7.0\appsettings.Development.json
 C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\Cliente\ClienteMVC\ClienteMVC\bin\Debug\net7.0\appsettings.json
 C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\Cliente\ClienteMVC\ClienteMVC\bin\Debug\net7.0\ClienteMVC.staticwebassets.runtime.json
@@ -525,7 +526,6 @@ C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\Cliente\Clien
 C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\Cliente\ClienteMVC\ClienteMVC\bin\Debug\net7.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\Cliente\ClienteMVC\ClienteMVC\bin\Debug\net7.0\Microsoft.Build.dll
 C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\Cliente\ClienteMVC\ClienteMVC\bin\Debug\net7.0\Microsoft.Build.Framework.dll
-C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\Cliente\ClienteMVC\ClienteMVC\bin\Debug\net7.0\Microsoft.CodeAnalysis.AnalyzerUtilities.dll
 C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\Cliente\ClienteMVC\ClienteMVC\bin\Debug\net7.0\Microsoft.CodeAnalysis.dll
 C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\Cliente\ClienteMVC\ClienteMVC\bin\Debug\net7.0\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\Cliente\ClienteMVC\ClienteMVC\bin\Debug\net7.0\Microsoft.CodeAnalysis.CSharp.Features.dll

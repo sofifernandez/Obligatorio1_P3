@@ -60,45 +60,7 @@ namespace ClienteMVC.Controllers
         //-------------------------------------------------------------------------------------
         //FUNCIONES ACCESORIAS-----------------------------------------------------------------------------
 
-        //private string FetchCabana(int id, out CabanaViewModel cabana)
-        //{
-        //    string error = "";
-        //    cabana = null;
-
-        //    HttpClient client = new HttpClient();
-        //    string urlBase = URLBaseApiCabanas;
-        //    string url = urlBase + id;
-        //    var tarea = client.GetAsync(url);
-        //    tarea.Wait();
-
-        //    string body = LeerContenido(tarea.Result); //aca viene como json la cabañana o como string el error
-
-        //    //List<TipoViewModel> tiposCabana = JsonConvert.DeserializeObject<List<TipoViewModel>>(tarea2.Result);
-        //    //CabanaViewModel cabanaVM = new CabanaViewModel()
-        //    //{
-        //    //    Cabana = new CabanaDTO(),
-        //    //    Tipos = tiposCabana
-        //    //};
-        //    //return View(cabanaVM);
-
-
-
-        //    if (tarea.Result.IsSuccessStatusCode)
-        //    {
-        //        List<TipoViewModel> tiposCabana = JsonConvert.DeserializeObject<List<TipoViewModel>>(body);
-        //        CabanaViewModel cabanaVM = new CabanaViewModel()
-        //        {
-        //            Cabana = new CabanaDTO(),
-        //            Tipos = tiposCabana
-        //        };
-        //    }
-        //    else
-        //    {
-        //        error = body;
-        //    }
-
-        //    return error;
-        //}
+       
 
 
         private string LeerContenido(HttpResponseMessage respuesta)
@@ -133,8 +95,7 @@ namespace ClienteMVC.Controllers
             HttpResponseMessage respuesta = tarea1.Result;
             string body = LeerContenido(respuesta);
 
-            HttpResponseMessage respuestaTipos = TraerTipos();
-            List<TipoViewModel> tipos = JsonConvert.DeserializeObject<List<TipoViewModel>>(LeerContenido(respuestaTipos));
+            HttpResponseMessage respuestaTipos = TraerTipos(); //traemos los tipos para la búsqueda por tipos
 
             if (respuesta.IsSuccessStatusCode && respuestaTipos.IsSuccessStatusCode)
             {
@@ -159,11 +120,7 @@ namespace ClienteMVC.Controllers
         [HttpPost]
         public ActionResult BuscarPorNombre(string nombre) 
         {
-            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
-            //{
-            //    return Redirect("/Usuario/Login");
-            //}
-
+           
             HttpClient client = new HttpClient();
             string urlBase = URLBaseApiCabanas;
             string url = urlBase + "FindByNombre/" + nombre;
@@ -188,10 +145,7 @@ namespace ClienteMVC.Controllers
         [HttpGet]
         public ActionResult BuscarHabilitadas()
         {
-            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
-            //{
-            //    return Redirect("/Usuario/Login");
-            //}
+            
 
             HttpClient client = new HttpClient();
             string urlBase = URLBaseApiCabanas;
@@ -216,10 +170,7 @@ namespace ClienteMVC.Controllers
         [HttpPost]
         public ActionResult BuscarPorMaxHuespedes(int maxHuespedes)
         {
-            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
-            //{
-            //    return Redirect("/Usuario/Login");
-            //}
+           
 
             HttpClient client = new HttpClient();
             string urlBase = URLBaseApiCabanas;
@@ -244,10 +195,7 @@ namespace ClienteMVC.Controllers
         [HttpPost]
         public ActionResult BuscarPorTipo(int idTipo)
         {
-            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("email")))
-            //{
-            //    return Redirect("/Usuario/Login");
-            //}
+           
 
             HttpClient client = new HttpClient();
             string urlBase = URLBaseApiCabanas;
@@ -390,31 +338,27 @@ namespace ClienteMVC.Controllers
         }
 
 
+
+
+
+
+
+
+
         //-------------------------------------------------------------------------------------------------------
         //NO IMPLEMENTADOS-----------------------------------------------------------------------------------------
 
 
-        //public ActionResult Details(int id)
-        //{
-        //    CabanaViewModel c = null;
-        //    string error = FetchCabana(id, out c);
-
-        //    if (error == "")
-        //    {
-        //        return View(c);
-        //    }
-        //    else
-        //    {
-        //        ViewBag.Mensaje = error;
-        //        return View();
-        //    }
-        //}
+        public ActionResult Details(int id)
+        {
+            return RedirectToAction(nameof(Index));
+        }
 
 
         // GET: CabanaController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return RedirectToAction(nameof(Index));
         }
 
         // POST: CabanaController/Edit/5
@@ -435,7 +379,7 @@ namespace ClienteMVC.Controllers
         // GET: CabanaController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return RedirectToAction(nameof(Index));
         }
 
         // POST: CabanaController/Delete/5

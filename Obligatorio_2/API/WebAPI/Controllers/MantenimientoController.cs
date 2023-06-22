@@ -67,7 +67,7 @@ namespace WebAPI.Controllers
         /// <param name="CabanaId">Identificador de la cabaña de interés</param>
         /// <returns>Lista de mantenimientos que cumplen con los filtros</returns>
         [HttpGet("start/{startDate}/end/{endDate}/Cabana/{CabanaId}", Name = "FindMantDeCabana")]
-        [Authorize]
+       // [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
