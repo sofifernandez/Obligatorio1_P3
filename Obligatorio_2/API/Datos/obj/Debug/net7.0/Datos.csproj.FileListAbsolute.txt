@@ -93,3 +93,22 @@ C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Datos\obj
 C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Datos\obj\Debug\net7.0\Datos.pdb
 C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Datos\obj\Debug\net7.0\Datos.genruntimeconfig.cache
 C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\API\Datos\obj\Debug\net7.0\ref\Datos.dll
+C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\API\Datos\bin\Debug\net7.0\Datos.deps.json
+C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\API\Datos\bin\Debug\net7.0\Datos.runtimeconfig.json
+C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\API\Datos\bin\Debug\net7.0\Datos.dll
+C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\API\Datos\bin\Debug\net7.0\Datos.pdb
+C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\API\Datos\bin\Debug\net7.0\Dominio.dll
+C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\API\Datos\bin\Debug\net7.0\ExcepcionesPropias.dll
+C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\API\Datos\bin\Debug\net7.0\Dominio.pdb
+C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\API\Datos\bin\Debug\net7.0\ExcepcionesPropias.pdb
+C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\API\Datos\obj\Debug\net7.0\Datos.csproj.AssemblyReference.cache
+C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\API\Datos\obj\Debug\net7.0\Datos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\API\Datos\obj\Debug\net7.0\Datos.AssemblyInfoInputs.cache
+C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\API\Datos\obj\Debug\net7.0\Datos.AssemblyInfo.cs
+C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\API\Datos\obj\Debug\net7.0\Datos.csproj.CoreCompileInputs.cache
+C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\API\Datos\obj\Debug\net7.0\Datos.csproj.CopyComplete
+C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\API\Datos\obj\Debug\net7.0\Datos.dll
+C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\API\Datos\obj\Debug\net7.0\refint\Datos.dll
+C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\API\Datos\obj\Debug\net7.0\Datos.pdb
+C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\API\Datos\obj\Debug\net7.0\Datos.genruntimeconfig.cache
+C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\API\Datos\obj\Debug\net7.0\ref\Datos.dll

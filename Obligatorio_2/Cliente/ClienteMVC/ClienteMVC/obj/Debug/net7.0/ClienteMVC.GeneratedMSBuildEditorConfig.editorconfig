@@ -9,97 +9,97 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ClienteMVC
 build_property.RootNamespace = ClienteMVC
-build_property.ProjectDir = C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\Cliente\ClienteMVC\ClienteMVC\
+build_property.ProjectDir = C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\Cliente\ClienteMVC\ClienteMVC\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\sofia\OneDrive\ORT\Semestre3\P3\Obligatorio\Obligatorio_2\Cliente\ClienteMVC\ClienteMVC
+build_property.MSBuildProjectDirectory = C:\Users\lucas\Desktop\ORT\Semestre 3\Programacion 3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio1_P3\Obligatorio_2\Cliente\ClienteMVC\ClienteMVC
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Cabana/BuscarMonto.cshtml]
+[C:/Users/lucas/Desktop/ORT/Semestre 3/Programacion 3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Cabana/BuscarMonto.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FiYW5hXEJ1c2Nhck1vbnRvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Cabana/Create.cshtml]
+[C:/Users/lucas/Desktop/ORT/Semestre 3/Programacion 3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Cabana/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FiYW5hXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Cabana/Index.cshtml]
+[C:/Users/lucas/Desktop/ORT/Semestre 3/Programacion 3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Cabana/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FiYW5hXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Cabana/ResultadoBusqueda.cshtml]
+[C:/Users/lucas/Desktop/ORT/Semestre 3/Programacion 3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Cabana/ResultadoBusqueda.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FiYW5hXFJlc3VsdGFkb0J1c3F1ZWRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Home/Index.cshtml]
+[C:/Users/lucas/Desktop/ORT/Semestre 3/Programacion 3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Home/Privacy.cshtml]
+[C:/Users/lucas/Desktop/ORT/Semestre 3/Programacion 3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Mantenimiento/BuscarMantPorCapacidad.cshtml]
+[C:/Users/lucas/Desktop/ORT/Semestre 3/Programacion 3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Mantenimiento/BuscarMantPorCapacidad.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudGVuaW1pZW50b1xCdXNjYXJNYW50UG9yQ2FwYWNpZGFkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Mantenimiento/Create.cshtml]
+[C:/Users/lucas/Desktop/ORT/Semestre 3/Programacion 3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Mantenimiento/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudGVuaW1pZW50b1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Mantenimiento/Index.cshtml]
+[C:/Users/lucas/Desktop/ORT/Semestre 3/Programacion 3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Mantenimiento/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudGVuaW1pZW50b1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Mantenimiento/MantEntreFechas.cshtml]
+[C:/Users/lucas/Desktop/ORT/Semestre 3/Programacion 3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Mantenimiento/MantEntreFechas.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudGVuaW1pZW50b1xNYW50RW50cmVGZWNoYXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Shared/Error.cshtml]
+[C:/Users/lucas/Desktop/ORT/Semestre 3/Programacion 3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/lucas/Desktop/ORT/Semestre 3/Programacion 3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Tipo/Create.cshtml]
+[C:/Users/lucas/Desktop/ORT/Semestre 3/Programacion 3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Tipo/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Tipo/Delete.cshtml]
+[C:/Users/lucas/Desktop/ORT/Semestre 3/Programacion 3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Tipo/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Tipo/Details.cshtml]
+[C:/Users/lucas/Desktop/ORT/Semestre 3/Programacion 3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Tipo/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Tipo/Edit.cshtml]
+[C:/Users/lucas/Desktop/ORT/Semestre 3/Programacion 3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Tipo/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Tipo/Index.cshtml]
+[C:/Users/lucas/Desktop/ORT/Semestre 3/Programacion 3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Tipo/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Tipo/ResultadoBusqueda.cshtml]
+[C:/Users/lucas/Desktop/ORT/Semestre 3/Programacion 3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Tipo/ResultadoBusqueda.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb1xSZXN1bHRhZG9CdXNxdWVkYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Usuario/Login.cshtml]
+[C:/Users/lucas/Desktop/ORT/Semestre 3/Programacion 3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Usuario/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/_ViewImports.cshtml]
+[C:/Users/lucas/Desktop/ORT/Semestre 3/Programacion 3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/_ViewStart.cshtml]
+[C:/Users/lucas/Desktop/ORT/Semestre 3/Programacion 3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sofia/OneDrive/ORT/Semestre3/P3/Obligatorio/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Shared/_Layout.cshtml]
+[C:/Users/lucas/Desktop/ORT/Semestre 3/Programacion 3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio1_P3/Obligatorio_2/Cliente/ClienteMVC/ClienteMVC/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-x0avqmyycx
